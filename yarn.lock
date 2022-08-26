@@ -945,10 +945,10 @@
   resolved "https://registry.yarnpkg.com/@thirdweb-dev/contracts/-/contracts-3.1.2.tgz#fde89c4b42f842f2504fe8f3d42b7535e8c1ddab"
   integrity sha512-Ly3cEw5K8xfCwj0Fhgzr5olK3mG267TKacDeeufXM/YvU+/6qrpcCWd0JeSafK11+OrMDVXAK/5md93JeniNPQ==
 
-"@thirdweb-dev/react@^2.7.3-2":
-  version "2.7.3-2"
-  resolved "https://registry.yarnpkg.com/@thirdweb-dev/react/-/react-2.7.3-2.tgz#01c72da9538295d6c560fcffa0d96c71043222a4"
-  integrity sha512-XIpnD1rA33v8SRqi2qbyVeLtS5nrPVTLWs0SO87HgQ4U+FnXWEK7DhP4lI95f2iWExw0DDQLzZFj2z0RtOyZsw==
+"@thirdweb-dev/react@^2.7.3-4":
+  version "2.7.3-4"
+  resolved "https://registry.yarnpkg.com/@thirdweb-dev/react/-/react-2.7.3-4.tgz#976b9353d9e06c2b516415971d85b6281da0abda"
+  integrity sha512-TERw+E8V6j654u86DgbAdox8OgeCJhMgciXfHjYzvBM4cm3h/IMeg3FB9xpTvxmobJEwyp87qoHJCZ+M2KOBUg==
   dependencies:
     "@emotion/react" "^11.10.0"
     "@emotion/styled" "^11.10.0"
@@ -957,6 +957,7 @@
     "@gnosis.pm/safe-ethers-lib" "1.1.0"
     "@reach/portal" "^0.17.0"
     "@tanstack/react-query" "^4.0.10"
+    "@thirdweb-dev/storage" "^0.1.0"
     "@zag-js/menu" "^0.1.11"
     "@zag-js/react" "^0.1.13"
     color "^4.2.3"
