@@ -64,7 +64,6 @@ const Home: NextPage = () => {
                 </h3>
               </div>
             ))}
-
           <hr />
           {hasNothing && (
             <>
