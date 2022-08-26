@@ -59,8 +59,15 @@ const Home: NextPage = () => {
               <div key={nft.metadata.id.toString()}>
                 <ThirdwebNftMedia metadata={nft.metadata} width="320px" />
                 <h3>
-                  {nft.metadata.name} - {nft.metadata.description}{" "}
-                  {nft.supply > 1 && `(x${nft.supply})`}
+                  {nft.metadata.name} - {nft.metadata.description} (x
+                  {
+                    nfts.data?.filter(
+                      (nft) =>
+                        nft.metadata.id.toNumber() ===
+                        nft.metadata.id.toNumber()
+                    ).length
+                  }
+                  )
                 </h3>
               </div>
             ))}
