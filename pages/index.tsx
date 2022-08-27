@@ -166,6 +166,7 @@ const Home: NextPage = () => {
                   key={`${event.transaction.transactionHash}_${event.transaction.logIndex}`}
                   style={{ color: "grey" }}
                 >
+                  😺{" "}
                   <Address
                     address={event.data.account as string}
                     setText={setTransferTo}
@@ -181,6 +182,7 @@ const Home: NextPage = () => {
                   key={`${event.transaction.transactionHash}_${event.transaction.logIndex}`}
                   style={{ color: "red" }}
                 >
+                  ⚔️{" "}
                   <Address
                     address={event.data.attacker as string}
                     setText={setTransferTo}
@@ -196,6 +198,19 @@ const Home: NextPage = () => {
             }
           })
         : "No events yet"}
+      <hr />
+      <h4>
+        <a href="https://faucet.paradigm.xyz/">Get testnet funds</a>
+      </h4>
+      <h4>
+        Deploy your own{" "}
+        <a href="https://thirdweb.com/joenrv.eth/CatAttackNFT">
+          CatAttack contract
+        </a>
+      </h4>
+      <h4>
+        Created by <a href="https://twitter.com/joenrv">joenrv.eth</a>
+      </h4>
     </div>
   );
 };
