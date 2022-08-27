@@ -12,7 +12,7 @@ import type { NextPage } from "next";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { shortenAddress } from "../utils/utils";
 
-const CONTRACT_ADDR = "0x802B31c6cDC3eb6b045092040E23F5F800417Bf6";
+const CONTRACT_ADDR = "0xF7E9bBCBe6AA17858bbCe9889bA9AE9D240944E9";
 
 const Address: React.FC<{
   address: string;
@@ -83,9 +83,7 @@ const Home: NextPage = () => {
               <Web3Button
                 contractAddress={CONTRACT_ADDR}
                 accentColor="green"
-                callable={async (contract) => {
-                  await contract.edition?.drop?.claim?.to(address || "", 0, 1);
-                }}
+                functionName={"claimKitten"}
                 onError={(error) => setError(error.reason)}
                 onSubmit={() => setError("")}
               >
@@ -156,11 +154,11 @@ const Home: NextPage = () => {
               </Web3Button>
             </>
           )}
-          {error && <h3 style={{ color: "red" }}>{error}</h3>}
         </>
       ) : (
         <h2>Connect your wallet to get started</h2>
       )}
+      {error && <h3 style={{ color: "red" }}>{error}</h3>}
       {isLoading && <h3>Loading...</h3>}
       <hr />
       <h2>Game Events</h2>
@@ -213,6 +211,10 @@ const Home: NextPage = () => {
         <a href="https://thirdweb.com/joenrv.eth/CatAttackNFT">
           CatAttack contract
         </a>
+      </h4>
+      <h4>
+        Check out the code on{" "}
+        <a href="https://github.com/joaquim-verges/catattacknft">Github</a>
       </h4>
       <h4>
         Created by <a href="https://twitter.com/joenrv">joenrv.eth</a>
