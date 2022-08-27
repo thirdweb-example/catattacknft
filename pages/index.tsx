@@ -9,7 +9,7 @@ import {
 } from "@thirdweb-dev/react";
 import { BigNumber } from "ethers";
 import type { NextPage } from "next";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { shortenAddress } from "../utils/utils";
 
 const CONTRACT_ADDR = "0x802B31c6cDC3eb6b045092040E23F5F800417Bf6";
@@ -35,16 +35,25 @@ const Address: React.FC<{
 const Home: NextPage = () => {
   const address = useAddress();
   const { contract } = useContract(CONTRACT_ADDR);
-  const nfts = useOwnedNFTs(contract?.edition, address);
-  const hasNothing = nfts.data?.length === 0;
-  const hasLevel1 = nfts.data?.some((nft) => nft.metadata.id.toNumber() === 0);
-  const hasLevel2 = nfts.data?.some((nft) => nft.metadata.id.toNumber() === 1);
-  const hasLevel3 = nfts.data?.some((nft) => nft.metadata.id.toNumber() === 2);
+  const { data: nfts, isLoading } = useOwnedNFTs(contract?.edition, address);
+  const hasNothing = nfts?.length === 0;
+  const hasLevel1 = nfts?.some((nft) => nft.metadata.id.toNumber() === 0);
+  const hasLevel2 = nfts?.some((nft) => nft.metadata.id.toNumber() === 1);
+  const hasLevel3 = nfts?.some((nft) => nft.metadata.id.toNumber() === 2);
+  const totalPoints = nfts?.reduce(
+    (prev, curr) =>
+      prev +
+      (curr.quantityOwned as BigNumber).toNumber() *
+        (curr.metadata.id.toNumber() + 1),
+    0
+  );
 
   const events = useAllContractEvents(contract, { subscribe: true });
-  const myEvents = events.data?.filter(
-    (event) => event.eventName === "LevelUp" || event.eventName === "Miaowed"
-  );
+  const myEvents = events.data
+    ?.filter(
+      (event) => event.eventName === "LevelUp" || event.eventName === "Miaowed"
+    )
+    .slice(0, 20);
   const [transferTo, setTransferTo] = useState<string>("");
   const [error, setError] = useState<string>("");
   return (
@@ -52,25 +61,21 @@ const Home: NextPage = () => {
       <ConnectWallet />
       {address ? (
         <>
-          <h2>Your current level</h2>
-          {hasNothing && <p>You don&apos;t have a cat!</p>}
-          {nfts.data &&
-            nfts.data.map((nft) => (
+          <h2 style={{ paddingBottom: 0 }}>Cats you currently own </h2>
+          {hasNothing && <p>You don&apos;t have any cats!</p>}
+          {nfts &&
+            nfts.map((nft) => (
               <div key={nft.metadata.id.toString()}>
                 <ThirdwebNftMedia metadata={nft.metadata} width="320px" />
                 <h3>
                   {nft.metadata.name} - {nft.metadata.description} (x
-                  {
-                    nfts.data?.filter(
-                      (nft) =>
-                        nft.metadata.id.toNumber() ===
-                        nft.metadata.id.toNumber()
-                    ).length
-                  }
-                  )
+                  {(nft.quantityOwned as BigNumber).toString()})
                 </h3>
               </div>
             ))}
+          {totalPoints && totalPoints > 0 ? (
+            <h3 style={{ color: "grey" }}>Total Points: {totalPoints}</h3>
+          ) : undefined}
           <hr />
           {hasNothing && (
             <>
@@ -156,10 +161,11 @@ const Home: NextPage = () => {
       ) : (
         <h2>Connect your wallet to get started</h2>
       )}
+      {isLoading && <h3>Loading...</h3>}
       <hr />
       <h2>Game Events</h2>
       {myEvents && myEvents?.length > 0
-        ? events.data?.map((event) => {
+        ? myEvents?.map((event) => {
             if (event.eventName == "LevelUp") {
               return (
                 <h4
@@ -178,7 +184,7 @@ const Home: NextPage = () => {
             }
             if (event.eventName == "Miaowed") {
               return (
-                <h3
+                <h4
                   key={`${event.transaction.transactionHash}_${event.transaction.logIndex}`}
                   style={{ color: "red" }}
                 >
@@ -192,8 +198,8 @@ const Home: NextPage = () => {
                     address={event.data.victim as string}
                     setText={setTransferTo}
                   />{" "}
-                  ({getLevelName((event.data.level as BigNumber).toNumber())})
-                </h3>
+                  {getLevelName((event.data.level as BigNumber).toNumber())}
+                </h4>
               );
             }
           })
@@ -218,11 +224,11 @@ const Home: NextPage = () => {
 export function getLevelName(level: number) {
   switch (level) {
     case 1:
-      return <span style={{ color: "orange" }}>Kitten</span>;
+      return <span style={{ color: "orange" }}>🐱 Kitten</span>;
     case 2:
-      return <span style={{ color: "green" }}>Grumpy Cat</span>;
+      return <span style={{ color: "green" }}>😾 Grumpy Cat</span>;
     case 3:
-      return <span style={{ color: "red" }}>Ninja Cat</span>;
+      return <span style={{ color: "black" }}>🥷 Ninja Cat</span>;
   }
 }
 
