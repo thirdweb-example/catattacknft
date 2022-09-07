@@ -105,7 +105,7 @@ const Home: NextPage = () => {
               />
               <Web3Button
                 contractAddress={CONTRACT_ADDR}
-                action={async (contract) => {
+                action={(contract) => {
                   contract.erc1155.transfer(transferTo, 0, 1);
                 }}
                 accentColor="green"
