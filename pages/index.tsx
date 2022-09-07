@@ -12,7 +12,7 @@ import type { NextPage } from "next";
 import { Dispatch, SetStateAction, useState } from "react";
 import { shortenAddress } from "../utils/utils";
 
-const CONTRACT_ADDR = "0xF7E9bBCBe6AA17858bbCe9889bA9AE9D240944E9";
+const CONTRACT_ADDR = "0x942c7dA7A01860c061deFc34A57e14ba6362A9aD";
 
 const Address: React.FC<{
   address: string;
