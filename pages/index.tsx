@@ -9,7 +9,7 @@ import {
 } from "@thirdweb-dev/react";
 import { BigNumber } from "ethers";
 import type { NextPage } from "next";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { shortenAddress } from "../utils/utils";
 
 const CONTRACT_ADDR = "0xF7E9bBCBe6AA17858bbCe9889bA9AE9D240944E9";
@@ -35,7 +35,7 @@ const Address: React.FC<{
 const Home: NextPage = () => {
   const address = useAddress();
   const { contract } = useContract(CONTRACT_ADDR);
-  const { data: nfts, isLoading } = useOwnedNFTs(contract?.edition, address);
+  const { data: nfts, isLoading } = useOwnedNFTs(contract, address);
   const hasNothing = nfts?.length === 0;
   const hasLevel1 = nfts?.some((nft) => nft.metadata.id.toNumber() === 0);
   const hasLevel2 = nfts?.some((nft) => nft.metadata.id.toNumber() === 1);
@@ -83,8 +83,8 @@ const Home: NextPage = () => {
               <Web3Button
                 contractAddress={CONTRACT_ADDR}
                 accentColor="green"
-                functionName={"claimKitten"}
-                onError={(error) => setError(error.reason)}
+                action={(contract) => contract.call("claimKitten")}
+                onError={(error) => setError(error.message)}
                 onSubmit={() => setError("")}
               >
                 Claim
@@ -105,11 +105,11 @@ const Home: NextPage = () => {
               />
               <Web3Button
                 contractAddress={CONTRACT_ADDR}
-                callable={async (contract) => {
-                  contract.edition?.transfer(transferTo, 0, 1);
+                action={async (contract) => {
+                  contract.erc1155.transfer(transferTo, 0, 1);
                 }}
                 accentColor="green"
-                onError={(error) => setError(error.reason)}
+                onError={(error) => setError(error.message)}
                 onSubmit={() => setError("")}
               >
                 Transfer
@@ -121,10 +121,9 @@ const Home: NextPage = () => {
               <h2>Ascend to ninja status</h2>
               <Web3Button
                 contractAddress={CONTRACT_ADDR}
-                functionName={"burn"}
-                params={[address, 1, 1]}
+                action={(contract) => contract.erc1155.burn(1, 1)}
                 accentColor="red"
-                onError={(error) => setError(error.reason)}
+                onError={(error) => setError(error.message)}
                 onSubmit={() => setError("")}
               >
                 Burn it
@@ -145,10 +144,9 @@ const Home: NextPage = () => {
               />
               <Web3Button
                 contractAddress={CONTRACT_ADDR}
-                functionName={"attack"}
-                params={[transferTo]}
+                action={(contract) => contract.call("attack", transferTo)}
                 onSubmit={() => setError("")}
-                onError={(error) => setError(error.reason)}
+                onError={(error) => setError(error.message)}
               >
                 Attack
               </Web3Button>
