@@ -2,7 +2,7 @@ import {
   ConnectWallet,
   useAddress,
   useContract,
-  useAllContractEvents,
+  useContractEvents,
   useOwnedNFTs,
   Web3Button,
   ThirdwebNftMedia,
@@ -48,7 +48,7 @@ const Home: NextPage = () => {
     0
   );
 
-  const events = useAllContractEvents(contract, { subscribe: true });
+  const events = useContractEvents(contract);
   const myEvents = events.data
     ?.filter(
       (event) => event.eventName === "LevelUp" || event.eventName === "Miaowed"
