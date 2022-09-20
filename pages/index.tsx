@@ -9,28 +9,10 @@ import {
 } from "@thirdweb-dev/react";
 import { BigNumber } from "ethers";
 import type { NextPage } from "next";
-import { Dispatch, SetStateAction, useState } from "react";
-import { shortenAddress } from "../utils/utils";
+import { useState } from "react";
+import { Address } from "../components/address";
 
 const CONTRACT_ADDR = "0x942c7dA7A01860c061deFc34A57e14ba6362A9aD";
-
-const Address: React.FC<{
-  address: string;
-  setText: Dispatch<SetStateAction<string>>;
-}> = ({ address, setText }) => {
-  const currentAddress = useAddress();
-  return (
-    <span
-      onClick={() => setText(address)}
-      style={{
-        cursor: "pointer",
-        textDecoration: "underline",
-      }}
-    >
-      {currentAddress === address ? " You" : shortenAddress(address)}
-    </span>
-  );
-};
 
 const Home: NextPage = () => {
   const address = useAddress();
@@ -57,7 +39,7 @@ const Home: NextPage = () => {
   const [transferTo, setTransferTo] = useState<string>("");
   const [error, setError] = useState<string>("");
   return (
-    <div>
+    <div style={{ width: 650, margin: "auto" }}>
       <ConnectWallet />
       {address ? (
         <>
