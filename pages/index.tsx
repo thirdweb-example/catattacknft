@@ -15,6 +15,7 @@ import { Address } from "../components/address";
 const CONTRACT_ADDR = "0x942c7dA7A01860c061deFc34A57e14ba6362A9aD";
 
 const Home: NextPage = () => {
+  // contract data
   const address = useAddress();
   const { contract } = useContract(CONTRACT_ADDR);
   const { data: nfts, isLoading } = useOwnedNFTs(contract, address);
@@ -30,12 +31,15 @@ const Home: NextPage = () => {
     0
   );
 
+  // events
   const events = useContractEvents(contract);
   const myEvents = events.data
     ?.filter(
       (event) => event.eventName === "LevelUp" || event.eventName === "Miaowed"
     )
     .slice(0, 20);
+
+  // state
   const [transferTo, setTransferTo] = useState<string>("");
   const [error, setError] = useState<string>("");
   return (
