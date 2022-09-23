@@ -44,7 +44,9 @@ const Home: NextPage = () => {
   const [error, setError] = useState<string>("");
   return (
     <div style={{ width: 650, margin: "auto" }}>
-      <ConnectWallet />
+      <div style={{ width: 300 }}>
+        <ConnectWallet />
+      </div>
       {address ? (
         <>
           <h2 style={{ paddingBottom: 0 }}>Cats you currently own </h2>
@@ -84,7 +86,7 @@ const Home: NextPage = () => {
                 onChange={(event) => setTransferTo(event.target.value)}
                 value={transferTo}
                 style={{
-                  width: "320px",
+                  width: "620px",
                   padding: "10px",
                   marginBottom: "10px",
                 }}
@@ -123,7 +125,7 @@ const Home: NextPage = () => {
                 onChange={(event) => setTransferTo(event.target.value)}
                 value={transferTo}
                 style={{
-                  width: "320px",
+                  width: "620px",
                   padding: "10px",
                   marginBottom: "10px",
                 }}
