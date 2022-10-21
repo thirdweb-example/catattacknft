@@ -6,13 +6,14 @@ import {
   useOwnedNFTs,
   Web3Button,
   ThirdwebNftMedia,
+  useSDK,
 } from "@thirdweb-dev/react";
 import { BigNumber } from "ethers";
 import type { NextPage } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Address } from "../components/address";
 
-const CONTRACT_ADDR = "0x942c7dA7A01860c061deFc34A57e14ba6362A9aD";
+const CONTRACT_ADDR = "0xb2B1701cAAd6B933150F88217845bC3D045DC3D1";
 
 const Home: NextPage = () => {
   // contract data
@@ -20,16 +21,24 @@ const Home: NextPage = () => {
   const { contract } = useContract(CONTRACT_ADDR);
   const { data: nfts, isLoading } = useOwnedNFTs(contract, address);
   const hasNothing = nfts?.length === 0;
-  const hasLevel1 = nfts?.some((nft) => nft.metadata.id.toNumber() === 0);
-  const hasLevel2 = nfts?.some((nft) => nft.metadata.id.toNumber() === 1);
-  const hasLevel3 = nfts?.some((nft) => nft.metadata.id.toNumber() === 2);
+  const hasLevel1 = nfts?.some((nft) => nft.metadata.id === "0");
+  const hasLevel2 = nfts?.some((nft) => nft.metadata.id === "1");
+  const hasLevel3 = nfts?.some((nft) => nft.metadata.id === "2");
   const totalPoints = nfts?.reduce(
     (prev, curr) =>
-      prev +
-      (curr.quantityOwned as BigNumber).toNumber() *
-        (curr.metadata.id.toNumber() + 1),
+      prev + ((curr.quantityOwned || 0) * Number(curr.metadata.id) + 1),
     0
   );
+
+  const sdk = useSDK();
+
+  useEffect(() => {
+    if (sdk && address) {
+      sdk
+        .getContractList("0xa2B7958A3883DA45916f7710B42B0e4Ba816E825")
+        .then(console.log);
+    }
+  }, [sdk, address]);
 
   // events
   const events = useContractEvents(contract);
@@ -57,7 +66,7 @@ const Home: NextPage = () => {
                 <ThirdwebNftMedia metadata={nft.metadata} width="320px" />
                 <h3>
                   {nft.metadata.name} - {nft.metadata.description} (x
-                  {(nft.quantityOwned as BigNumber).toString()})
+                  {nft.quantityOwned})
                 </h3>
               </div>
             ))}
