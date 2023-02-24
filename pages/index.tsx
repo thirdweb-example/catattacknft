@@ -13,7 +13,7 @@ import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { Address } from "../components/address";
 
-const CONTRACT_ADDR = "0xb2B1701cAAd6B933150F88217845bC3D045DC3D1";
+const CONTRACT_ADDR = "0xdf195071cFFa86A66227Ec8F16101cfc2239C2d7";
 
 const Home: NextPage = () => {
   // contract data
