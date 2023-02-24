@@ -199,7 +199,9 @@ const Home: NextPage = () => {
         : "No events yet"}
       <hr />
       <h4>
-        <a href="https://faucet.paradigm.xyz/">Get testnet funds</a>
+        <a href="https://www.coinbase.com/faucets/base-ethereum-goerli-faucet">
+          Get testnet funds
+        </a>
       </h4>
       <h4>
         Deploy your own{" "}
