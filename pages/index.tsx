@@ -4,10 +4,10 @@ import {
   useContract,
   useContractEvents,
   useOwnedNFTs,
-  Web3Button,
   ThirdwebNftMedia,
-  useSDK,
+  Web3Button,
 } from "@thirdweb-dev/react";
+import { TransactionError } from "@thirdweb-dev/sdk";
 import { BigNumber } from "ethers";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
@@ -19,7 +19,7 @@ const Home: NextPage = () => {
   // contract data
   const address = useAddress();
   const { contract } = useContract(CONTRACT_ADDR);
-  const { data: nfts, isLoading } = useOwnedNFTs(contract, address);
+  const { data: nfts, isLoading, refetch } = useOwnedNFTs(contract, address);
   const hasNothing = nfts?.length === 0;
   const hasLevel1 = nfts?.some((nft) => nft.metadata.id === "0");
   const hasLevel2 = nfts?.some((nft) => nft.metadata.id === "1");
@@ -29,16 +29,6 @@ const Home: NextPage = () => {
       prev + ((curr.quantityOwned || 0) * Number(curr.metadata.id) + 1),
     0
   );
-
-  const sdk = useSDK();
-
-  useEffect(() => {
-    if (sdk && address) {
-      sdk
-        .getContractList("0xa2B7958A3883DA45916f7710B42B0e4Ba816E825")
-        .then(console.log);
-    }
-  }, [sdk, address]);
 
   // events
   const events = useContractEvents(contract);
@@ -50,7 +40,7 @@ const Home: NextPage = () => {
 
   // state
   const [transferTo, setTransferTo] = useState<string>("");
-  const [error, setError] = useState<string>("");
+  const [error, setError] = useState<Error | null>(null);
   return (
     <div style={{ width: 650, margin: "auto" }}>
       <div style={{ width: 300 }}>
@@ -81,8 +71,9 @@ const Home: NextPage = () => {
                 contractAddress={CONTRACT_ADDR}
                 accentColor="green"
                 action={(contract) => contract.call("claimKitten")}
-                onError={(error) => setError(error.message)}
-                onSubmit={() => setError("")}
+                onError={(error) => setError(error)}
+                onSuccess={() => refetch()}
+                onSubmit={() => setError(null)}
               >
                 Claim
               </Web3Button>
@@ -106,8 +97,9 @@ const Home: NextPage = () => {
                   contract.erc1155.transfer(transferTo, 0, 1);
                 }}
                 accentColor="green"
-                onError={(error) => setError(error.message)}
-                onSubmit={() => setError("")}
+                onSuccess={() => refetch()}
+                onError={(error) => setError(error)}
+                onSubmit={() => setError(null)}
               >
                 Transfer
               </Web3Button>
@@ -120,8 +112,9 @@ const Home: NextPage = () => {
                 contractAddress={CONTRACT_ADDR}
                 action={(contract) => contract.erc1155.burn(1, 1)}
                 accentColor="red"
-                onError={(error) => setError(error.message)}
-                onSubmit={() => setError("")}
+                onSuccess={() => refetch()}
+                onError={(error) => setError(error)}
+                onSubmit={() => setError(null)}
               >
                 Burn it
               </Web3Button>
@@ -142,8 +135,9 @@ const Home: NextPage = () => {
               <Web3Button
                 contractAddress={CONTRACT_ADDR}
                 action={(contract) => contract.call("attack", transferTo)}
-                onSubmit={() => setError("")}
-                onError={(error) => setError(error.message)}
+                onSubmit={() => setError(null)}
+                onSuccess={() => refetch()}
+                onError={(error) => setError(error)}
               >
                 Attack
               </Web3Button>
@@ -153,7 +147,9 @@ const Home: NextPage = () => {
       ) : (
         <h2>Connect your wallet to get started</h2>
       )}
-      {error && <h3 style={{ color: "red" }}>{error}</h3>}
+      {error && (
+        <h3 style={{ color: "red" }}>{(error as TransactionError).reason}</h3>
+      )}
       {isLoading && <h3>Loading...</h3>}
       <hr />
       <h2>Game Events</h2>
