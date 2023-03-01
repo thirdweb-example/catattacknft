@@ -44,7 +44,7 @@ const Home: NextPage = () => {
     <GameContext.Provider value={gameContext}>
       <EventContext.Provider value={events || []}>
         <Header />
-        <div className="max-w-3xl flex flex-col items-center mx-auto py-16 px-4">
+        <div className="max-w-3xl flex flex-col items-center mx-auto py-8 px-4">
           {address ? !!nfts?.length ? <Cats /> : <ClaimKitten /> : <Welcome />}
           <Events />
           <Footer />

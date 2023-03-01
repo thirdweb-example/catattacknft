@@ -1,10 +1,11 @@
-import { ThirdwebNftMedia, Web3Button } from "@thirdweb-dev/react";
+import { ThirdwebNftMedia, useAddress, Web3Button } from "@thirdweb-dev/react";
 import { NFT, TransactionError } from "@thirdweb-dev/sdk";
 import Image from "next/image";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { EventContext } from "../contexts/event-context";
 import { GameContext } from "../contexts/game-context";
 import { CONTRACT_ADDR } from "../utils/constants";
+import { isOwnEvent } from "../utils/utils";
 import { Event, EventProps } from "./events";
 
 type ModalProps = {
@@ -42,7 +43,17 @@ const modalText = {
 };
 
 const Players: React.FC = () => {
-  const events = useContext(EventContext);
+  const address = useAddress();
+  const events = useContext(EventContext).filter(
+    (e) =>
+      !isOwnEvent(
+        {
+          type: e.eventName as EventProps["type"],
+          data: e.data,
+        },
+        address
+      )
+  );
 
   return (
     <div className="space-y-2 mt-3 w-full max-h-48 overflow-auto">
@@ -119,7 +130,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
         )}
         <div className="mt-4">
           <Web3Button
-            className="!ml-auto !bg-white !text-black !border-0 !py-2 !h-auto !font-sans !min-w-0 !w-32"
+            className="!ml-auto !bg-white !text-black !border-0 !py-2 !h-auto !font-sans !min-w-0 !w-full"
             contractAddress={CONTRACT_ADDR}
             action={(contract) => {
               if (level === 1)
@@ -176,14 +187,14 @@ const Cat: React.FC<CatProps> = ({ cat }) => {
   return (
     <>
       <Modal isOpen={isOpen} close={closeModal} level={level} />
-      <div className="flex flex-col items-center rounded-lg w-60 relative">
+      <div className="flex flex-col items-center rounded-lg w-80 relative">
         {quantity && (
           <span className="absolute top-2 right-2 bg-black text-xs font-bold text-white px-2 py-1 rounded-md">
             x{quantity}
           </span>
         )}
         <div
-          className="border rounded-t-lg w-60 h-60"
+          className="border rounded-t-lg w-80 h-80"
           style={{ borderColor: color }}
         >
           <ThirdwebNftMedia width="240" height="240" metadata={cat.metadata} />

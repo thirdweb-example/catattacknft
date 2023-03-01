@@ -2,6 +2,7 @@ import { useAddress } from "@thirdweb-dev/react";
 import Image from "next/image";
 import { useContext } from "react";
 import { EventContext } from "../contexts/event-context";
+import { isOwnEvent } from "../utils/utils";
 import { Address } from "./address";
 import LevelName from "./level-name";
 
@@ -14,15 +15,12 @@ export const Event: React.FC<EventProps> = ({ type, data }) => {
   const level = data.level.toNumber() as 1 | 2 | 3;
   const address = useAddress();
 
-  const isPersonalEvent =
-    (type === "LevelUp" && data.account === address) ||
-    (type === "Miaowed" &&
-      (data.victim === address || data.attacker === address));
-
   return (
     <div
       className={`border-2 ${
-        isPersonalEvent ? "border-green-700" : "border-neutral-700"
+        isOwnEvent({ type, data }, address)
+          ? "border-green-700"
+          : "border-neutral-700"
       } rounded-lg flex items-center w-full leading-none`}
     >
       <div className="shrink-0 h-16">
