@@ -1,8 +1,6 @@
-import { useContractEvents } from "@thirdweb-dev/react";
-import { SmartContract } from "@thirdweb-dev/sdk";
 import Image from "next/image";
 import { useContext } from "react";
-import { GameContext } from "../contexts/game-context";
+import { EventContext } from "../contexts/event-context";
 import { Address } from "./address";
 import LevelName from "./level-name";
 
@@ -57,7 +55,7 @@ export const Event: React.FC<EventProps> = ({ type, data }) => {
 };
 
 const Events: React.FC = () => {
-  const { events } = useContext(GameContext);
+  const events = useContext(EventContext);
 
   return (
     <div className="my-20 flex flex-col items-center max-w-sm w-full">

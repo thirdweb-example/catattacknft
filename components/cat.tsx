@@ -2,6 +2,7 @@ import { ThirdwebNftMedia, Web3Button } from "@thirdweb-dev/react";
 import { NFT, TransactionError } from "@thirdweb-dev/sdk";
 import Image from "next/image";
 import { useCallback, useContext, useEffect, useState } from "react";
+import { EventContext } from "../contexts/event-context";
 import { GameContext } from "../contexts/game-context";
 import { CONTRACT_ADDR } from "../utils/constants";
 import { Event, EventProps } from "./events";
@@ -41,7 +42,7 @@ const modalText = {
 };
 
 const Players: React.FC = () => {
-  const { events } = useContext(GameContext);
+  const events = useContext(EventContext);
 
   return (
     <div className="space-y-2 mt-3 w-full max-h-48 overflow-auto">
