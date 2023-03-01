@@ -63,8 +63,12 @@ export const Event: React.FC<EventProps> = ({ type, data }) => {
   );
 };
 
+const EventSkeletons = [...new Array(20)].map((_, i) => (
+  <EventSkeleton key={i} />
+));
+
 const Events: React.FC = () => {
-  const events = useContext(EventContext);
+  const { events, isLoading } = useContext(EventContext);
 
   return (
     <div className="my-20 flex flex-col items-center max-w-sm w-full">
@@ -77,8 +81,11 @@ const Events: React.FC = () => {
       >
         Game events
       </h2>
+
       <div className="space-y-2 mt-6 w-full">
-        {events && events?.length > 0 ? (
+        {isLoading ? (
+          EventSkeletons
+        ) : events?.length > 0 ? (
           events?.map((e) => (
             <Event
               key={`${e.transaction.transactionHash}_${e.transaction.logIndex}`}
@@ -87,11 +94,33 @@ const Events: React.FC = () => {
             />
           ))
         ) : (
-          <p>No events found</p>
+          <p> No Events </p>
         )}
       </div>
     </div>
   );
 };
+
+export function EventSkeleton() {
+  return (
+    <div
+      className="animate-pulse flex border-2 border-neutral-600 justify-start rounded-lg w-full overflow-hidden gap-4"
+      style={{
+        height: "68px",
+      }}
+    >
+      <div
+        className="bg-neutral-500 dark:bg-neutral-600"
+        style={{
+          width: "64px",
+        }}
+      ></div>
+      <div>
+        <div className="h-2.5 bg-neutral-500 dark:bg-neutral-600 w-36 mt-3 rounded-lg"></div>
+        <div className="h-2.5 bg-neutral-500 dark:bg-neutral-600 w-48 mt-4 rounded-lg"></div>
+      </div>
+    </div>
+  );
+}
 
 export default Events;

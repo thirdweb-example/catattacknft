@@ -50,7 +50,7 @@ const ClaimKitten: React.FC = () => {
         Claim Kitten
       </Web3Button>
       {error && (
-        <p className="mt-2 text-xs first-letter:capitalize text-red-400 max-w-xs">
+        <p className="mt-2 text-xs first-letter:capitalize text-red-400 max-w-xs text-center">
           {(error as TransactionError).reason}
         </p>
       )}

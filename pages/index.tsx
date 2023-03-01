@@ -1,5 +1,6 @@
 import {
   useAddress,
+  useConnectionStatus,
   useContract,
   useContractEvents,
   useContractRead,
@@ -16,12 +17,19 @@ import { GameContext } from "../contexts/game-context";
 import Cats from "../components/cats";
 import Footer from "../components/footer";
 import { EventContext } from "../contexts/event-context";
+import { Spinner } from "../components/Spinner/Spinner";
 
 const Home: NextPage = () => {
   // contract data
   const address = useAddress();
+  const connectionStatus = useConnectionStatus();
+
   const { contract } = useContract(CONTRACT_ADDR);
-  const { data: nfts, refetch } = useOwnedNFTs(contract, address);
+  const {
+    data: nfts,
+    refetch,
+    isLoading: nftsLoading,
+  } = useOwnedNFTs(contract, address);
   const { data: playerScore } = useContractRead(contract, "getScore", address);
   const eventsQuery = useContractEvents(contract);
   const events = eventsQuery.data
@@ -42,10 +50,28 @@ const Home: NextPage = () => {
 
   return (
     <GameContext.Provider value={gameContext}>
-      <EventContext.Provider value={events || []}>
+      <EventContext.Provider
+        value={{
+          events: events || [],
+          isLoading: eventsQuery.isLoading,
+        }}
+      >
         <Header />
         <div className="max-w-3xl flex flex-col items-center mx-auto py-8 px-4">
-          {address ? !!nfts?.length ? <Cats /> : <ClaimKitten /> : <Welcome />}
+          {connectionStatus === "disconnected" && <Welcome />}
+
+          {(connectionStatus === "connecting" ||
+            connectionStatus === "unknown") && <Loading />}
+
+          {connectionStatus === "connected" && (
+            <>
+              {nftsLoading ? (
+                <Loading />
+              ) : (
+                <> {nfts?.length ? <Cats /> : <ClaimKitten />}</>
+              )}
+            </>
+          )}
           <Events />
           <Footer />
         </div>
@@ -55,3 +81,16 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+const Loading = () => {
+  return (
+    <div
+      className="flex justify-center items-center"
+      style={{
+        height: "700px",
+      }}
+    >
+      <Spinner size="50px" />
+    </div>
+  );
+};

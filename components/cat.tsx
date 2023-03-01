@@ -44,7 +44,7 @@ const modalText = {
 
 const Players: React.FC = () => {
   const address = useAddress();
-  const events = useContext(EventContext).filter(
+  const events = useContext(EventContext).events.filter(
     (e) =>
       !isOwnEvent(
         {
@@ -151,7 +151,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
           </Web3Button>
         </div>
         {error && (
-          <p className="mt-2 text-xs first-letter:capitalize text-red-400 max-w-xs">
+          <p className="mt-2 text-xs first-letter:capitalize text-red-400 max-w-xs text-center">
             {(error as TransactionError).reason}
           </p>
         )}
