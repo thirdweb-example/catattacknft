@@ -6,6 +6,7 @@ type GameContextType = {
   setTargetAddress: React.Dispatch<React.SetStateAction<string>>;
   refetch: Function;
   nfts: NFT[];
+  playerScore: number;
 };
 
 export const GameContext = createContext<GameContextType>({
@@ -13,4 +14,5 @@ export const GameContext = createContext<GameContextType>({
   setTargetAddress: () => {},
   refetch: () => {},
   nfts: [],
+  playerScore: 0,
 });

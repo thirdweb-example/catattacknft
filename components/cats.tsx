@@ -4,17 +4,7 @@ import { GameContext } from "../contexts/game-context";
 import Cat from "./cat";
 
 const Cats: React.FC = () => {
-  const { nfts } = useContext(GameContext);
-
-  const totalPoints = useMemo(
-    () =>
-      nfts?.reduce(
-        (prev, curr) =>
-          prev + ((curr.quantityOwned || 0) * Number(curr.metadata.id) + 1),
-        0
-      ),
-    [nfts]
-  );
+  const { nfts, playerScore } = useContext(GameContext);
 
   return (
     <div className="flex flex-col items-center w-full">
@@ -22,7 +12,7 @@ const Cats: React.FC = () => {
         Your cats
       </h1>
       <p className="uppercase mt-2 mb-3">
-        TOTAL POINTS <span className="text-white">{totalPoints}</span>
+        TOTAL POINTS <span className="text-white">{playerScore}</span>
       </p>
       <div className="max-w-xs">
         <ConnectWallet />

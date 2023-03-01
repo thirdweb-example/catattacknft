@@ -5,6 +5,7 @@ import {
   useOwnedNFTs,
   ThirdwebNftMedia,
   Web3Button,
+  useContractRead,
 } from "@thirdweb-dev/react";
 import { TransactionError } from "@thirdweb-dev/sdk";
 import type { NextPage } from "next";
@@ -22,6 +23,7 @@ const Home: NextPage = () => {
   const address = useAddress();
   const { contract } = useContract(CONTRACT_ADDR);
   const { data: nfts, isLoading, refetch } = useOwnedNFTs(contract, address);
+  const { data: playerScore } = useContractRead(contract, "getScore", address);
 
   // state
   const [targetAddress, setTargetAddress] = useState<string>("");
@@ -32,6 +34,7 @@ const Home: NextPage = () => {
     targetAddress,
     setTargetAddress,
     nfts: nfts || [],
+    playerScore: playerScore?.toNumber(),
   };
 
   return (
