@@ -2,6 +2,8 @@ import { ConnectWallet, ThirdwebNftMedia } from "@thirdweb-dev/react";
 import { useContext, useMemo } from "react";
 import { GameContext } from "../contexts/game-context";
 import Cat from "./cat";
+import ClaimKitten from "./claim-kitten";
+import ClaimKittenButton from "./claim-kitten-button";
 
 const Cats: React.FC = () => {
   const { nfts, playerScore } = useContext(GameContext);
@@ -50,9 +52,23 @@ const Cats: React.FC = () => {
         </div>
       )}
       <div className="gap-2 mt-12 w-full flex flex-wrap items-center justify-center">
-        {cats?.map((cat) => (
-          <Cat key={cat.metadata.id} cat={cat} />
-        ))}
+        {cats.length > 0 ? (
+          cats?.map((cat) => <Cat key={cat.metadata.id} cat={cat} />)
+        ) : (
+          <div>
+            <p className="my-4 text-gray-500">
+              <span className="text-white">
+                All your cats have been destroyed!
+              </span>
+              <br />
+              <span className="tracking-wide">
+                Claim a new kitten to keep playing
+              </span>
+            </p>
+            <p className="text-gray-500"></p>
+            <ClaimKittenButton />
+          </div>
+        )}
       </div>
     </div>
   );

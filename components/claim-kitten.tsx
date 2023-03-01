@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useContext, useState } from "react";
 import { GameContext } from "../contexts/game-context";
 import { CONTRACT_ADDR } from "../utils/constants";
+import ClaimKittenButton from "./claim-kitten-button";
 
 const ClaimKitten: React.FC = () => {
   const { refetch } = useContext(GameContext);
@@ -39,21 +40,7 @@ const ClaimKitten: React.FC = () => {
           alt="Cat Attack"
         />
       </div>
-      <Web3Button
-        className="mt-6 !bg-white !text-black !border-0 !py-2.5"
-        contractAddress={CONTRACT_ADDR}
-        action={(contract) => contract.call("claimKitten")}
-        onError={(error) => setError(error)}
-        onSubmit={() => setError(null)}
-        onSuccess={() => refetch()}
-      >
-        Claim Kitten
-      </Web3Button>
-      {error && (
-        <p className="mt-2 text-xs first-letter:capitalize text-red-400 max-w-xs text-center">
-          {(error as TransactionError).reason}
-        </p>
-      )}
+      <ClaimKittenButton />
     </div>
   );
 };
