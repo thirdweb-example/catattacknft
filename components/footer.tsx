@@ -3,24 +3,37 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <>
-      <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 w-full max-w-xs md:max-w-none justify-center">
+      <div className="flex flex-col space-y-2 w-full max-w-xs justify-center">
+        <a
+          href="https://bridge.base.org/"
+          target="_blank"
+          className="p-3 text-xs font-semibold border border-white/20 rounded flex items-center justify-center space-x-1 hover:bg-white/10 transition"
+          rel="noreferrer"
+        >
+          <Image src="/icons/zap.svg" width={12} height={12} alt="Zap" />
+          <span>Bridge to Base Goerli</span>
+        </a>
         <a
           href="https://www.coinbase.com/faucets/base-ethereum-goerli-faucet"
           className="p-3 text-xs font-semibold border border-white/20 rounded flex items-center justify-center space-x-1 hover:bg-white/10 transition"
         >
           <Image src="/icons/zap.svg" width={12} height={12} alt="Zap" />
-          <span>Get testnet funds</span>
+          <span>Get Base Goerli funds</span>
         </a>
         <a
           href="https://thirdweb.com/joenrv.eth/CatAttackNFT"
+          target="_blank"
           className="p-3 text-xs font-semibold border border-white/20 rounded flex items-center justify-center space-x-1 hover:bg-white/10 transition"
+          rel="noreferrer"
         >
           <Image src="/icons/rocket.svg" width={12} height={12} alt="Zap" />
           <span>Deploy your own CatAttack contract</span>
         </a>
         <a
           href="https://github.com/joaquim-verges/catattacknft"
+          target="_blank"
           className="p-3 text-xs font-semibold border border-white/20 rounded flex items-center justify-center space-x-1 hover:bg-white/10 transition"
+          rel="noreferrer"
         >
           <Image src="/icons/github.svg" width={12} height={12} alt="Zap" />
           <span>Check out the code on github</span>
@@ -30,7 +43,9 @@ const Footer = () => {
         Created by 🐱{" "}
         <a
           href="https://twitter.com/joenrv"
-          className="text-blue-500 underline hover:no-underline"
+          target="_blank"
+          className="text-blue-500 hover:no-underline"
+          rel="noreferrer"
         >
           joenrv.eth
         </a>
