@@ -9,7 +9,7 @@ const activeChain = BaseGoerli;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThirdwebProvider activeChain={activeChain}>
+    <ThirdwebProvider supportedChains={[activeChain]}>
       <Component {...pageProps} />
     </ThirdwebProvider>
   );
