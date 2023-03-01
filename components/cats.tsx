@@ -28,12 +28,11 @@ const Cats: React.FC = () => {
       </div>
       {badges.length > 0 && (
         <div className="flex flex-wrap max-w-xs gap-2 my-4 items-center justify-center">
-          {badges.map((badge) => (
-            <div key={badge.metadata.id} style={{ width: 30, height: 30 }}>
+          {Array.apply(null, Array(badges[0].quantityOwned)).map((i) => (
+            <div key={badges[0].metadata.id}>
               <ThirdwebNftMedia
-                metadata={badge.metadata}
-                width="30"
-                height="30"
+                metadata={badges[0].metadata}
+                style={{ width: 30, height: 30 }}
               />
             </div>
           ))}

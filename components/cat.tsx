@@ -117,24 +117,28 @@ const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
             </div>
           </>
         )}
-
-        <Web3Button
-          className="!ml-auto !bg-white !text-black !border-0 !py-2 !h-auto !font-sans mt-8 !min-w-0 !w-32"
-          contractAddress={CONTRACT_ADDR}
-          action={(contract) => {
-            if (level === 1)
-              return contract.erc1155.transfer(targetAddress, 0, 1);
-            if (level === 2) return contract.erc1155.burn(1, 1);
-            if (level === 3) return contract.call("attack", targetAddress);
-          }}
-          onError={(error) => setError(error)}
-          onSubmit={() => setError(null)}
-          onSuccess={() => refetch()}
-        >
-          {level === 1 && "Transfer"}
-          {level === 2 && "Burn"}
-          {level === 3 && "Attack"}
-        </Web3Button>
+        <div className="mt-4">
+          <Web3Button
+            className="!ml-auto !bg-white !text-black !border-0 !py-2 !h-auto !font-sans !min-w-0 !w-32"
+            contractAddress={CONTRACT_ADDR}
+            action={(contract) => {
+              if (level === 1)
+                return contract.erc1155.transfer(targetAddress, 0, 1);
+              if (level === 2) return contract.erc1155.burn(1, 1);
+              if (level === 3) return contract.call("attack", targetAddress);
+            }}
+            onError={(error) => setError(error)}
+            onSubmit={() => setError(null)}
+            onSuccess={() => {
+              close();
+              refetch();
+            }}
+          >
+            {level === 1 && "Transfer"}
+            {level === 2 && "Burn"}
+            {level === 3 && "Attack"}
+          </Web3Button>
+        </div>
         {error && (
           <p className="mt-2 text-xs first-letter:capitalize text-red-400 max-w-xs">
             {(error as TransactionError).reason}

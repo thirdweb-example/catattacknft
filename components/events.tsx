@@ -1,3 +1,4 @@
+import { useAddress } from "@thirdweb-dev/react";
 import Image from "next/image";
 import { useContext } from "react";
 import { EventContext } from "../contexts/event-context";
@@ -11,9 +12,19 @@ export type EventProps = {
 
 export const Event: React.FC<EventProps> = ({ type, data }) => {
   const level = data.level.toNumber() as 1 | 2 | 3;
+  const address = useAddress();
+
+  const isPersonalEvent =
+    (type === "LevelUp" && data.account === address) ||
+    (type === "Miaowed" &&
+      (data.victim === address || data.attacker === address));
 
   return (
-    <div className="border border-neutral-700 rounded-lg flex items-center w-full leading-none">
+    <div
+      className={`border-2 ${
+        isPersonalEvent ? "border-green-700" : "border-neutral-700"
+      } rounded-lg flex items-center w-full leading-none`}
+    >
       <div className="shrink-0 h-16">
         <Image
           className="rounded-l-lg"
