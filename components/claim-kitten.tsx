@@ -11,7 +11,7 @@ const ClaimKitten: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center w-full space-y-12">
-      <h1 className="font-bold sm:text-6xl text-4xl leading-none text-center">
+      <h1 className="font-bold sm:text-6xl text-4xl leading-none text-center tracking-tight">
         <span
           className="!bg-clip-text text-transparent"
           style={{
@@ -24,7 +24,12 @@ const ClaimKitten: React.FC = () => {
         to get started
       </h1>
       <div className="max-w-xs">
-        <ConnectWallet />
+        <ConnectWallet
+          dropdownPosition={{
+            side: "bottom",
+            align: "center",
+          }}
+        />
       </div>
       <div className="mx-auto">
         <Image
