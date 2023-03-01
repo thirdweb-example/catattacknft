@@ -1,21 +1,17 @@
 import { useAddress } from "@thirdweb-dev/react";
-import { Dispatch, SetStateAction } from "react";
+import { useContext } from "react";
+import { GameContext } from "../contexts/game-context";
 import { shortenAddress } from "../utils/utils";
 
 export const Address: React.FC<{
   address: string;
-  setText: Dispatch<SetStateAction<string>>;
-}> = ({ address, setText }) => {
+}> = ({ address }) => {
   const currentAddress = useAddress();
+  const { setTargetAddress } = useContext(GameContext);
+
   return (
-    <span
-      onClick={() => setText(address)}
-      style={{
-        cursor: "pointer",
-        textDecoration: "underline",
-      }}
-    >
-      {currentAddress === address ? " You" : shortenAddress(address)}
+    <span className="cursor-pointer" onClick={() => setTargetAddress(address)}>
+      {currentAddress === address ? "You" : shortenAddress(address)}
     </span>
   );
 };

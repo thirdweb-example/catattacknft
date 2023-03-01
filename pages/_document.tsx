@@ -5,11 +5,7 @@ class ConsoleDocument extends Document {
     return (
       <Html lang="en-US">
         <Head></Head>
-        <body
-          style={{
-            fontFamily: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
-          }}
-        >
+        <body className="bg-neutral-900 text-neutral-200">
           <Main />
           <NextScript />
         </body>
