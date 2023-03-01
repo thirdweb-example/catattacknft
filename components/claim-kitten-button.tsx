@@ -1,6 +1,5 @@
 import { ConnectWallet, Web3Button } from "@thirdweb-dev/react";
 import { TransactionError } from "@thirdweb-dev/sdk";
-import Image from "next/image";
 import { useContext, useState } from "react";
 import { GameContext } from "../contexts/game-context";
 import { CONTRACT_ADDR } from "../utils/constants";

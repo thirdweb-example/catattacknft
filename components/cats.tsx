@@ -2,7 +2,6 @@ import { ConnectWallet, ThirdwebNftMedia } from "@thirdweb-dev/react";
 import { useContext, useMemo } from "react";
 import { GameContext } from "../contexts/game-context";
 import Cat from "./cat";
-import ClaimKitten from "./claim-kitten";
 import ClaimKittenButton from "./claim-kitten-button";
 
 const Cats: React.FC = () => {
