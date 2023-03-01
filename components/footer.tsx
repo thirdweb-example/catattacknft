@@ -3,7 +3,7 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <>
-      <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 w-full max-w-xs md:max-w-none">
+      <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 w-full max-w-xs md:max-w-none justify-center">
         <a
           href="https://www.coinbase.com/faucets/base-ethereum-goerli-faucet"
           className="p-3 text-xs font-semibold border border-white/20 rounded flex items-center justify-center space-x-1 hover:bg-white/10 transition"
@@ -26,7 +26,7 @@ const Footer = () => {
           <span>Check out the code on github</span>
         </a>
       </div>
-      <h4 className="font-semibold my-4">
+      <h4 className="font-semibold mt-12 mb-6">
         Created by 🐱{" "}
         <a
           href="https://twitter.com/joenrv"
