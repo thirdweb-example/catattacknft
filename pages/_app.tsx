@@ -16,7 +16,7 @@ const activeChain = BaseGoerli;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThirdwebProvider supportedChains={[activeChain]}>
+    <ThirdwebProvider supportedChains={[activeChain]} activeChain={activeChain}>
       <div className={inter.className}>
         <Component {...pageProps} />
       </div>
