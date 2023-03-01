@@ -32,15 +32,21 @@ const Cats: React.FC = () => {
         />
       </div>
       {badges.length > 0 && (
-        <div className="flex flex-wrap max-w-xs gap-2 my-4 items-center justify-center">
-          {Array.apply(null, Array(badges[0].quantityOwned)).map((i) => (
-            <div key={badges[0].metadata.id}>
-              <ThirdwebNftMedia
-                metadata={badges[0].metadata}
-                style={{ width: 30, height: 30 }}
-              />
-            </div>
-          ))}
+        <div className="flex flex-col items-center w-full">
+          <p className="mt-4 text-gray-500">
+            <span className="tracking-wide mr-2">Cats Destroyed:</span>
+            <span className="text-white">{badges[0].quantityOwned}</span>
+          </p>
+          <div className="flex flex-wrap max-w-xs gap-2 my-4 items-center justify-center">
+            {Array.apply(null, Array(badges[0].quantityOwned)).map((i) => (
+              <div key={badges[0].metadata.id}>
+                <ThirdwebNftMedia
+                  metadata={badges[0].metadata}
+                  style={{ width: 30, height: 30 }}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       )}
       <div className="gap-2 mt-12 w-full flex flex-wrap items-center justify-center">
