@@ -1,14 +1,25 @@
 import type { AppProps } from "next/app";
 import { ThirdwebProvider } from "@thirdweb-dev/react";
 import { BaseGoerli } from "@thirdweb-dev/chains";
+import { Inter } from "next/font/google";
+import "tailwindcss/tailwind.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  preload: true,
+  weight: ["400", "500", "700"],
+  display: "swap",
+});
 
 // This is the chain your dApp will work on.
 const activeChain = BaseGoerli;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThirdwebProvider activeChain={activeChain}>
-      <Component {...pageProps} />
+    <ThirdwebProvider supportedChains={[activeChain]} activeChain={activeChain}>
+      <div className={inter.className}>
+        <Component {...pageProps} />
+      </div>
     </ThirdwebProvider>
   );
 }

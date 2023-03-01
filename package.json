@@ -4,24 +4,31 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:nocache": "rm -rf .next && next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
-    "@thirdweb-dev/chains": "^0.1.5",
-    "@thirdweb-dev/react": "^3.9.5",
-    "@thirdweb-dev/sdk": "^3.9.5",
+    "@thirdweb-dev/chains": "0.1.6-dev-b7afc59",
+    "@thirdweb-dev/react": "3.10.0-dev-b7afc59",
+    "@thirdweb-dev/sdk": "3.10.0-dev-b7afc59",
+    "@thirdweb-dev/wallets": "0.2.7-dev-b7afc59",
     "ethers": "^5.6.8",
-    "next": "^12.1.6",
+    "next": "^13.2.3",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "tailwindcss": "^3.2.7"
   },
   "devDependencies": {
+    "@types/react": "^18.0.28",
     "@types/node": "^17.0.35",
-    "@types/react": "^17.0.45",
+    "autoprefixer": "^10.4.13",
     "eslint": "^8.16.0",
     "eslint-config-next": "^12.1.6",
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.4",
     "typescript": "^4.7.2"
   }
 }
