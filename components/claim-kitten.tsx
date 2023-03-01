@@ -24,14 +24,6 @@ const ClaimKitten: React.FC = () => {
         </span>{" "}
         to get started
       </h1>
-      <div className="max-w-xs">
-        <ConnectWallet
-          dropdownPosition={{
-            side: "bottom",
-            align: "center",
-          }}
-        />
-      </div>
       <div className="mx-auto">
         <Image
           src="/cat-attack.png"

@@ -24,14 +24,6 @@ const Cats: React.FC = () => {
         <span className="tracking-wide mr-2">Total Points:</span>
         <span className="text-white">{playerScore}</span>
       </p>
-      <div className="max-w-xs">
-        <ConnectWallet
-          dropdownPosition={{
-            side: "bottom",
-            align: "center",
-          }}
-        />
-      </div>
       {badges.length > 0 && (
         <div className="flex flex-col items-center w-full">
           <p className="mt-4 text-gray-500">

@@ -109,7 +109,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
                 className="font-bold text-neutral-300"
                 htmlFor="wallet-address"
               >
-                Wallet address
+                Enter Wallet address
               </label>
               <input
                 className="w-full mt-3 border border-gray-500 bg-transparent rounded-xl p-4 font-medium placeholder:text-gray-500"
@@ -120,7 +120,9 @@ const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
               />
             </div>
             <div className="mt-8">
-              <p className="font-bold text-neutral-300">Current players</p>
+              <p className="font-bold text-neutral-300">
+                Or select a current player
+              </p>
               <p className="text-xs text-gray-500">
                 Click on an address to set it as your target.
               </p>
