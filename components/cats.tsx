@@ -1,4 +1,4 @@
-import { ConnectWallet } from "@thirdweb-dev/react";
+import { ConnectWallet, ThirdwebNftMedia } from "@thirdweb-dev/react";
 import { useContext, useMemo } from "react";
 import { GameContext } from "../contexts/game-context";
 import Cat from "./cat";
@@ -6,24 +6,42 @@ import Cat from "./cat";
 const Cats: React.FC = () => {
   const { nfts, playerScore } = useContext(GameContext);
 
+  const { cats, badges } = useMemo(
+    () => ({
+      cats: nfts.filter((nft) => Number(nft.metadata.id) < 3),
+      badges: nfts.filter((nft) => Number(nft.metadata.id) > 2),
+    }),
+    [nfts]
+  );
+
   return (
     <div className="flex flex-col items-center w-full">
-      <h1 className="font-bold sm:text-6xl text-4xl leading-none text-center tracking-tight">
+      <h1 className="font-bold sm:text-6xl text-4xl leading-none text-center">
         Your cats
       </h1>
-      <p className="uppercase mt-2 mb-3">
-        TOTAL POINTS <span className="text-white">{playerScore}</span>
+      <p className="my-4 text-gray-500">
+        <span className="tracking-wide mr-2">Total Points:</span>
+        <span className="text-white">{playerScore}</span>
       </p>
       <div className="max-w-xs">
         <ConnectWallet />
       </div>
-      <div className="grid mt-12">
-        {nfts?.map((nft) => (
-          <Cat
-            key={nft.metadata.id}
-            level={(Number(nft.metadata.id) + 1) as 1 | 2 | 3}
-            nft={nft}
-          />
+      {badges.length > 0 && (
+        <div className="flex flex-wrap max-w-xs gap-2 my-4 items-center justify-center">
+          {badges.map((badge) => (
+            <div key={badge.metadata.id} style={{ width: 30, height: 30 }}>
+              <ThirdwebNftMedia
+                metadata={badge.metadata}
+                width="30"
+                height="30"
+              />
+            </div>
+          ))}
+        </div>
+      )}
+      <div className="gap-2 mt-2 w-full flex flex-wrap items-center justify-center">
+        {cats?.map((cat) => (
+          <Cat key={cat.metadata.id} cat={cat} />
         ))}
       </div>
     </div>

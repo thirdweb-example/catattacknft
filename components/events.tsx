@@ -1,15 +1,17 @@
 import { useContractEvents } from "@thirdweb-dev/react";
 import { SmartContract } from "@thirdweb-dev/sdk";
 import Image from "next/image";
+import { useContext } from "react";
+import { GameContext } from "../contexts/game-context";
 import { Address } from "./address";
 import LevelName from "./level-name";
 
-type EventProps = {
+export type EventProps = {
   type: "LevelUp" | "Miaowed";
   data: Record<string, any>;
 };
 
-const Event: React.FC<EventProps> = ({ type, data }) => {
+export const Event: React.FC<EventProps> = ({ type, data }) => {
   const level = data.level.toNumber() as 1 | 2 | 3;
 
   return (
@@ -54,20 +56,13 @@ const Event: React.FC<EventProps> = ({ type, data }) => {
   );
 };
 
-type EventsProps = {
-  contract?: SmartContract;
-};
-
-const Events: React.FC<EventsProps> = ({ contract }) => {
-  const eventsQuery = useContractEvents(contract);
-  const events = eventsQuery.data
-    ?.filter((e) => ["LevelUp", "Miaowed"].includes(e.eventName))
-    .slice(0, 20);
+const Events: React.FC = () => {
+  const { events } = useContext(GameContext);
 
   return (
     <div className="my-20 flex flex-col items-center max-w-sm w-full">
       <h2
-        className="font-bold text-3xl leading-none tracking-tight !bg-clip-text text-transparent"
+        className="font-bold text-3xl leading-none !bg-clip-text text-transparent"
         style={{
           background:
             "linear-gradient(73.59deg, #C339AC 42.64%, #CD4CB5 54%, #E173C7 77.46%)",
@@ -75,7 +70,7 @@ const Events: React.FC<EventsProps> = ({ contract }) => {
       >
         Game events
       </h2>
-      <div className="space-y-2 mt-6">
+      <div className="space-y-2 mt-6 w-full">
         {events && events?.length > 0 ? (
           events?.map((e) => (
             <Event

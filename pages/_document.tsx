@@ -5,7 +5,7 @@ class ConsoleDocument extends Document {
     return (
       <Html lang="en-US">
         <Head></Head>
-        <body className="bg-neutral-900 text-neutral-200">
+        <body className="bg-neutral-900 text-neutral-200 tracking-tight">
           <Main />
           <NextScript />
         </body>

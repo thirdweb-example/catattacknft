@@ -4,7 +4,7 @@ import Image from "next/image";
 const Welcome: React.FC = () => {
   return (
     <div className="flex flex-col items-center w-full space-y-12">
-      <h1 className="font-bold sm:text-6xl text-4xl leading-none text-center tracking-tight">
+      <h1 className="font-bold sm:text-6xl text-4xl leading-none text-center">
         Welcome to&nbsp;
         <span
           className="!bg-clip-text text-transparent"

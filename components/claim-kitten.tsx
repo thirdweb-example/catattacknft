@@ -11,7 +11,7 @@ const ClaimKitten: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center w-full space-y-12">
-      <h1 className="font-bold sm:text-6xl text-4xl leading-none text-center tracking-tight">
+      <h1 className="font-bold sm:text-6xl text-4xl leading-none text-center">
         <span
           className="!bg-clip-text text-transparent"
           style={{
@@ -45,7 +45,7 @@ const ClaimKitten: React.FC = () => {
         Claim Kitten
       </Web3Button>
       {error && (
-        <p className="!mt-2 text-xs first-letter:capitalize text-red-400">
+        <p className="mt-2 text-xs first-letter:capitalize text-red-400 max-w-xs">
           {(error as TransactionError).reason}
         </p>
       )}

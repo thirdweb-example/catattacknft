@@ -1,4 +1,4 @@
-import { NFT } from "@thirdweb-dev/sdk";
+import { ContractEvent, NFT } from "@thirdweb-dev/sdk";
 import { createContext } from "react";
 
 type GameContextType = {
@@ -6,6 +6,7 @@ type GameContextType = {
   setTargetAddress: React.Dispatch<React.SetStateAction<string>>;
   refetch: Function;
   nfts: NFT[];
+  events: ContractEvent[];
   playerScore: number;
 };
 
@@ -14,5 +15,6 @@ export const GameContext = createContext<GameContextType>({
   setTargetAddress: () => {},
   refetch: () => {},
   nfts: [],
+  events: [],
   playerScore: 0,
 });
