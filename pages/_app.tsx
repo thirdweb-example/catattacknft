@@ -1,13 +1,13 @@
-import type { AppProps } from "next/app";
-import { ThirdwebProvider } from "@thirdweb-dev/react";
 import { BaseGoerli } from "@thirdweb-dev/chains";
+import { ThirdwebProvider } from "@thirdweb-dev/react";
+import type { AppProps } from "next/app";
 import { Inter } from "next/font/google";
 import "tailwindcss/tailwind.css";
 
 const inter = Inter({
   subsets: ["latin"],
   preload: true,
-  weight: ["400", "500", "700"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
