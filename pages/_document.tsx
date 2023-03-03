@@ -5,9 +5,21 @@ class ConsoleDocument extends Document {
     return (
       <Html lang="en-US">
         <Head></Head>
-        <body className="bg-neutral-900 text-neutral-200 tracking-tight">
-          <Main />
-          <NextScript />
+        <body
+          className="text-neutral-200 tracking-tight"
+          style={{
+            background: "#0A0A0A",
+          }}
+        >
+          <div
+            style={{
+              position: "relative",
+              overflow: "hidden",
+            }}
+          >
+            <Main />
+            <NextScript />
+          </div>
         </body>
       </Html>
     );

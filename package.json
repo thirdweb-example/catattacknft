@@ -11,10 +11,10 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
-    "@thirdweb-dev/chains": "0.1.6-dev-b7afc59",
-    "@thirdweb-dev/react": "3.10.0-dev-b7afc59",
-    "@thirdweb-dev/sdk": "3.10.0-dev-b7afc59",
-    "@thirdweb-dev/wallets": "0.2.7-dev-b7afc59",
+    "@thirdweb-dev/chains": "0.1.6-dev-20230303090627-ce0afeb",
+    "@thirdweb-dev/react": "3.10.0-dev-20230303090627-ce0afeb",
+    "@thirdweb-dev/sdk": "3.10.0-dev-20230303090627-ce0afeb",
+    "@thirdweb-dev/wallets": "0.2.7-dev-20230303090627-ce0afeb",
     "ethers": "^5.6.8",
     "next": "^13.2.3",
     "react": "^18.1.0",

@@ -17,7 +17,7 @@ export const Event: React.FC<EventProps> = ({ type, data }) => {
 
   return (
     <div
-      className={`border-2 ${
+      className={`border ${
         isOwnEvent({ type, data }, address)
           ? "border-green-700"
           : "border-neutral-700"
@@ -82,7 +82,7 @@ const Events: React.FC = () => {
         Game events
       </h2>
 
-      <div className="space-y-2 mt-6 w-full">
+      <div className="space-y-3 mt-6 w-full">
         {isLoading ? (
           EventSkeletons
         ) : events?.length > 0 ? (
@@ -104,7 +104,7 @@ const Events: React.FC = () => {
 export function EventSkeleton() {
   return (
     <div
-      className="animate-pulse flex border-2 border-neutral-600 justify-start rounded-lg w-full overflow-hidden gap-4"
+      className="animate-pulse flex border border-neutral-600 justify-start rounded-lg w-full overflow-hidden gap-4"
       style={{
         height: "68px",
       }}
