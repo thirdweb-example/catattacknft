@@ -31,7 +31,11 @@ const Home: NextPage = () => {
     isLoading: nftsLoading,
   } = useOwnedNFTs(contract, address);
   const { data: playerScore } = useContractRead(contract, "getScore", address);
-  const eventsQuery = useContractEvents(contract);
+  const eventsQuery = useContractEvents(contract, undefined, {
+    queryFilter: {
+      fromBlock: -500,
+    },
+  });
   const events = eventsQuery.data
     ?.filter((e) => ["LevelUp", "Miaowed"].includes(e.eventName))
     .slice(0, 20);
