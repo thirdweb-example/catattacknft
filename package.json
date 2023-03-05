@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@thirdweb-dev/chains": "0.1.6-dev-20230303090627-ce0afeb",
-    "@thirdweb-dev/react": "3.10.0-dev-20230303090627-ce0afeb",
-    "@thirdweb-dev/sdk": "3.10.0-dev-20230303090627-ce0afeb",
+    "@thirdweb-dev/react": "3.10.0-dev-20230305053038-f3f1266",
+    "@thirdweb-dev/sdk": "3.10.0-dev-20230305053038-f3f1266",
     "@thirdweb-dev/wallets": "0.2.7-dev-20230303090627-ce0afeb",
     "ethers": "^5.6.8",
     "next": "^13.2.3",
