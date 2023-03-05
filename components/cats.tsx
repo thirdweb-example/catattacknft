@@ -31,7 +31,10 @@ const Cats: React.FC = () => {
             <span className="text-white">{badges[0].quantityOwned}</span>
           </p>
           <div className="flex flex-wrap max-w-xs gap-2 my-4 items-center justify-center">
-            {Array.apply(null, Array(badges[0].quantityOwned)).map((i) => (
+            {Array.apply(
+              null,
+              Array(Math.min(parseInt(badges[0].quantityOwned || "0"), 8))
+            ).map((i) => (
               <div key={badges[0].metadata.id}>
                 <ThirdwebNftMedia
                   metadata={badges[0].metadata}
