@@ -1,14 +1,18 @@
-{
-
- "applinks": {
-
-     "details": [
-        "6446784568.com.catattack":{
-            "paths":[
-              "/wsegue",
-               "/wsegue/*",
-            ]
+"applinks": {
+  "details": [
+    {
+      "appIDs": [ "6446784568.com.catattack"],
+      "components": [
+        {
+          "#": "no_universal_links",
+          "exclude": true,
+          "comment": "Matches any URL whose fragment equals no_universal_links and instructs the system not to open it as a universal link"
+        },
+        {
+          "/": "/wsegue/*",
+          "comment": "Matches any URL whose path starts with /buy/"
+        },
       ]
-
-  },
+    }
+  ]
 }
