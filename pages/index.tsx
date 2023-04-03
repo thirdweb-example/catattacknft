@@ -30,7 +30,9 @@ const Home: NextPage = () => {
     refetch,
     isLoading: nftsLoading,
   } = useOwnedNFTs(contract, address);
-  const { data: playerScore } = useContractRead(contract, "getScore", address);
+  const { data: playerScore } = useContractRead(contract, "getScore", [
+    address,
+  ]);
   const eventsQuery = useContractEvents(contract, undefined, {
     queryFilter: {
       fromBlock: -500,

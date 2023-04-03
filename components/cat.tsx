@@ -138,7 +138,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
               if (level === 1)
                 return contract.erc1155.transfer(targetAddress, 0, 1);
               if (level === 2) return contract.erc1155.burn(1, 1);
-              if (level === 3) return contract.call("attack", targetAddress);
+              if (level === 3) return contract.call("attack", [targetAddress]);
             }}
             onError={(error) => setError(error)}
             onSubmit={() => setError(null)}
