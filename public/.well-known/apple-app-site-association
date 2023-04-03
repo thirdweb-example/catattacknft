@@ -3,10 +3,11 @@
  "applinks": {
 
      "details": [
-
-          {
-            "appIDs": [ "6446784568.com.catattack"],
-          }
+        "6446784568.com.catattack":{
+            "paths":[
+              "/wsegue",
+               "/wsegue/*",
+            ]
       ]
 
   },
