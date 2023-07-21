@@ -1,4 +1,4 @@
-import { ConnectWallet, Web3Button } from "@thirdweb-dev/react";
+import { Web3Button } from "@thirdweb-dev/react";
 import { TransactionError } from "@thirdweb-dev/sdk";
 import { useContext, useState } from "react";
 import { GameContext } from "../contexts/game-context";

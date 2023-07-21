@@ -63,7 +63,7 @@ export const Event: React.FC<EventProps> = ({ type, data }) => {
   );
 };
 
-const EventSkeletons = [...new Array(20)].map((_, i) => (
+const EventSkeletons = [...Array(20).keys()].map((_, i) => (
   <EventSkeleton key={i} />
 ));
 

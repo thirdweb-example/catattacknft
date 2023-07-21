@@ -31,11 +31,11 @@ const Home: NextPage = () => {
     isLoading: nftsLoading,
   } = useOwnedNFTs(contract, address);
   const { data: playerScore } = useContractRead(contract, "getScore", [
-    address,
+    address || "",
   ]);
   const eventsQuery = useContractEvents(contract, undefined, {
     queryFilter: {
-      fromBlock: -500,
+      fromBlock: -20000,
     },
   });
   const events = eventsQuery.data

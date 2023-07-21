@@ -31,11 +31,12 @@ const Cats: React.FC = () => {
             <span className="text-white">{badges[0].quantityOwned}</span>
           </p>
           <div className="flex flex-wrap max-w-xs gap-2 my-4 items-center justify-center">
-            {Array.apply(
-              null,
-              Array(Math.min(parseInt(badges[0].quantityOwned || "0"), 8))
-            ).map((i) => (
-              <div key={badges[0].metadata.id}>
+            {[
+              ...Array(
+                Math.min(parseInt(badges[0].quantityOwned || "0"), 8)
+              ).keys(),
+            ].map((i) => (
+              <div key={`${i}-${badges[0].metadata.id}`}>
                 <ThirdwebNftMedia
                   metadata={badges[0].metadata}
                   style={{ width: 30, height: 30 }}
@@ -47,7 +48,9 @@ const Cats: React.FC = () => {
       )}
       <div className="gap-2 mt-12 w-full flex flex-wrap items-center justify-center">
         {cats.length > 0 ? (
-          cats?.map((cat) => <Cat key={cat.metadata.id} cat={cat} />)
+          cats?.map((cat, i) => (
+            <Cat key={`${i}-${cat.metadata.id}`} cat={cat} />
+          ))
         ) : (
           <div>
             <p className="my-4 text-gray-500">
