@@ -2,6 +2,7 @@ import { BaseGoerli } from "@thirdweb-dev/chains";
 import {
   ThirdwebProvider,
   coinbaseWallet,
+  localWallet,
   metamaskWallet,
   smartWallet,
   walletConnect,
@@ -33,6 +34,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         smartWallet({
           factoryAddress: FACTORY_ADDR,
           gasless: true,
+          personalWallets: [
+            coinbaseWallet(),
+            metamaskWallet(),
+            walletConnect(),
+            localWallet(),
+          ],
         }),
       ]}
     >
