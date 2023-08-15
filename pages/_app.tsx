@@ -4,6 +4,7 @@ import {
   coinbaseWallet,
   localWallet,
   metamaskWallet,
+  rainbowWallet,
   smartWallet,
   walletConnect,
 } from "@thirdweb-dev/react";
@@ -30,17 +31,12 @@ function MyApp({ Component, pageProps }: AppProps) {
       supportedWallets={[
         coinbaseWallet(),
         metamaskWallet(),
-        walletConnect(),
         smartWallet({
           factoryAddress: FACTORY_ADDR,
           gasless: true,
-          personalWallets: [
-            coinbaseWallet(),
-            metamaskWallet(),
-            walletConnect(),
-            localWallet(),
-          ],
+          personalWallets: [localWallet()],
         }),
+        walletConnect(),
       ]}
     >
       <div className={inter.className}>
