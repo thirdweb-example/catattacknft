@@ -13,7 +13,7 @@ import {
 import type { AppProps } from "next/app";
 import { Inter } from "next/font/google";
 import "tailwindcss/tailwind.css";
-import { CHAIN, FACTORY_ADDR } from "../utils/constants";
+import { CHAIN, FACTORY_ADDR, CLIENT_ID } from "../utils/constants";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,14 +26,14 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThirdwebProvider
       activeChain={CHAIN}
-      clientId={process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID || ""}
+      clientId={CLIENT_ID}
       supportedWallets={[
         smartWallet({
           factoryAddress: FACTORY_ADDR,
           gasless: true,
           personalWallets: [
             paperWallet({
-              paperClientId: process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID || "",
+              paperClientId: CLIENT_ID,
             }),
             localWallet(),
           ],
