@@ -4,14 +4,16 @@ import {
   coinbaseWallet,
   localWallet,
   metamaskWallet,
+  paperWallet,
   rainbowWallet,
+  safeWallet,
   smartWallet,
   walletConnect,
 } from "@thirdweb-dev/react";
 import type { AppProps } from "next/app";
 import { Inter } from "next/font/google";
 import "tailwindcss/tailwind.css";
-import { FACTORY_ADDR } from "../utils/constants";
+import { CHAIN, FACTORY_ADDR } from "../utils/constants";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,23 +22,22 @@ const inter = Inter({
   display: "swap",
 });
 
-// This is the chain your dApp will work on.
-const activeChain = BaseGoerli;
-
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThirdwebProvider
-      activeChain={activeChain}
+      activeChain={CHAIN}
       clientId={process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID || ""}
       supportedWallets={[
-        coinbaseWallet(),
-        metamaskWallet(),
         smartWallet({
           factoryAddress: FACTORY_ADDR,
           gasless: true,
-          personalWallets: [localWallet()],
+          personalWallets: [
+            paperWallet({
+              paperClientId: process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID || "",
+            }),
+            localWallet(),
+          ],
         }),
-        walletConnect(),
       ]}
     >
       <div className={inter.className}>
