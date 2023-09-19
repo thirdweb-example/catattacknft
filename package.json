@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@thirdweb-dev/chains": "^0.1.50-nightly-926dd7b0-20230829170639",
-    "@thirdweb-dev/react": "0.0.0-dev-22cbefb-20230919192013",
-    "@thirdweb-dev/sdk": "^3.10.60-nightly-d50863f4-20230906225640",
+    "@thirdweb-dev/react": "0.0.0-dev-79896a1-20230919190912",
+    "@thirdweb-dev/sdk": "0.0.0-dev-79896a1-20230919190912",
     "ethers": "^5",
     "next": "^13",
     "react": "^18.2",

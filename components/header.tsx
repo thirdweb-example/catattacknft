@@ -29,7 +29,7 @@ const Header: React.FC = () => {
         </div>
 
         <div className="max-w-xs">
-          <ConnectWallet />
+          <ConnectWallet modalSize="compact" />
         </div>
       </div>
     </header>

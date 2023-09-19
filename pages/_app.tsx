@@ -22,10 +22,13 @@ function MyApp({ Component, pageProps }: AppProps) {
       activeChain={CHAIN}
       clientId={CLIENT_ID}
       supportedWallets={[
-        smartWallet({
+        smartWallet(embeddedWallet(), {
           factoryAddress: FACTORY_ADDR,
           gasless: true,
-          personalWallets: [embeddedWallet(), localWallet()],
+        }),
+        smartWallet(localWallet(), {
+          factoryAddress: FACTORY_ADDR,
+          gasless: true,
         }),
       ]}
     >
