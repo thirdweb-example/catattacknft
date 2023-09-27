@@ -26,6 +26,7 @@ const Welcome: React.FC = () => {
       </div>
       <div className="max-w-xs">
         <ConnectWallet
+          modalSize="compact"
           dropdownPosition={{
             side: "bottom",
             align: "center",

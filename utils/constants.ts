@@ -1,4 +1,4 @@
-import { ArbitrumGoerli, OptimismGoerli } from "@thirdweb-dev/chains";
+import { OptimismGoerli } from "@thirdweb-dev/chains";
 
 export const CLIENT_ID = process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID || "";
 export const CHAIN = OptimismGoerli;
