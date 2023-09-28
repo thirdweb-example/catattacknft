@@ -1,0 +1,1 @@
+{"version":3,"file":"urls.d.ts","sourceRoot":"../../../../../src/solana/utils","sources":["urls.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,OAAO,EAAE,MAAM,UAAU,CAAC;AACnC,OAAO,EAAE,QAAQ,EAAE,MAAM,yBAAyB,CAAC;AAGnD;;GAEG;AACH,wBAAgB,gBAAgB,CAAC,OAAO,EAAE,OAAO,UAahD;AAED,wBAAgB,SAAS,CAAC,QAAQ,EAAE,QAAQ,6CAU3C;AAED,wBAAgB,YAAY,CAAC,QAAQ,EAAE,QAAQ,UAS9C"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"LocalWalletConnectUI.d.ts","sourceRoot":"../../../../../../src/wallet/wallets/localWallet","sources":["LocalWalletConnectUI.tsx"],"names":[],"mappings":"AAOA,OAAO,EAAE,cAAc,EAAE,MAAM,0BAA0B,CAAC;AAE1D,OAAO,KAAK,EAAE,WAAW,EAAE,MAAM,uBAAuB,CAAC;AAEzD,eAAO,MAAM,oBAAoB,UACxB,eAAe,WAAW,CAAC,GAAG;IAAE,OAAO,EAAE,OAAO,CAAA;CAAE,4CAoD1D,CAAC"}

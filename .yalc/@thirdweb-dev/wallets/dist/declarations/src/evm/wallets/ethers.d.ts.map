@@ -1,0 +1,1 @@
+{"version":3,"file":"ethers.d.ts","sourceRoot":"../../../../../src/evm/wallets","sources":["ethers.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,YAAY,CAAC;AAC5C,OAAO,EAAE,MAAM,EAAE,MAAM,QAAQ,CAAC;AAEhC,qBAAa,YAAa,SAAQ,cAAc;;gBAElC,MAAM,EAAE,MAAM,CAAC,MAAM;IAK3B,SAAS,IAAI,OAAO,CAAC,MAAM,CAAC,MAAM,CAAC;CAG1C"}

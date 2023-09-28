@@ -1,0 +1,9 @@
+export declare const EMBEDDED_WALLET_PATH = "/sdk/2022-08-12/embedded-wallet";
+export declare const HEADLESS_GOOGLE_OAUTH_ROUTE = "/auth/headless-google-login-managed";
+export declare const GET_IFRAME_BASE_URL: () => string;
+export declare const WALLET_USER_DETAILS_LOCAL_STORAGE_NAME: (clientId: string) => string;
+export declare const WALLET_USER_ID_LOCAL_STORAGE_NAME: (clientId: string) => string;
+export declare const AUTH_TOKEN_LOCAL_STORAGE_NAME: (clientId: string) => string;
+export declare const DEVICE_SHARE_LOCAL_STORAGE_NAME: (clientId: string, userId: string) => string;
+export declare const DEVICE_SHARE_LOCAL_STORAGE_NAME_DEPRECATED: (clientId: string) => string;
+//# sourceMappingURL=settings.d.ts.map

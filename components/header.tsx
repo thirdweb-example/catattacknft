@@ -1,8 +1,9 @@
-import { ConnectWallet } from "@thirdweb-dev/react";
+import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
 import Image from "next/image";
 import { Aurora } from "./Aurora";
 
 const Header: React.FC = () => {
+  const address = useAddress();
   return (
     <header className="w-full p-4 mb-12">
       <Aurora
@@ -28,9 +29,7 @@ const Header: React.FC = () => {
           />
         </div>
 
-        <div className="max-w-xs">
-          <ConnectWallet />
-        </div>
+        <div className="max-w-xs">{address ? <ConnectWallet /> : null}</div>
       </div>
     </header>
   );

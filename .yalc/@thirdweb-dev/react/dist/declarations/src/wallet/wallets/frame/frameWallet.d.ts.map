@@ -1,0 +1,1 @@
+{"version":3,"file":"frameWallet.d.ts","sourceRoot":"../../../../../../src/wallet/wallets/frame","sources":["frameWallet.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,YAAY,EAAiB,MAAM,0BAA0B,CAAC;AAC5E,OAAO,EAAE,WAAW,EAAwB,MAAM,uBAAuB,CAAC;AAG1E,KAAK,WAAW,GAAG;IACjB;;OAEG;IACH,WAAW,CAAC,EAAE,OAAO,CAAC;CACvB,CAAC;AAEF,eAAO,MAAM,WAAW,YACb,WAAW,KACnB,aAAa,WAAW,CA4BzB,CAAC"}

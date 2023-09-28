@@ -1,0 +1,1 @@
+{"version":3,"file":"DynamicHeight.d.ts","sourceRoot":"../../../../src/components","sources":["DynamicHeight.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAsC,MAAM,OAAO,CAAC;AAE3D,wBAAgB,aAAa,CAAC,KAAK,EAAE;IACnC,QAAQ,EAAE,KAAK,CAAC,SAAS,CAAC;IAC1B,SAAS,CAAC,EAAE,MAAM,CAAC;CACpB,2CAsBA;AAED,wBAAgB,iBAAiB;;;EAsBhC"}

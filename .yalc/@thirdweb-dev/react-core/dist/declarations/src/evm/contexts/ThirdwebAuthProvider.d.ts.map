@@ -1,0 +1,1 @@
+{"version":3,"file":"ThirdwebAuthProvider.d.ts","sourceRoot":"../../../../../src/evm/contexts","sources":["ThirdwebAuthProvider.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,EAAE,iBAAiB,EAAsB,MAAM,OAAO,CAAC;AACrE,OAAO,EACL,kBAAkB,EAGnB,MAAM,iBAAiB,CAAC;AAOzB,eAAO,MAAM,oBAAoB,EAAE,KAAK,CAAC,EAAE,CACzC,iBAAiB,CAAC;IAAE,KAAK,CAAC,EAAE,kBAAkB,CAAA;CAAE,CAAC,CAsBlD,CAAC"}

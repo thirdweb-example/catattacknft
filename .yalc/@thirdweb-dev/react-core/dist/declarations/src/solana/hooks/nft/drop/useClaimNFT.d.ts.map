@@ -1,0 +1,1 @@
+{"version":3,"file":"useClaimNFT.d.ts","sourceRoot":"../../../../../../../src/solana/hooks/nft/drop","sources":["useClaimNFT.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,aAAa,EAAE,MAAM,6CAA6C,CAAC;AAC5E,OAAO,EAAE,cAAc,EAAE,MAAM,gBAAgB,CAAC;AAEhD,OAAO,KAAK,EAAE,OAAO,EAAE,MAAM,0BAA0B,CAAC;AAGxD;;;;;;;;;;;;;;;;;;;;;GAqBG;AACH,wBAAgB,WAAW,CAAC,OAAO,EAAE,aAAa,CAAC,OAAO,CAAC,iGAe1D"}

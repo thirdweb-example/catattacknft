@@ -1,0 +1,1 @@
+{"version":3,"file":"contract.d.ts","sourceRoot":"../../../../../../src/evm/core/interfaces","sources":["contract.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,YAAY,EAAE,MAAM,UAAU,CAAC;AAExC;;GAEG;AACH,MAAM,WAAW,iBAAiB;IAChC,gBAAgB,CAAC,OAAO,EAAE,YAAY,GAAG,IAAI,CAAC;IAC9C,UAAU,IAAI,MAAM,CAAC;IACrB,OAAO,EAAE,MAAM,CAAC;CACjB"}

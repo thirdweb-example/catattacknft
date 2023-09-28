@@ -1,0 +1,1 @@
+{"version":3,"file":"toJSType.d.ts","sourceRoot":"../../../../../../src/evm/common/feature-detection","sources":["toJSType.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,aAAa,EAAE,MAAM,+BAA+B,CAAC;AAC9D,OAAO,EAAE,CAAC,EAAE,MAAM,KAAK,CAAC;AAExB,wBAAgB,QAAQ,CACtB,YAAY,EAAE,CAAC,CAAC,KAAK,CAAC,OAAO,aAAa,CAAC,EAC3C,YAAY,UAAQ,EACpB,QAAQ,UAAQ,GACf,MAAM,CAiCR"}

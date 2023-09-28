@@ -1,0 +1,1 @@
+{"version":3,"file":"types.d.ts","sourceRoot":"../../../../../../src/wallet/wallets/magic","sources":["types.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,YAAY,EAAE,MAAM,0BAA0B,CAAC;AACxD,OAAO,EAAE,SAAS,EAAE,0BAA0B,EAAE,MAAM,uBAAuB,CAAC;AAE9E,MAAM,MAAM,eAAe,GAAG,0BAA0B,CAAC;AAEzD,MAAM,MAAM,yBAAyB,GAAG,YAAY,CAAC,SAAS,CAAC,CAAC"}

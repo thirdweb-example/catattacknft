@@ -1,0 +1,1 @@
+{"version":3,"file":"useSmartWallet.d.ts","sourceRoot":"../../../../../../src/evm/hooks/wallets","sources":["useSmartWallet.ts"],"names":[],"mappings":"AACA,OAAO,KAAK,EAAE,wBAAwB,EAAE,MAAM,2CAA2C,CAAC;AAC1F,OAAO,KAAK,EAAE,yBAAyB,EAAE,MAAM,gDAAgD,CAAC;AAEhG,OAAO,EAAE,YAAY,EAAE,MAAM,gDAAgD,CAAC;AAE9E,wBAAgB,cAAc,aAIhB,aAAa,GAAG,CAAC,WAChB,yBAAyB,GAAG,wBAAwB,mFASlE"}

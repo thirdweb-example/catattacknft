@@ -1,0 +1,1 @@
+{"version":3,"file":"convertQuantityToBigNumber.d.ts","sourceRoot":"../../../../../../src/evm/common/claim-conditions","sources":["convertQuantityToBigNumber.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,6BAA6B,CAAC;AAGvD;;;;GAIG;AACH,wBAAgB,0BAA0B,CACxC,QAAQ,EAAE,QAAQ,EAClB,aAAa,EAAE,MAAM,8BAOtB"}

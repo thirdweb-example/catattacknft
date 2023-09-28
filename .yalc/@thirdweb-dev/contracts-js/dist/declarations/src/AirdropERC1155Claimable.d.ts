@@ -1,0 +1,254 @@
+import type { BaseContract, BigNumber, BigNumberish, BytesLike, CallOverrides, ContractTransaction, Overrides, PopulatedTransaction, Signer, utils } from "ethers";
+import type { FunctionFragment, Result, EventFragment } from "@ethersproject/abi";
+import type { Listener, Provider } from "@ethersproject/providers";
+import type { TypedEventFilter, TypedEvent, TypedListener, OnEvent } from "./common.js";
+export interface AirdropERC1155ClaimableInterface extends utils.Interface {
+    functions: {
+        "airdropTokenAddress()": FunctionFragment;
+        "availableAmount(uint256)": FunctionFragment;
+        "claim(address,uint256,uint256,bytes32[],uint256)": FunctionFragment;
+        "contractType()": FunctionFragment;
+        "contractVersion()": FunctionFragment;
+        "expirationTimestamp()": FunctionFragment;
+        "initialize(address,address[],address,address,uint256[],uint256[],uint256,uint256[],bytes32[])": FunctionFragment;
+        "isTrustedForwarder(address)": FunctionFragment;
+        "maxWalletClaimCount(uint256)": FunctionFragment;
+        "merkleRoot(uint256)": FunctionFragment;
+        "multicall(bytes[])": FunctionFragment;
+        "owner()": FunctionFragment;
+        "setOwner(address)": FunctionFragment;
+        "supplyClaimedByWallet(uint256,address)": FunctionFragment;
+        "tokenIds(uint256)": FunctionFragment;
+        "tokenOwner()": FunctionFragment;
+        "verifyClaim(address,uint256,uint256,bytes32[],uint256)": FunctionFragment;
+    };
+    getFunction(nameOrSignatureOrTopic: "airdropTokenAddress" | "availableAmount" | "claim" | "contractType" | "contractVersion" | "expirationTimestamp" | "initialize" | "isTrustedForwarder" | "maxWalletClaimCount" | "merkleRoot" | "multicall" | "owner" | "setOwner" | "supplyClaimedByWallet" | "tokenIds" | "tokenOwner" | "verifyClaim"): FunctionFragment;
+    encodeFunctionData(functionFragment: "airdropTokenAddress", values?: undefined): string;
+    encodeFunctionData(functionFragment: "availableAmount", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "claim", values: [string, BigNumberish, BigNumberish, BytesLike[], BigNumberish]): string;
+    encodeFunctionData(functionFragment: "contractType", values?: undefined): string;
+    encodeFunctionData(functionFragment: "contractVersion", values?: undefined): string;
+    encodeFunctionData(functionFragment: "expirationTimestamp", values?: undefined): string;
+    encodeFunctionData(functionFragment: "initialize", values: [
+        string,
+        string[],
+        string,
+        string,
+        BigNumberish[],
+        BigNumberish[],
+        BigNumberish,
+        BigNumberish[],
+        BytesLike[]
+    ]): string;
+    encodeFunctionData(functionFragment: "isTrustedForwarder", values: [string]): string;
+    encodeFunctionData(functionFragment: "maxWalletClaimCount", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "merkleRoot", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "multicall", values: [BytesLike[]]): string;
+    encodeFunctionData(functionFragment: "owner", values?: undefined): string;
+    encodeFunctionData(functionFragment: "setOwner", values: [string]): string;
+    encodeFunctionData(functionFragment: "supplyClaimedByWallet", values: [BigNumberish, string]): string;
+    encodeFunctionData(functionFragment: "tokenIds", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "tokenOwner", values?: undefined): string;
+    encodeFunctionData(functionFragment: "verifyClaim", values: [string, BigNumberish, BigNumberish, BytesLike[], BigNumberish]): string;
+    decodeFunctionResult(functionFragment: "airdropTokenAddress", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "availableAmount", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "claim", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "contractType", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "contractVersion", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "expirationTimestamp", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "initialize", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "isTrustedForwarder", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "maxWalletClaimCount", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "merkleRoot", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "multicall", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "setOwner", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "supplyClaimedByWallet", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "tokenIds", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "tokenOwner", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "verifyClaim", data: BytesLike): Result;
+    events: {
+        "Initialized(uint8)": EventFragment;
+        "OwnerUpdated(address,address)": EventFragment;
+        "TokensClaimed(address,address,uint256,uint256)": EventFragment;
+    };
+    getEvent(nameOrSignatureOrTopic: "Initialized"): EventFragment;
+    getEvent(nameOrSignatureOrTopic: "OwnerUpdated"): EventFragment;
+    getEvent(nameOrSignatureOrTopic: "TokensClaimed"): EventFragment;
+}
+export interface InitializedEventObject {
+    version: number;
+}
+export type InitializedEvent = TypedEvent<[number], InitializedEventObject>;
+export type InitializedEventFilter = TypedEventFilter<InitializedEvent>;
+export interface OwnerUpdatedEventObject {
+    prevOwner: string;
+    newOwner: string;
+}
+export type OwnerUpdatedEvent = TypedEvent<[
+    string,
+    string
+], OwnerUpdatedEventObject>;
+export type OwnerUpdatedEventFilter = TypedEventFilter<OwnerUpdatedEvent>;
+export interface TokensClaimedEventObject {
+    claimer: string;
+    receiver: string;
+    tokenId: BigNumber;
+    quantityClaimed: BigNumber;
+}
+export type TokensClaimedEvent = TypedEvent<[
+    string,
+    string,
+    BigNumber,
+    BigNumber
+], TokensClaimedEventObject>;
+export type TokensClaimedEventFilter = TypedEventFilter<TokensClaimedEvent>;
+export interface AirdropERC1155Claimable extends BaseContract {
+    connect(signerOrProvider: Signer | Provider | string): this;
+    attach(addressOrName: string): this;
+    deployed(): Promise<this>;
+    interface: AirdropERC1155ClaimableInterface;
+    queryFilter<TEvent extends TypedEvent>(event: TypedEventFilter<TEvent>, fromBlockOrBlockhash?: string | number | undefined, toBlock?: string | number | undefined): Promise<Array<TEvent>>;
+    listeners<TEvent extends TypedEvent>(eventFilter?: TypedEventFilter<TEvent>): Array<TypedListener<TEvent>>;
+    listeners(eventName?: string): Array<Listener>;
+    removeAllListeners<TEvent extends TypedEvent>(eventFilter: TypedEventFilter<TEvent>): this;
+    removeAllListeners(eventName?: string): this;
+    off: OnEvent<this>;
+    on: OnEvent<this>;
+    once: OnEvent<this>;
+    removeListener: OnEvent<this>;
+    functions: {
+        airdropTokenAddress(overrides?: CallOverrides): Promise<[string]>;
+        availableAmount(arg0: BigNumberish, overrides?: CallOverrides): Promise<[BigNumber]>;
+        claim(_receiver: string, _quantity: BigNumberish, _tokenId: BigNumberish, _proofs: BytesLike[], _proofMaxQuantityForWallet: BigNumberish, overrides?: Overrides & {
+            from?: string | Promise<string>;
+        }): Promise<ContractTransaction>;
+        contractType(overrides?: CallOverrides): Promise<[string]>;
+        contractVersion(overrides?: CallOverrides): Promise<[number]>;
+        expirationTimestamp(overrides?: CallOverrides): Promise<[BigNumber]>;
+        initialize(_defaultAdmin: string, _trustedForwarders: string[], _tokenOwner: string, _airdropTokenAddress: string, _tokenIds: BigNumberish[], _availableAmounts: BigNumberish[], _expirationTimestamp: BigNumberish, _maxWalletClaimCount: BigNumberish[], _merkleRoot: BytesLike[], overrides?: Overrides & {
+            from?: string | Promise<string>;
+        }): Promise<ContractTransaction>;
+        isTrustedForwarder(forwarder: string, overrides?: CallOverrides): Promise<[boolean]>;
+        maxWalletClaimCount(arg0: BigNumberish, overrides?: CallOverrides): Promise<[BigNumber]>;
+        merkleRoot(arg0: BigNumberish, overrides?: CallOverrides): Promise<[string]>;
+        multicall(data: BytesLike[], overrides?: Overrides & {
+            from?: string | Promise<string>;
+        }): Promise<ContractTransaction>;
+        owner(overrides?: CallOverrides): Promise<[string]>;
+        setOwner(_newOwner: string, overrides?: Overrides & {
+            from?: string | Promise<string>;
+        }): Promise<ContractTransaction>;
+        supplyClaimedByWallet(arg0: BigNumberish, arg1: string, overrides?: CallOverrides): Promise<[BigNumber]>;
+        tokenIds(arg0: BigNumberish, overrides?: CallOverrides): Promise<[BigNumber]>;
+        tokenOwner(overrides?: CallOverrides): Promise<[string]>;
+        verifyClaim(_claimer: string, _quantity: BigNumberish, _tokenId: BigNumberish, _proofs: BytesLike[], _proofMaxQuantityForWallet: BigNumberish, overrides?: CallOverrides): Promise<[void]>;
+    };
+    airdropTokenAddress(overrides?: CallOverrides): Promise<string>;
+    availableAmount(arg0: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+    claim(_receiver: string, _quantity: BigNumberish, _tokenId: BigNumberish, _proofs: BytesLike[], _proofMaxQuantityForWallet: BigNumberish, overrides?: Overrides & {
+        from?: string | Promise<string>;
+    }): Promise<ContractTransaction>;
+    contractType(overrides?: CallOverrides): Promise<string>;
+    contractVersion(overrides?: CallOverrides): Promise<number>;
+    expirationTimestamp(overrides?: CallOverrides): Promise<BigNumber>;
+    initialize(_defaultAdmin: string, _trustedForwarders: string[], _tokenOwner: string, _airdropTokenAddress: string, _tokenIds: BigNumberish[], _availableAmounts: BigNumberish[], _expirationTimestamp: BigNumberish, _maxWalletClaimCount: BigNumberish[], _merkleRoot: BytesLike[], overrides?: Overrides & {
+        from?: string | Promise<string>;
+    }): Promise<ContractTransaction>;
+    isTrustedForwarder(forwarder: string, overrides?: CallOverrides): Promise<boolean>;
+    maxWalletClaimCount(arg0: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+    merkleRoot(arg0: BigNumberish, overrides?: CallOverrides): Promise<string>;
+    multicall(data: BytesLike[], overrides?: Overrides & {
+        from?: string | Promise<string>;
+    }): Promise<ContractTransaction>;
+    owner(overrides?: CallOverrides): Promise<string>;
+    setOwner(_newOwner: string, overrides?: Overrides & {
+        from?: string | Promise<string>;
+    }): Promise<ContractTransaction>;
+    supplyClaimedByWallet(arg0: BigNumberish, arg1: string, overrides?: CallOverrides): Promise<BigNumber>;
+    tokenIds(arg0: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+    tokenOwner(overrides?: CallOverrides): Promise<string>;
+    verifyClaim(_claimer: string, _quantity: BigNumberish, _tokenId: BigNumberish, _proofs: BytesLike[], _proofMaxQuantityForWallet: BigNumberish, overrides?: CallOverrides): Promise<void>;
+    callStatic: {
+        airdropTokenAddress(overrides?: CallOverrides): Promise<string>;
+        availableAmount(arg0: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+        claim(_receiver: string, _quantity: BigNumberish, _tokenId: BigNumberish, _proofs: BytesLike[], _proofMaxQuantityForWallet: BigNumberish, overrides?: CallOverrides): Promise<void>;
+        contractType(overrides?: CallOverrides): Promise<string>;
+        contractVersion(overrides?: CallOverrides): Promise<number>;
+        expirationTimestamp(overrides?: CallOverrides): Promise<BigNumber>;
+        initialize(_defaultAdmin: string, _trustedForwarders: string[], _tokenOwner: string, _airdropTokenAddress: string, _tokenIds: BigNumberish[], _availableAmounts: BigNumberish[], _expirationTimestamp: BigNumberish, _maxWalletClaimCount: BigNumberish[], _merkleRoot: BytesLike[], overrides?: CallOverrides): Promise<void>;
+        isTrustedForwarder(forwarder: string, overrides?: CallOverrides): Promise<boolean>;
+        maxWalletClaimCount(arg0: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+        merkleRoot(arg0: BigNumberish, overrides?: CallOverrides): Promise<string>;
+        multicall(data: BytesLike[], overrides?: CallOverrides): Promise<string[]>;
+        owner(overrides?: CallOverrides): Promise<string>;
+        setOwner(_newOwner: string, overrides?: CallOverrides): Promise<void>;
+        supplyClaimedByWallet(arg0: BigNumberish, arg1: string, overrides?: CallOverrides): Promise<BigNumber>;
+        tokenIds(arg0: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+        tokenOwner(overrides?: CallOverrides): Promise<string>;
+        verifyClaim(_claimer: string, _quantity: BigNumberish, _tokenId: BigNumberish, _proofs: BytesLike[], _proofMaxQuantityForWallet: BigNumberish, overrides?: CallOverrides): Promise<void>;
+    };
+    filters: {
+        "Initialized(uint8)"(version?: null): InitializedEventFilter;
+        Initialized(version?: null): InitializedEventFilter;
+        "OwnerUpdated(address,address)"(prevOwner?: string | null, newOwner?: string | null): OwnerUpdatedEventFilter;
+        OwnerUpdated(prevOwner?: string | null, newOwner?: string | null): OwnerUpdatedEventFilter;
+        "TokensClaimed(address,address,uint256,uint256)"(claimer?: string | null, receiver?: string | null, tokenId?: BigNumberish | null, quantityClaimed?: null): TokensClaimedEventFilter;
+        TokensClaimed(claimer?: string | null, receiver?: string | null, tokenId?: BigNumberish | null, quantityClaimed?: null): TokensClaimedEventFilter;
+    };
+    estimateGas: {
+        airdropTokenAddress(overrides?: CallOverrides): Promise<BigNumber>;
+        availableAmount(arg0: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+        claim(_receiver: string, _quantity: BigNumberish, _tokenId: BigNumberish, _proofs: BytesLike[], _proofMaxQuantityForWallet: BigNumberish, overrides?: Overrides & {
+            from?: string | Promise<string>;
+        }): Promise<BigNumber>;
+        contractType(overrides?: CallOverrides): Promise<BigNumber>;
+        contractVersion(overrides?: CallOverrides): Promise<BigNumber>;
+        expirationTimestamp(overrides?: CallOverrides): Promise<BigNumber>;
+        initialize(_defaultAdmin: string, _trustedForwarders: string[], _tokenOwner: string, _airdropTokenAddress: string, _tokenIds: BigNumberish[], _availableAmounts: BigNumberish[], _expirationTimestamp: BigNumberish, _maxWalletClaimCount: BigNumberish[], _merkleRoot: BytesLike[], overrides?: Overrides & {
+            from?: string | Promise<string>;
+        }): Promise<BigNumber>;
+        isTrustedForwarder(forwarder: string, overrides?: CallOverrides): Promise<BigNumber>;
+        maxWalletClaimCount(arg0: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+        merkleRoot(arg0: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+        multicall(data: BytesLike[], overrides?: Overrides & {
+            from?: string | Promise<string>;
+        }): Promise<BigNumber>;
+        owner(overrides?: CallOverrides): Promise<BigNumber>;
+        setOwner(_newOwner: string, overrides?: Overrides & {
+            from?: string | Promise<string>;
+        }): Promise<BigNumber>;
+        supplyClaimedByWallet(arg0: BigNumberish, arg1: string, overrides?: CallOverrides): Promise<BigNumber>;
+        tokenIds(arg0: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+        tokenOwner(overrides?: CallOverrides): Promise<BigNumber>;
+        verifyClaim(_claimer: string, _quantity: BigNumberish, _tokenId: BigNumberish, _proofs: BytesLike[], _proofMaxQuantityForWallet: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+    };
+    populateTransaction: {
+        airdropTokenAddress(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+        availableAmount(arg0: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>;
+        claim(_receiver: string, _quantity: BigNumberish, _tokenId: BigNumberish, _proofs: BytesLike[], _proofMaxQuantityForWallet: BigNumberish, overrides?: Overrides & {
+            from?: string | Promise<string>;
+        }): Promise<PopulatedTransaction>;
+        contractType(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+        contractVersion(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+        expirationTimestamp(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+        initialize(_defaultAdmin: string, _trustedForwarders: string[], _tokenOwner: string, _airdropTokenAddress: string, _tokenIds: BigNumberish[], _availableAmounts: BigNumberish[], _expirationTimestamp: BigNumberish, _maxWalletClaimCount: BigNumberish[], _merkleRoot: BytesLike[], overrides?: Overrides & {
+            from?: string | Promise<string>;
+        }): Promise<PopulatedTransaction>;
+        isTrustedForwarder(forwarder: string, overrides?: CallOverrides): Promise<PopulatedTransaction>;
+        maxWalletClaimCount(arg0: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>;
+        merkleRoot(arg0: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>;
+        multicall(data: BytesLike[], overrides?: Overrides & {
+            from?: string | Promise<string>;
+        }): Promise<PopulatedTransaction>;
+        owner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+        setOwner(_newOwner: string, overrides?: Overrides & {
+            from?: string | Promise<string>;
+        }): Promise<PopulatedTransaction>;
+        supplyClaimedByWallet(arg0: BigNumberish, arg1: string, overrides?: CallOverrides): Promise<PopulatedTransaction>;
+        tokenIds(arg0: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>;
+        tokenOwner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+        verifyClaim(_claimer: string, _quantity: BigNumberish, _tokenId: BigNumberish, _proofs: BytesLike[], _proofMaxQuantityForWallet: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    };
+}
+//# sourceMappingURL=AirdropERC1155Claimable.d.ts.map

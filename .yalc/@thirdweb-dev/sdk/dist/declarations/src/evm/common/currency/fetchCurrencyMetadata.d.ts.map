@@ -1,0 +1,1 @@
+{"version":3,"file":"fetchCurrencyMetadata.d.ts","sourceRoot":"../../../../../../src/evm/common/currency","sources":["fetchCurrencyMetadata.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,QAAQ,EAAE,MAAM,sBAAsB,CAAC;AAGhD,OAAO,EAAY,SAAS,EAAE,MAAM,QAAQ,CAAC;AAG7C;;;;;;GAMG;AACH,wBAAsB,qBAAqB,CACzC,QAAQ,EAAE,SAAS,CAAC,QAAQ,EAC5B,KAAK,EAAE,MAAM,GACZ,OAAO,CAAC,QAAQ,CAAC,CA0BnB"}

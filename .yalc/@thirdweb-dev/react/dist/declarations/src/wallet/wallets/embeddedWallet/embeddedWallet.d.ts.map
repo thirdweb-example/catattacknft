@@ -1,0 +1,1 @@
+{"version":3,"file":"embeddedWallet.d.ts","sourceRoot":"../../../../../../src/wallet/wallets/embeddedWallet","sources":["embeddedWallet.tsx"],"names":[],"mappings":"AAAA,OAAO,EAGL,YAAY,EAEb,MAAM,0BAA0B,CAAC;AAClC,OAAO,EAAE,cAAc,EAAE,MAAM,uBAAuB,CAAC;AAavD,OAAO,EAAE,oBAAoB,EAAE,MAAM,SAAS,CAAC;AAE/C,eAAO,MAAM,cAAc,YAChB,oBAAoB,KAC5B,aAAa,cAAc,CAwB7B,CAAC"}

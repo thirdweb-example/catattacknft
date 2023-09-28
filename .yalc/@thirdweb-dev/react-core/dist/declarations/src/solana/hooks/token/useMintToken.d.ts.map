@@ -1,0 +1,1 @@
+{"version":3,"file":"useMintToken.d.ts","sourceRoot":"../../../../../../src/solana/hooks/token","sources":["useMintToken.ts"],"names":[],"mappings":"AACA,OAAO,EAEL,aAAa,EACd,MAAM,0CAA0C,CAAC;AAClD,OAAO,KAAK,EAAE,WAAW,EAAE,MAAM,cAAc,CAAC;AAEhD,OAAO,KAAK,EAAE,KAAK,EAAE,MAAM,0BAA0B,CAAC;AAEtD;;;;;;;;;;;;;;;;;;;;;GAqBG;AACH,wBAAgB,YAAY,CAAC,OAAO,EAAE,aAAa,CAAC,KAAK,CAAC,0IAazD"}

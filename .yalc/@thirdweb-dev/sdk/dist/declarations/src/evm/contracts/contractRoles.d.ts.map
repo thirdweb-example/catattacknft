@@ -1,0 +1,1 @@
+{"version":3,"file":"contractRoles.d.ts","sourceRoot":"../../../../../src/evm/contracts","sources":["contractRoles.ts"],"names":[],"mappings":"AAAA,eAAO,MAAM,UAAU,oBAAqB,CAAC;AAE7C,eAAO,MAAM,uBAAuB,0CAA2C,CAAC;AAEhF,eAAO,MAAM,0BAA0B,uCAAwC,CAAC;AAEhF,eAAO,MAAM,mBAAmB,mDAKtB,CAAC;AAEX,eAAO,MAAM,yBAAyB,gCAAiC,CAAC;AAExE,eAAO,MAAM,wBAAwB,6DAM3B,CAAC"}

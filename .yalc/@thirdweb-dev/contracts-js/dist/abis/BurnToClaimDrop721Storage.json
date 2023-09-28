@@ -1,0 +1,15 @@
+[
+  {
+    "inputs": [],
+    "name": "BURN_TO_CLAIM_DROP_721_STORAGE_POSITION",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

@@ -1,0 +1,21 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "platformFeeRecipient",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "platformFeeBps",
+        "type": "uint256"
+      }
+    ],
+    "name": "PlatformFeeInfoUpdated",
+    "type": "event"
+  }
+]

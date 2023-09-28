@@ -1,0 +1,28 @@
+{
+  "version": "v1",
+  "packages": {
+    "@thirdweb-dev/sdk": {
+      "signature": "5a9b412ebc440999d690aec5f7ea2f2a",
+      "file": true,
+      "replaced": "^3.10.60-nightly-d50863f4-20230906225640"
+    },
+    "@thirdweb-dev/react": {
+      "signature": "499473c4c881522bc2d14d68ff04ddd6",
+      "file": true,
+      "replaced": "^3.14.41-nightly-d50863f4-20230906225640"
+    },
+    "@thirdweb-dev/react-core": {
+      "signature": "148ab500297e280d12ae49593964f66c",
+      "file": true
+    },
+    "@thirdweb-dev/wallets": {
+      "signature": "c3231677ec294411a7adca86fcb4597e",
+      "file": true,
+      "replaced": "^1.1.24-nightly-d50863f4-20230906225640"
+    },
+    "@thirdweb-dev/contracts-js": {
+      "signature": "2ee53f63c6e233d607d8bcc2343c9bce",
+      "file": true
+    }
+  }
+}

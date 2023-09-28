@@ -1,0 +1,35 @@
+import { BaseContract, BigNumber } from "ethers";
+/**
+ * @internal
+ */
+export declare const ForwardRequest: {
+    name: string;
+    type: string;
+}[];
+export declare const ChainAwareForwardRequest: {
+    name: string;
+    type: string;
+}[];
+/**
+ * @internal
+ */
+export declare const BiconomyForwarderAbi: {
+    inputs: {
+        internalType: string;
+        name: string;
+        type: string;
+    }[];
+    name: string;
+    outputs: {
+        internalType: string;
+        name: string;
+        type: string;
+    }[];
+    stateMutability: string;
+    type: string;
+}[];
+/**
+ * @internal
+ */
+export declare function getAndIncrementNonce(forwarder: BaseContract, forwarderFunction: string, forwarderArgs: any[]): Promise<BigNumber>;
+//# sourceMappingURL=forwarder.d.ts.map

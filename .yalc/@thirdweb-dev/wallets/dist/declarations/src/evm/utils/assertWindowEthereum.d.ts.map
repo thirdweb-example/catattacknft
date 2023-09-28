@@ -1,0 +1,1 @@
+{"version":3,"file":"assertWindowEthereum.d.ts","sourceRoot":"../../../../../src/evm/utils","sources":["assertWindowEthereum.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,QAAQ,EAAE,MAAM,8BAA8B,CAAC;AAE7D,UAAU,kBAAmB,SAAQ,MAAM;IACzC,QAAQ,EAAE,QAAQ,CAAC;CACpB;AAED,wBAAgB,oBAAoB,CAAC,CAAC,EAAE,MAAM,GAAG,CAAC,IAAI,kBAAkB,CAEvE"}

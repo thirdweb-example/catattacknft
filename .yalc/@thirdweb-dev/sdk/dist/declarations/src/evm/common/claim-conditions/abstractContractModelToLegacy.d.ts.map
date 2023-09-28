@@ -1,0 +1,1 @@
+{"version":3,"file":"abstractContractModelToLegacy.d.ts","sourceRoot":"../../../../../../src/evm/common/claim-conditions","sources":["abstractContractModelToLegacy.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,oCAAoC,EAAE,MAAM,gDAAgD,CAAC;AACtG,OAAO,EAAE,sBAAsB,EAAE,MAAM,gEAAgE,CAAC;AAExG,wBAAgB,6BAA6B,CAC3C,KAAK,EAAE,oCAAoC,GAC1C,sBAAsB,CAAC,oBAAoB,CAW7C"}

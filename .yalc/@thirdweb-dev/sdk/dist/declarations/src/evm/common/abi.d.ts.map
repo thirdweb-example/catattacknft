@@ -1,0 +1,1 @@
+{"version":3,"file":"abi.d.ts","sourceRoot":"../../../../../src/evm/common","sources":["abi.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,iBAAiB,EAAE,MAAM,mBAAmB,CAAC;AAEtD,wBAAgB,uBAAuB,CACrC,OAAO,EAAE,MAAM,GACd,iBAAiB,GAAG,SAAS,CAM/B"}

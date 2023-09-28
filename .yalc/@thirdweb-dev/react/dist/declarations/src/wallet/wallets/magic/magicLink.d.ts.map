@@ -1,0 +1,1 @@
+{"version":3,"file":"magicLink.d.ts","sourceRoot":"../../../../../../src/wallet/wallets/magic","sources":["magicLink.tsx"],"names":[],"mappings":"AAAA,OAAO,EAAa,0BAA0B,EAAE,MAAM,uBAAuB,CAAC;AAQ9E,OAAO,KAAK,EAAE,yBAAyB,EAAE,MAAM,SAAS,CAAC;AAiBzD,wBAAgB,SAAS,CACvB,MAAM,EAAE,0BAA0B,GAAG;IACnC;;OAEG;IACH,WAAW,CAAC,EAAE,OAAO,CAAC;CACvB,GACA,yBAAyB,CA4E3B"}

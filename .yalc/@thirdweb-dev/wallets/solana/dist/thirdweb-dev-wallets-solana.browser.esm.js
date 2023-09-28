@@ -1,0 +1,10 @@
+export { KeypairWallet } from '../wallets/keypair/dist/thirdweb-dev-wallets-solana-wallets-keypair.browser.esm.js';
+export { PrivateKeyWallet } from '../wallets/private-key/dist/thirdweb-dev-wallets-solana-wallets-private-key.browser.esm.js';
+export { SignerWallet } from '../wallets/signer/dist/thirdweb-dev-wallets-solana-wallets-signer.browser.esm.js';
+import '../../dist/classPrivateFieldSet-a5db7c83.browser.esm.js';
+import '@noble/ed25519';
+import '../wallets/base/dist/thirdweb-dev-wallets-solana-wallets-base.browser.esm.js';
+import '../../dist/defineProperty-c8ecdc07.browser.esm.js';
+import 'bs58';
+import 'tweetnacl';
+import '@solana/web3.js';

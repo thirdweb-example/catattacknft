@@ -1,0 +1,1 @@
+{"version":3,"file":"getInjectedMetamaskProvider.d.ts","sourceRoot":"../../../../../../src/evm/connectors/metamask","sources":["getInjectedMetamaskProvider.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,mBAAmB,CAAC;AAG7C,wBAAgB,2BAA2B,IAAI,QAAQ,GAAG,SAAS,CAmElE"}

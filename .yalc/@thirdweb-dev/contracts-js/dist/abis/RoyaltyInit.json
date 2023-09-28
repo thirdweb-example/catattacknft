@@ -1,0 +1,21 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newRoyaltyRecipient",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "newRoyaltyBps",
+        "type": "uint256"
+      }
+    ],
+    "name": "DefaultRoyalty",
+    "type": "event"
+  }
+]

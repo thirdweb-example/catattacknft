@@ -1,0 +1,1 @@
+{"version":3,"file":"gcp-kms.d.ts","sourceRoot":"../../../../../src/evm/wallets","sources":["gcp-kms.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,MAAM,QAAQ,CAAC;AAChC,OAAO,EAAE,cAAc,EAAE,MAAM,YAAY,CAAC;AAC5C,OAAO,EAAgB,uBAAuB,EAAE,MAAM,uBAAuB,CAAC;AAE9E,qBAAa,YAAa,SAAQ,cAAc;;gBAGlC,OAAO,EAAE,uBAAuB;IAKtC,SAAS,IAAI,OAAO,CAAC,MAAM,CAAC;CAGnC"}

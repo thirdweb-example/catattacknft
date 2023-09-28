@@ -1,0 +1,1 @@
+{"version":3,"file":"signer.d.ts","sourceRoot":"../../../../../src/solana/wallets","sources":["signer.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,YAAY,EAAE,MAAM,eAAe,CAAC;AAC7C,OAAO,EAAE,cAAc,EAAE,MAAM,QAAQ,CAAC;AAExC,qBAAa,YAAa,SAAQ,cAAc;gBAClC,MAAM,EAAE,YAAY;IAKnB,SAAS,IAAI,OAAO,CAAC,YAAY,CAAC;CAGhD"}

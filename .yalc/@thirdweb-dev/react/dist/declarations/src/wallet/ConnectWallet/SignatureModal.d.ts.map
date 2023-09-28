@@ -1,0 +1,1 @@
+{"version":3,"file":"SignatureModal.d.ts","sourceRoot":"../../../../../src/wallet/ConnectWallet","sources":["SignatureModal.tsx"],"names":[],"mappings":";AAQA,eAAO,MAAM,cAAc,EAAE,KAAK,CAAC,EAAE,CAAC;IACpC,IAAI,EAAE,OAAO,CAAC;IACd,OAAO,EAAE,CAAC,IAAI,EAAE,OAAO,KAAK,IAAI,CAAC;CAClC,CA8BA,CAAC"}

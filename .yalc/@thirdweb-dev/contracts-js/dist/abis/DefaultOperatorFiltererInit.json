@@ -1,0 +1,15 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "restriction",
+        "type": "bool"
+      }
+    ],
+    "name": "OperatorRestriction",
+    "type": "event"
+  }
+]

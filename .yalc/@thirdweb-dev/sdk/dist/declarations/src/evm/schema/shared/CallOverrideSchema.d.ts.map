@@ -1,0 +1,1 @@
+{"version":3,"file":"CallOverrideSchema.d.ts","sourceRoot":"../../../../../../src/evm/schema/shared","sources":["CallOverrideSchema.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,aAAa,EAAE,MAAM,QAAQ,CAAC;AACvC,OAAO,EAAE,CAAC,EAAE,MAAM,KAAK,CAAC;AAIxB,eAAO,MAAM,kBAAkB,EAAE,CAAC,CAAC,OAAO,CAAC,aAAa,CActC,CAAC"}

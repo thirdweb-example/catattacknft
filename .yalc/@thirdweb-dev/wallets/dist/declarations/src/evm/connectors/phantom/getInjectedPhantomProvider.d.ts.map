@@ -1,0 +1,1 @@
+{"version":3,"file":"getInjectedPhantomProvider.d.ts","sourceRoot":"../../../../../../src/evm/connectors/phantom","sources":["getInjectedPhantomProvider.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,mBAAmB,CAAC;AAE7C,OAAO,CAAC,MAAM,CAAC;IACb,UAAU,MAAM;QACd,OAAO,CAAC,EAAE;YACR,QAAQ,CAAC,EAAE,QAAQ,CAAC;SACrB,CAAC;KACH;CACF;AAED,wBAAgB,0BAA0B,IAAI,QAAQ,GAAG,SAAS,CAUjE"}

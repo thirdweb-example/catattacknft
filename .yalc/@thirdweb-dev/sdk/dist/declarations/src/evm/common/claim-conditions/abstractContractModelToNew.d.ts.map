@@ -1,0 +1,1 @@
+{"version":3,"file":"abstractContractModelToNew.d.ts","sourceRoot":"../../../../../../src/evm/common/claim-conditions","sources":["abstractContractModelToNew.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,oCAAoC,EAAE,MAAM,gDAAgD,CAAC;AACtG,OAAO,EAAE,eAAe,EAAE,MAAM,uDAAuD,CAAC;AAExF,wBAAgB,0BAA0B,CACxC,KAAK,EAAE,oCAAoC,GAC1C,eAAe,CAAC,oBAAoB,CAWtC"}

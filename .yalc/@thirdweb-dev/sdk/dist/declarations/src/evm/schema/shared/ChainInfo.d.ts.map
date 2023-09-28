@@ -1,0 +1,1 @@
+{"version":3,"file":"ChainInfo.d.ts","sourceRoot":"../../../../../../src/evm/schema/shared","sources":["ChainInfo.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,CAAC,EAAE,MAAM,KAAK,CAAC;AACxB,OAAO,EAAE,oBAAoB,EAAE,MAAM,yBAAyB,CAAC;AAE/D,MAAM,MAAM,SAAS,GAAG,CAAC,CAAC,KAAK,CAAC,OAAO,oBAAoB,CAAC,CAAC"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"types.d.ts","sourceRoot":"../../../../../../src/evm/connectors/safe","sources":["types.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,KAAK,EAAE,MAAM,sBAAsB,CAAC;AAClD,OAAO,EAAE,SAAS,EAAE,MAAM,kBAAkB,CAAC;AAE7C,MAAM,WAAW,kBAAkB;IACjC,WAAW,EAAE,MAAM,CAAC;IACpB,cAAc,EAAE,SAAS,CAAC;IAC1B,KAAK,EAAE,IAAI,CAAC,KAAK,EAAE,SAAS,GAAG,KAAK,CAAC,CAAC;CACvC"}

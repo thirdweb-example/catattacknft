@@ -1,0 +1,1 @@
+{"version":3,"file":"any-evm-constants.d.ts","sourceRoot":"../../../../../src/evm/common","sources":["any-evm-constants.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,WAAW,EAAE,MAAM,yBAAyB,CAAC;AAE3D,eAAO,MAAM,gBAAgB,UAY5B,CAAC;AAEF,eAAO,MAAM,0BAA0B,YAGtC,CAAC;AAGF,eAAO,MAAM,oBAAoB,EAAE,MAAM,CAAC,MAAM,EAAE,WAAW,CAqC5D,CAAC;AAGF,wBAAgB,UAAU,CAAC,KAAK,EAAE,MAAM,GAAG,OAAO,CAejD"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"types.d.ts","sourceRoot":"../../../../../../src/wallet/wallets/safe","sources":["types.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,YAAY,EAAE,MAAM,0BAA0B,CAAC;AACxD,OAAO,EAAE,UAAU,EAAE,MAAM,uBAAuB,CAAC;AAEnD,MAAM,MAAM,uBAAuB,GAAG;IACpC,eAAe,CAAC,EAAE,YAAY,CAAC,GAAG,CAAC,EAAE,CAAC;CACvC,CAAC;AAEF,MAAM,MAAM,gBAAgB,GAAG,YAAY,CAAC,UAAU,CAAC,CAAC"}

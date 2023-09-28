@@ -1,0 +1,1 @@
+{"version":3,"file":"local-wallet-node.d.ts","sourceRoot":"../../../../../src/evm/wallets","sources":["local-wallet-node.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,aAAa,EAAE,MAAM,IAAI,CAAC;AAEnC,OAAO,EAAE,WAAW,EAAE,kBAAkB,EAAE,MAAM,gBAAgB,CAAC;AAEjE,qBAAa,eAAgB,SAAQ,WAAW;gBAE5C,OAAO,CAAC,EAAE,aAAa,CAAC,kBAAkB,CAAC,GAAG;QAAE,eAAe,CAAC,EAAE,MAAM,CAAA;KAAE;CAO7E"}

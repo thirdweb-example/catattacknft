@@ -1,0 +1,1 @@
+{"version":3,"file":"extractCommentFromMetadata.d.ts","sourceRoot":"../../../../../../src/evm/common/feature-detection","sources":["extractCommentFromMetadata.ts"],"names":[],"mappings":"AAAA;;;;;GAKG;AACH,wBAAgB,0BAA0B,CACxC,IAAI,EAAE,MAAM,GAAG,SAAS,EACxB,QAAQ,EAAE,MAAM,CAAC,MAAM,EAAE,GAAG,CAAC,GAAG,SAAS,EACzC,IAAI,EAAE,SAAS,GAAG,QAAQ,OAc3B"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"toWei.d.ts","sourceRoot":"../../../../../../src/evm/common/currency","sources":["toWei.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,MAAM,EAAE,MAAM,sBAAsB,CAAC;AAC9C,OAAO,EAAE,SAAS,EAAS,MAAM,QAAQ,CAAC;AAE1C,wBAAgB,KAAK,CAAC,MAAM,EAAE,MAAM,GAAG,SAAS,CAE/C"}

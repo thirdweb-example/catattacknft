@@ -1,0 +1,1 @@
+{"version":3,"file":"hasMatchingAbi.d.ts","sourceRoot":"../../../../../../src/evm/common/feature-detection","sources":["hasMatchingAbi.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,QAAQ,EAAE,MAAM,+BAA+B,CAAC;AAGzD;;;;;GAKG;AACH,wBAAgB,cAAc,CAC5B,WAAW,EAAE,QAAQ,EACrB,WAAW,EAAE,SAAS,QAAQ,EAAE,WA4BjC;AAED,wBAAgB,sBAAsB,CACpC,gBAAgB,EAAE,MAAM,EACxB,WAAW,EAAE,SAAS,QAAQ,EAAE,WAajC"}

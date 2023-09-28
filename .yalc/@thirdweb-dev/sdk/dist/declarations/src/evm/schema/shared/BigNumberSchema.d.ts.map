@@ -1,0 +1,1 @@
+{"version":3,"file":"BigNumberSchema.d.ts","sourceRoot":"../../../../../../src/evm/schema/shared","sources":["BigNumberSchema.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,QAAQ,CAAC;AACnC,OAAO,EAAE,CAAC,EAAE,MAAM,KAAK,CAAC;AAExB,eAAO,MAAM,eAAe,mKAUmB,CAAC;AAEhD,eAAO,MAAM,kBAAkB,+NAE9B,CAAC;AAEF,eAAO,MAAM,wBAAwB,oHAU5B,CAAC"}

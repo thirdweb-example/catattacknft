@@ -1,0 +1,1 @@
+{"version":3,"file":"handleWCSessionRequest.d.ts","sourceRoot":"../../../../../src/wallet/wallets","sources":["handleWCSessionRequest.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,oBAAoB,EAAE,MAAM,uBAAuB,CAAC;AAI7D,KAAK,IAAI,GAAG;IACV,OAAO,EAAE,MAAM,CAAC;IAChB,GAAG,EAAE,MAAM,CAAC;IACZ,KAAK,EAAE,MAAM,CAAC;CACf,CAAC;AAEF,wBAAgB,sBAAsB,CACpC,MAAM,EAAE,oBAAoB,EAC5B,IAAI,EAAE,IAAI,QAaX"}
