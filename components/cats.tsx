@@ -1,4 +1,4 @@
-import { ConnectWallet, ThirdwebNftMedia } from "@thirdweb-dev/react";
+import { ThirdwebNftMedia } from "@thirdweb-dev/react";
 import { useContext, useMemo } from "react";
 import { GameContext } from "../contexts/game-context";
 import Cat from "./cat";
