@@ -1,1 +1,0 @@
-{"version":3,"file":"index.d.ts","sourceRoot":"../../../../../src/solana/interfaces","sources":["index.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,iBAAiB,CAAC;AAE5C,MAAM,WAAW,YAAY;IAC3B,SAAS,EAAE,SAAS,CAAC;IACrB,WAAW,CAAC,OAAO,EAAE,UAAU,GAAG,OAAO,CAAC,UAAU,CAAC,CAAC;CACvD;AAED,MAAM,WAAW,YAAY;IAC3B,SAAS,IAAI,OAAO,CAAC,YAAY,CAAC,CAAC;CACpC"}

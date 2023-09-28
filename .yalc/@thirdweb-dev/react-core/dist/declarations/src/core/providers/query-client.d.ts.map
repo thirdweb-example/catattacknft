@@ -1,1 +1,0 @@
-{"version":3,"file":"query-client.d.ts","sourceRoot":"../../../../../src/core/providers","sources":["query-client.tsx"],"names":[],"mappings":"AAAA,OAAO,EAAE,qBAAqB,EAAE,MAAM,oBAAoB,CAAC;AAC3D,OAAO,EAAE,WAAW,EAAuB,MAAM,uBAAuB,CAAC;AAGzE,MAAM,WAAW,wBAAwB;IACvC,WAAW,CAAC,EAAE,WAAW,CAAC;CAC3B;AAED,eAAO,MAAM,8BAA8B,EAAE,qBAAqB,CAChE,wBAAwB,CAWzB,CAAC"}

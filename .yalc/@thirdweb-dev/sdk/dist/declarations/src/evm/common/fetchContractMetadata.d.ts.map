@@ -1,1 +1,0 @@
-{"version":3,"file":"fetchContractMetadata.d.ts","sourceRoot":"../../../../../src/evm/common","sources":["fetchContractMetadata.ts"],"names":[],"mappings":"AAAA,OAAO,EACL,iBAAiB,EAGlB,MAAM,4BAA4B,CAAC;AACpC,OAAO,KAAK,EAAE,eAAe,EAAE,MAAM,uBAAuB,CAAC;AAI7D;;;;GAIG;AACH,wBAAsB,qBAAqB,CACzC,mBAAmB,EAAE,MAAM,EAC3B,OAAO,EAAE,eAAe,GACvB,OAAO,CAAC,iBAAiB,CAAC,CAgC5B"}

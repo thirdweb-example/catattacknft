@@ -1699,15 +1699,8 @@
   resolved "https://registry.yarnpkg.com/@thirdweb-dev/chains/-/chains-0.1.52.tgz#f909d7106d575d6bbd9c0c5438079fa5f3d48382"
   integrity sha512-8YgiIVSpQpQ6pU1+sxEQ57kALEZPfYGLnAMpCin2rRTOllbNXaiU7vFo4+dAROk5x2v5JojZMJ6iNCfimtIj1w==
 
-<<<<<<< HEAD
 "@thirdweb-dev/contracts-js@1.3.13", "@thirdweb-dev/contracts-js@file:.yalc/@thirdweb-dev/contracts-js":
   version "1.3.13"
-=======
-"@thirdweb-dev/contracts-js@1.3.13":
-  version "1.3.13"
-  resolved "https://registry.yarnpkg.com/@thirdweb-dev/contracts-js/-/contracts-js-1.3.13.tgz#17b07f7ead147177aa979dd8f850030d4b31bc68"
-  integrity sha512-GKg3tqE7KZOApRBsK7F6YvP78TgcQR0p2u67tsdp8+bp7MYrJwLgGKTmsWMWo2lY+Tbu2y9Rj18Z2MZaoCuQTQ==
->>>>>>> main
   dependencies:
     "@thirdweb-dev/contracts" "3.10.0"
 
@@ -1732,15 +1725,8 @@
   resolved "https://registry.yarnpkg.com/@thirdweb-dev/generated-abis/-/generated-abis-0.0.1.tgz#0d788d6aff0ac08f11e9eeb9ae4c8321845272a8"
   integrity sha512-vO9/3lSLO8smyyH1QVeYravSTzFwV1nf1C/Im1NBDPdH8//YvcbhtETGGiNfHWpyCvSi0vRYwvf+/7FKdwpDGQ==
 
-<<<<<<< HEAD
 "@thirdweb-dev/react-core@3.16.0", "@thirdweb-dev/react-core@file:.yalc/@thirdweb-dev/react-core":
   version "3.16.0"
-=======
-"@thirdweb-dev/react-core@3.16.0":
-  version "3.16.0"
-  resolved "https://registry.yarnpkg.com/@thirdweb-dev/react-core/-/react-core-3.16.0.tgz#caa32e0c0ffcb0db1af547b0e8cb01aba3a99bb2"
-  integrity sha512-ghr3iYnMdB5GT7l0iGrBqqAdonSD0KOo3td4c0f0s6n6czhp3fvFXVZnoEKrHBHphS5mujuKF+UTWb2SkUZpjw==
->>>>>>> main
   dependencies:
     "@tanstack/react-query" "^4.33.0"
     "@thirdweb-dev/auth" "3.2.43"
@@ -1752,15 +1738,8 @@
     mime "3.0.0"
     tiny-invariant "^1.2.0"
 
-<<<<<<< HEAD
 "@thirdweb-dev/react@file:.yalc/@thirdweb-dev/react":
   version "3.16.0"
-=======
-"@thirdweb-dev/react@^3.16.0":
-  version "3.16.0"
-  resolved "https://registry.yarnpkg.com/@thirdweb-dev/react/-/react-3.16.0.tgz#0aa8b562aa3881ed3f0e03b85539a3a6ec2c6257"
-  integrity sha512-FEDNWX9FV+vD081IVsEV3/G9NcoBBgHHDLCK6irbNQrKdI4LEve2uljHO9WxpZaq2quSdzeP6XWodmHZm/FH5A==
->>>>>>> main
   dependencies:
     "@emotion/react" "^11.11.1"
     "@emotion/styled" "^11.11.0"
@@ -1784,15 +1763,8 @@
     qrcode "^1.5.3"
     tiny-invariant "^1.2.0"
 
-<<<<<<< HEAD
 "@thirdweb-dev/sdk@3.10.62", "@thirdweb-dev/sdk@file:.yalc/@thirdweb-dev/sdk":
   version "3.10.62"
-=======
-"@thirdweb-dev/sdk@3.10.62":
-  version "3.10.62"
-  resolved "https://registry.yarnpkg.com/@thirdweb-dev/sdk/-/sdk-3.10.62.tgz#251406850bfa8edb7eb68835242df8739ae747e9"
-  integrity sha512-ET+ov7CsKe02QCVADP9Hu8mzyFH+WfAhgZ6sIBchO0rcrLI/+mBAxaFDQBvF8c3i8eGSgwiDkS+BSNA9wtmDDA==
->>>>>>> main
   dependencies:
     "@thirdweb-dev/chains" "0.1.53"
     "@thirdweb-dev/contracts-js" "1.3.13"
@@ -1822,15 +1794,8 @@
     form-data "^4.0.0"
     uuid "^9.0.0"
 
-<<<<<<< HEAD
 "@thirdweb-dev/wallets@1.3.0", "@thirdweb-dev/wallets@file:.yalc/@thirdweb-dev/wallets":
   version "1.3.0"
-=======
-"@thirdweb-dev/wallets@1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@thirdweb-dev/wallets/-/wallets-1.3.0.tgz#1dd7363cda55f55db52d32078b2b54c791dc03d4"
-  integrity sha512-iNAjcghR1LcegB14EgPqnadfp6ND5L0QJkwyLfA7nuEJcGR0js/bsYxGsNUCfKO/xAGUJysnpTkgoAxpktRBag==
->>>>>>> main
   dependencies:
     "@account-abstraction/contracts" "^0.5.0"
     "@account-abstraction/sdk" "^0.5.0"

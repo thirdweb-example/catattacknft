@@ -1,1 +1,0 @@
-{"version":3,"file":"useReadonlySDK.d.ts","sourceRoot":"../../../../../src/evm/hooks","sources":["useReadonlySDK.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,aAAa,EAAE,UAAU,EAAE,WAAW,EAAE,MAAM,mBAAmB,CAAC;AAC3E,OAAO,KAAK,EAAE,eAAe,EAAE,MAAM,uBAAuB,CAAC;AAG7D;;GAEG;AACH,wBAAgB,cAAc,CAC5B,cAAc,EAAE,aAAa,EAC7B,UAAU,EAAE,UAAU,EACtB,gBAAgB,CAAC,EAAE,eAAe,GACjC,WAAW,CAMb"}

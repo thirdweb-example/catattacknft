@@ -1,1 +1,0 @@
-{"version":3,"file":"useMintNFT.d.ts","sourceRoot":"../../../../../../../src/solana/hooks/nft/collection","sources":["useMintNFT.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,aAAa,EAAE,MAAM,6CAA6C,CAAC;AAC5E,OAAO,EAAE,aAAa,EAAE,MAAM,gBAAgB,CAAC;AAE/C,OAAO,KAAK,EAAE,aAAa,EAAE,MAAM,0BAA0B,CAAC;AAG9D;;;;;;;;;;;;;;;;;;;;;GAqBG;AACH,wBAAgB,UAAU,CAAC,OAAO,EAAE,aAAa,CAAC,aAAa,CAAC,8FAe/D"}

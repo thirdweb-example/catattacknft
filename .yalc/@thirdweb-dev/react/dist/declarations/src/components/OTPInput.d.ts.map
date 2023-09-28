@@ -1,1 +1,0 @@
-{"version":3,"file":"OTPInput.d.ts","sourceRoot":"../../../../src/components","sources":["OTPInput.tsx"],"names":[],"mappings":"AAMA,wBAAgB,QAAQ,CAAC,KAAK,EAAE;IAC9B,MAAM,EAAE,MAAM,CAAC;IACf,SAAS,CAAC,EAAE,OAAO,CAAC;IACpB,KAAK,EAAE,MAAM,CAAC;IACd,QAAQ,EAAE,CAAC,KAAK,EAAE,MAAM,KAAK,IAAI,CAAC;IAClC,OAAO,CAAC,EAAE,MAAM,IAAI,CAAC;CACtB,2CAuGA"}

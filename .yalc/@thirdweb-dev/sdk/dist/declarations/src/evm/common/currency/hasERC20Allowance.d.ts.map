@@ -1,1 +1,0 @@
-{"version":3,"file":"hasERC20Allowance.d.ts","sourceRoot":"../../../../../../src/evm/common/currency","sources":["hasERC20Allowance.ts"],"names":[],"mappings":"AAEA,OAAO,EAAE,SAAS,EAAE,MAAM,QAAQ,CAAC;AACnC,OAAO,EAAE,eAAe,EAAE,MAAM,qCAAqC,CAAC;AAEtE,wBAAsB,iBAAiB,CACrC,iBAAiB,EAAE,eAAe,CAAC,GAAG,CAAC,EACvC,eAAe,EAAE,MAAM,EACvB,KAAK,EAAE,SAAS,oBAcjB"}
