@@ -11,22 +11,14 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
-    "@thirdweb-dev/chains": "^0.1.50-nightly-926dd7b0-20230829170639",
-    "@thirdweb-dev/react": "^3.14.41-nightly-d50863f4-20230906225640",
-    "@thirdweb-dev/sdk": "^3.10.60-nightly-d50863f4-20230906225640",
-    "@thirdweb-dev/wallets": "^1.1.24-nightly-d50863f4-20230906225640",
+    "@thirdweb-dev/chains": "^0.1.53-nightly-426c75a3-20230927025915",
+    "@thirdweb-dev/react": "^3.16.1-nightly-c7e7ec95-20230928171557",
+    "@thirdweb-dev/sdk": "^3.10.63-nightly-c7e7ec95-20230928171557",
     "ethers": "^5",
     "next": "^13",
     "react": "^18.2",
     "react-dom": "^18.2",
     "tailwindcss": "^3.2.7"
-  },
-  "resolutions": {
-    "@thirdweb-dev/contracts-js": "file:.yalc/@thirdweb-dev/contracts-js",
-    "@thirdweb-dev/react": "file:.yalc/@thirdweb-dev/react",
-    "@thirdweb-dev/react-core": "file:.yalc/@thirdweb-dev/react-core",
-    "@thirdweb-dev/sdk": "file:.yalc/@thirdweb-dev/sdk",
-    "@thirdweb-dev/wallets": "file:.yalc/@thirdweb-dev/wallets"
   },
   "devDependencies": {
     "@types/node": "^17.0.35",
