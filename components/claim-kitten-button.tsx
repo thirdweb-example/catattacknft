@@ -16,7 +16,9 @@ const ClaimKittenButton: React.FC = () => {
         action={(contract) => contract.call("claimKitten")}
         onError={(error) => setError(error)}
         onSubmit={() => setError(null)}
-        onSuccess={() => refetch()}
+        onSuccess={(resut) => {
+          refetch();
+        }}
       >
         Claim Kitten
       </Web3Button>

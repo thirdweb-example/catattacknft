@@ -31,6 +31,7 @@ const Welcome: React.FC = () => {
             side: "bottom",
             align: "center",
           }}
+          btnTitle="Start Playing"
         />
       </div>
       <div className="flex flex-col items-center">
