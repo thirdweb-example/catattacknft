@@ -11,9 +11,9 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
-    "@thirdweb-dev/chains": "^0.1.54",
-    "@thirdweb-dev/react": "0.0.0-dev-016cc75-20231011182348",
-    "@thirdweb-dev/sdk": "0.0.0-dev-016cc75-20231011182348",
+    "@thirdweb-dev/chains": "^0.1.54-nightly-7ebe6cde-20231002232933",
+    "@thirdweb-dev/react": "^4.0.2-nightly-dcdb0dcb-20231011224637",
+    "@thirdweb-dev/sdk": "^4.0.1-nightly-dcdb0dcb-20231011224637",
     "ethers": "^5",
     "next": "^13",
     "react": "^18.2",
