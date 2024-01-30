@@ -1,4 +1,5 @@
 import {
+  SmartWalletConfigOptions,
   ThirdwebProvider,
   embeddedWallet,
   localWallet,
@@ -16,20 +17,24 @@ const inter = Inter({
   display: "swap",
 });
 
+const swConfig: SmartWalletConfigOptions = {
+  factoryAddress: FACTORY_ADDR,
+  gasless: true,
+  // bundlerUrl: `https://${CHAIN.chainId}.bundler.thirdweb-dev.com`,
+  // paymasterUrl: `https://${CHAIN.chainId}.bundler.thirdweb-dev.com`,
+};
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThirdwebProvider
       activeChain={CHAIN}
       clientId={CLIENT_ID}
+      sdkOptions={{
+        gatewayUrls: ["https://ipfs.io/ipfs/"],
+      }}
       supportedWallets={[
-        smartWallet(embeddedWallet(), {
-          factoryAddress: FACTORY_ADDR,
-          gasless: true,
-        }),
-        smartWallet(localWallet(), {
-          factoryAddress: FACTORY_ADDR,
-          gasless: true,
-        }),
+        // smartWallet(embeddedWallet(), swConfig),
+        smartWallet(localWallet(), swConfig),
       ]}
     >
       <div className={inter.className}>
