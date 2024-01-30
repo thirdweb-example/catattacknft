@@ -22,7 +22,7 @@ const Cats: React.FC = () => {
       </h1>
       <p className="my-4 text-gray-500">
         <span className="tracking-wide mr-2">Total Points:</span>
-        <span className="text-white">{playerScore}</span>
+        <span className="text-white">{playerScore.toString()}</span>
       </p>
       {badges.length > 0 && (
         <div className="flex flex-col items-center w-full">

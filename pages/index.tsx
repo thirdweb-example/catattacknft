@@ -12,33 +12,35 @@ import Header from "../components/header";
 import Events from "../components/events";
 import Welcome from "../components/welcome";
 import ClaimKitten from "../components/claim-kitten";
-import { CONTRACT_ADDR } from "../utils/constants";
+import { CONTRACT_ADDR, contract } from "../utils/constants";
 import { GameContext } from "../contexts/game-context";
 import Cats from "../components/cats";
 import Footer from "../components/footer";
 import { EventContext } from "../contexts/event-context";
 import { Spinner } from "../components/Spinner/Spinner";
+import { useRead, useWatchEvents } from "thirdweb/react";
+import { getNFTs } from "thirdweb/extensions/erc721";
+import { getEvents } from "thirdweb";
 
 const Home: NextPage = () => {
   // contract data
   const address = useAddress();
   const connectionStatus = useConnectionStatus();
 
-  const { contract } = useContract(CONTRACT_ADDR);
+  const contractOld = useContract(CONTRACT_ADDR);
   const {
     data: nfts,
     refetch,
     isLoading: nftsLoading,
-  } = useOwnedNFTs(contract, address);
-  const { data: playerScore } = useContractRead(contract, "getScore", [
-    address || "",
-  ]);
-  const eventsQuery = useContractEvents(contract, undefined, {
-    queryFilter: {
-      fromBlock: -20000,
-    },
+  } = useOwnedNFTs(contractOld.contract, address || "");
+  const { data: playerScore } = useRead({
+    contract,
+    method: "function getScore(address) returns (uint256)",
+    params: [address || ""],
   });
-  const events = eventsQuery.data
+
+  const eventsQuery = useWatchEvents({ contract });
+  const events = eventsQuery
     ?.filter((e) => ["LevelUp", "Miaowed"].includes(e.eventName))
     .slice(0, 20)
     .reverse();
@@ -52,7 +54,7 @@ const Home: NextPage = () => {
     targetAddress,
     setTargetAddress,
     nfts: nfts || [],
-    playerScore: playerScore?.toNumber(),
+    playerScore: playerScore || 0n,
   };
 
   return (
@@ -60,7 +62,7 @@ const Home: NextPage = () => {
       <EventContext.Provider
         value={{
           events: events || [],
-          isLoading: eventsQuery.isLoading,
+          isLoading: false, // TODO eventsQuery.isLoading,
         }}
       >
         <Header />

@@ -12,7 +12,7 @@ export type EventProps = {
 };
 
 export const Event: React.FC<EventProps> = ({ type, data }) => {
-  const level = data.level.toNumber() as 1 | 2 | 3;
+  const level = data.level as 1n | 2n | 3n;
   const address = useAddress();
 
   return (
@@ -39,7 +39,7 @@ export const Event: React.FC<EventProps> = ({ type, data }) => {
               <Address address={data.account} />
             </p>
             <p className="truncate">
-              {level === 1 ? "claimed a" : "leveled up to"}{" "}
+              {level === 1n ? "claimed a" : "leveled up to"}{" "}
               <LevelName level={level} />
             </p>
           </>
@@ -69,6 +69,7 @@ const EventSkeletons = [...Array(20).keys()].map((_, i) => (
 
 const Events: React.FC = () => {
   const { events, isLoading } = useContext(EventContext);
+  console.log(events);
 
   return (
     <div className="my-20 flex flex-col items-center max-w-sm w-full">
@@ -88,9 +89,9 @@ const Events: React.FC = () => {
         ) : events?.length > 0 ? (
           events?.map((e) => (
             <Event
-              key={`${e.transaction.transactionHash}_${e.transaction.logIndex}`}
+              key={`${e.transactionHash}_${e.logIndex}`}
               type={e.eventName as EventProps["type"]}
-              data={e.data}
+              data={e.args}
             />
           ))
         ) : (

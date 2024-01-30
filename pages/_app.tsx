@@ -1,5 +1,5 @@
 import {
-  ThirdwebProvider,
+  ThirdwebProvider as TWOld,
   embeddedWallet,
   localWallet,
   smartWallet,
@@ -8,6 +8,7 @@ import type { AppProps } from "next/app";
 import { Inter } from "next/font/google";
 import "tailwindcss/tailwind.css";
 import { CHAIN, CLIENT_ID, FACTORY_ADDR } from "../utils/constants";
+import { ThirdwebProvider } from "thirdweb/react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,7 +19,7 @@ const inter = Inter({
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThirdwebProvider
+    <TWOld
       activeChain={CHAIN}
       clientId={CLIENT_ID}
       supportedWallets={[
@@ -32,10 +33,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         }),
       ]}
     >
-      <div className={inter.className}>
-        <Component {...pageProps} />
-      </div>
-    </ThirdwebProvider>
+      <ThirdwebProvider>
+        <div className={inter.className}>
+          <Component {...pageProps} />
+        </div>
+      </ThirdwebProvider>
+    </TWOld>
   );
 }
 

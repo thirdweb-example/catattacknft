@@ -1,12 +1,21 @@
-import { ThirdwebNftMedia, useAddress, Web3Button } from "@thirdweb-dev/react";
+import {
+  ThirdwebNftMedia,
+  useAddress,
+  useSigner,
+  Web3Button,
+} from "@thirdweb-dev/react";
 import { NFT, TransactionError } from "@thirdweb-dev/sdk";
 import Image from "next/image";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { EventContext } from "../contexts/event-context";
 import { GameContext } from "../contexts/game-context";
-import { CONTRACT_ADDR } from "../utils/constants";
+import { CHAIN, CONTRACT_ADDR } from "../utils/constants";
 import { isOwnEvent } from "../utils/utils";
 import { Event, EventProps } from "./events";
+import { ethers5Adapter } from "thirdweb/adapters/ethers5";
+import { prepareTransaction, sendTransaction, waitForReceipt } from "thirdweb";
+import { contract } from "../utils/constants";
+import { getUserOpReceipt } from "@thirdweb-dev/wallets";
 
 type ModalProps = {
   isOpen: boolean;
@@ -60,9 +69,9 @@ const Players: React.FC = () => {
       {events && events?.length > 0 ? (
         events?.map((e) => (
           <Event
-            key={`${e.transaction.transactionHash}_${e.transaction.logIndex}`}
+            key={`${e.transactionHash}_${e.logIndex}`}
             type={e.eventName as EventProps["type"]}
-            data={e.data}
+            data={e.args}
           />
         ))
       ) : (
@@ -75,6 +84,7 @@ const Players: React.FC = () => {
 const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
   const { refetch, targetAddress, setTargetAddress } = useContext(GameContext);
   const [error, setError] = useState<Error | null>(null);
+  const signer = useSigner();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -134,11 +144,44 @@ const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
           <Web3Button
             className="!ml-auto !bg-white !text-black !border-0 !py-2 !h-auto !font-sans !min-w-0 !w-full"
             contractAddress={CONTRACT_ADDR}
-            action={(contract) => {
+            action={async (c) => {
+              const w = await ethers5Adapter.signer.fromEthers(signer);
+              console.log("wallet", signer);
+              let tx;
               if (level === 1)
-                return contract.erc1155.transfer(targetAddress, 0, 1);
-              if (level === 2) return contract.erc1155.burn(1, 1);
-              if (level === 3) return contract.call("attack", [targetAddress]);
+                tx = prepareTransaction({
+                  contract,
+                  method: "function transfer(address, uint256, uint256)",
+                  params: [targetAddress, 1n, 1n],
+                });
+              if (level === 2) {
+                tx = prepareTransaction({
+                  contract,
+                  method: "function burn(uint256, uint256)",
+                  params: [1n, 1n],
+                });
+              }
+              if (level === 3) {
+                tx = prepareTransaction({
+                  contract,
+                  method: "function attack(address)",
+                  params: [targetAddress],
+                });
+              }
+
+              console.log(tx);
+
+              if (!tx) throw new Error("Invalid level");
+              try {
+                // TODO types
+                const result = await sendTransaction(tx as any, w);
+                console.log(result);
+
+                return getUserOpReceipt(CHAIN, result);
+              } catch (e) {
+                console.log(e);
+                throw new Error("Transaction failed");
+              }
             }}
             onError={(error) => setError(error)}
             onSubmit={() => setError(null)}

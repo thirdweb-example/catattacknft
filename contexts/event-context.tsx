@@ -3,7 +3,7 @@ import { createContext } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
 
 type EventContextType = {
-  events: ContractEvent[];
+  events: any[]; // TODO type
   isLoading: boolean;
 };
 
