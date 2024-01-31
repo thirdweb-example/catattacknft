@@ -25,14 +25,7 @@ const Welcome: React.FC = () => {
         />
       </div>
       <div className="max-w-xs">
-        <ConnectWallet
-          modalSize="compact"
-          dropdownPosition={{
-            side: "bottom",
-            align: "center",
-          }}
-          btnTitle="Start Playing"
-        />
+        <ConnectWallet modalSize="compact" btnTitle="Start Playing" />
       </div>
       <div className="flex flex-col items-center">
         <p className="font-semibold">Share the game</p>
