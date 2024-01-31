@@ -20,8 +20,10 @@ const inter = Inter({
 const swConfig: SmartWalletConfigOptions = {
   factoryAddress: FACTORY_ADDR,
   gasless: true,
-  // bundlerUrl: `https://${CHAIN.chainId}.bundler.thirdweb-dev.com`,
-  // paymasterUrl: `https://${CHAIN.chainId}.bundler.thirdweb-dev.com`,
+  bundlerUrl: `https://${CHAIN.chainId}.bundler.thirdweb-dev.com`,
+  paymasterUrl: `https://${CHAIN.chainId}.bundler.thirdweb-dev.com`,
+  // bundlerUrl: `http://0.0.0.0:8787?chain=${CHAIN.chainId}`,
+  // paymasterUrl: `http://0.0.0.0:8787/v2?chain=${CHAIN.chainId}`,
 };
 
 function MyApp({ Component, pageProps }: AppProps) {
