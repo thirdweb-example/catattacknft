@@ -153,13 +153,19 @@ const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
           </Web3Button>
         </div>
         {error && (
-          <p className="mt-2 text-xs first-letter:capitalize text-red-400 max-w-xs text-center">
-            {(error as TransactionError).reason}
+          <p className="mt-2 text-xs first-letter:capitalize text-red-400 text-center">
+            {parseError((error as TransactionError).reason)}
           </p>
         )}
       </div>
     </div>
   );
+};
+
+const parseError = (reason: string) => {
+  if (reason.includes("AA21 didn't pay prefund"))
+    return "You ran out of sponsored transactions! Fund your wallet to continue playing.";
+  return reason;
 };
 
 type CatProps = {
