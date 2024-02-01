@@ -7,7 +7,7 @@ import {
   useOwnedNFTs,
 } from "@thirdweb-dev/react";
 import type { NextPage } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../components/header";
 import Events from "../components/events";
 import Welcome from "../components/welcome";

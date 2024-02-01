@@ -5,7 +5,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import { EventContext } from "../contexts/event-context";
 import { GameContext } from "../contexts/game-context";
 import { CONTRACT_ADDR } from "../utils/constants";
-import { isOwnEvent } from "../utils/utils";
+import { isOwnEvent, parseError } from "../utils/utils";
 import { Event, EventProps } from "./events";
 
 type ModalProps = {
@@ -153,8 +153,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
           </Web3Button>
         </div>
         {error && (
-          <p className="mt-2 text-xs first-letter:capitalize text-red-400 max-w-xs text-center">
-            {(error as TransactionError).reason}
+          <p className="mt-2 text-xs first-letter:capitalize text-red-400 text-center">
+            {parseError((error as TransactionError).reason)}
           </p>
         )}
       </div>
