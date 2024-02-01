@@ -17,3 +17,9 @@ export function isOwnEvent(
       (data.victim === address || data.attacker === address))
   );
 }
+
+export const parseError = (reason: string) => {
+  if (reason.includes("AA21 didn't pay prefund"))
+    return "You ran out of sponsored transactions! Fund your wallet to continue playing.";
+  return reason;
+};

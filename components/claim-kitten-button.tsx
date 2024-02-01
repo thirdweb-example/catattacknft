@@ -3,6 +3,7 @@ import { TransactionError } from "@thirdweb-dev/sdk";
 import { useContext, useState } from "react";
 import { GameContext } from "../contexts/game-context";
 import { CONTRACT_ADDR } from "../utils/constants";
+import { parseError } from "../utils/utils";
 
 const ClaimKittenButton: React.FC = () => {
   const { refetch } = useContext(GameContext);
@@ -24,7 +25,7 @@ const ClaimKittenButton: React.FC = () => {
       </Web3Button>
       {error && (
         <p className="mt-2 text-xs first-letter:capitalize text-red-400 max-w-xs text-center">
-          {(error as TransactionError).reason}
+          {parseError((error as TransactionError).reason)}
         </p>
       )}
     </div>

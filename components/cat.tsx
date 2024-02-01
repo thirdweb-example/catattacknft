@@ -5,7 +5,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import { EventContext } from "../contexts/event-context";
 import { GameContext } from "../contexts/game-context";
 import { CONTRACT_ADDR } from "../utils/constants";
-import { isOwnEvent } from "../utils/utils";
+import { isOwnEvent, parseError } from "../utils/utils";
 import { Event, EventProps } from "./events";
 
 type ModalProps = {
@@ -160,12 +160,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
       </div>
     </div>
   );
-};
-
-const parseError = (reason: string) => {
-  if (reason.includes("AA21 didn't pay prefund"))
-    return "You ran out of sponsored transactions! Fund your wallet to continue playing.";
-  return reason;
 };
 
 type CatProps = {
