@@ -1,4 +1,4 @@
-import { ConnectWallet } from "@thirdweb-dev/react";
+import { ConnectWallet } from "thirdweb/react";
 import Image from "next/image";
 
 const Welcome: React.FC = () => {

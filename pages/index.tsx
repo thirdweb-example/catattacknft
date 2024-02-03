@@ -1,4 +1,3 @@
-import { useAddress, useConnectionStatus } from "@thirdweb-dev/react";
 import type { NextPage } from "next";
 import { useState } from "react";
 import Header from "../components/header";
@@ -11,13 +10,18 @@ import Cats from "../components/cats";
 import Footer from "../components/footer";
 import { EventContext } from "../contexts/event-context";
 import { Spinner } from "../components/Spinner/Spinner";
-import { useContractRead, useContractEvents } from "thirdweb/react";
+import {
+  useActiveWalletAddress,
+  useContractRead,
+  useContractEvents,
+} from "thirdweb/react";
 import { getOwnedNFTs } from "thirdweb/extensions/erc1155";
+import { useActiveWalletConnectionStatus } from "thirdweb/dist/types/react/providers/wallet-provider";
 
 const Home: NextPage = () => {
   // contract data
-  const address = useAddress();
-  const connectionStatus = useConnectionStatus();
+  const address = useActiveWalletAddress();
+  const connectionStatus = useActiveWalletConnectionStatus();
 
   const {
     data: nfts,

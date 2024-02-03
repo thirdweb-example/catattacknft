@@ -1,10 +1,10 @@
-import { useAddress } from "@thirdweb-dev/react";
 import Image from "next/image";
 import { useContext } from "react";
 import { EventContext } from "../contexts/event-context";
 import { isOwnEvent } from "../utils/utils";
 import { Address } from "./address";
 import LevelName from "./level-name";
+import { useActiveWalletAddress } from "thirdweb/react";
 
 export type EventProps = {
   type: "LevelUp" | "Miaowed";
@@ -13,7 +13,7 @@ export type EventProps = {
 
 export const Event: React.FC<EventProps> = ({ type, data }) => {
   const level = data.level as 1n | 2n | 3n;
-  const address = useAddress();
+  const address = useActiveWalletAddress();
 
   return (
     <div
