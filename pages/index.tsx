@@ -11,7 +11,7 @@ import Cats from "../components/cats";
 import Footer from "../components/footer";
 import { EventContext } from "../contexts/event-context";
 import { Spinner } from "../components/Spinner/Spinner";
-import { useContractRead, useWatchEvents } from "thirdweb/react";
+import { useContractRead, useContractEvents } from "thirdweb/react";
 import { getOwnedNFTs } from "thirdweb/extensions/erc1155";
 
 const Home: NextPage = () => {
@@ -39,8 +39,8 @@ const Home: NextPage = () => {
     params: [address || ""],
   });
 
-  const eventsQuery = useWatchEvents({ contract });
-  const events = eventsQuery
+  const eventsQuery = useContractEvents({ contract });
+  const events = eventsQuery.data
     ?.filter((e) => ["LevelUp", "Miaowed"].includes(e.eventName))
     .slice(0, 20)
     .reverse();
@@ -62,7 +62,7 @@ const Home: NextPage = () => {
       <EventContext.Provider
         value={{
           events: events || [],
-          isLoading: false, // TODO eventsQuery.isLoading,
+          isLoading: eventsQuery.isLoading,
         }}
       >
         <Header />

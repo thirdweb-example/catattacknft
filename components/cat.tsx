@@ -4,7 +4,7 @@ import {
   useSigner,
   Web3Button,
 } from "@thirdweb-dev/react";
-import { NFT, TransactionError } from "@thirdweb-dev/sdk";
+import { TransactionError } from "@thirdweb-dev/sdk";
 import Image from "next/image";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { EventContext } from "../contexts/event-context";
@@ -13,9 +13,11 @@ import { CHAIN, CONTRACT_ADDR } from "../utils/constants";
 import { isOwnEvent } from "../utils/utils";
 import { Event, EventProps } from "./events";
 import { ethers5Adapter } from "thirdweb/adapters/ethers5";
-import { prepareTransaction, sendTransaction } from "thirdweb";
+import { NFT, prepareTransaction, sendTransaction } from "thirdweb";
 import { contract } from "../utils/constants";
 import { getUserOpReceipt } from "@thirdweb-dev/wallets";
+import { useContractRead } from "thirdweb/react";
+import { balanceOf } from "thirdweb/extensions/erc1155";
 
 type ModalProps = {
   isOpen: boolean;
@@ -58,7 +60,7 @@ const Players: React.FC = () => {
       !isOwnEvent(
         {
           type: e.eventName as EventProps["type"],
-          data: e.data,
+          data: e.args,
         },
         address
       )
@@ -144,24 +146,23 @@ const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
           <Web3Button
             className="!ml-auto !bg-white !text-black !border-0 !py-2 !h-auto !font-sans !min-w-0 !w-full"
             contractAddress={CONTRACT_ADDR}
-            action={async (c) => {
+            action={async () => {
               const w = await ethers5Adapter.signer.fromEthers(signer);
               console.log("wallet", signer);
               let tx;
-              if (level === 1)
+              if (level === 1) {
                 tx = prepareTransaction({
                   contract,
                   method: "function transfer(address, uint256, uint256)",
                   params: [targetAddress, 1n, 1n],
                 });
-              if (level === 2) {
+              } else if (level === 2) {
                 tx = prepareTransaction({
                   contract,
                   method: "function burn(uint256, uint256)",
                   params: [1n, 1n],
                 });
-              }
-              if (level === 3) {
+              } else if (level === 3) {
                 tx = prepareTransaction({
                   contract,
                   method: "function attack(address)",
@@ -173,7 +174,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
 
               if (!tx) throw new Error("Invalid level");
               try {
-                // TODO types
                 const result = await sendTransaction({
                   transaction: tx,
                   wallet: w,
@@ -220,7 +220,16 @@ const Cat: React.FC<CatProps> = ({ cat }) => {
   const level = (Number(cat.metadata.id) + 1) as 1 | 2 | 3;
   const color = colors[level - 1];
 
-  const quantity = cat.quantityOwned;
+  const address = useAddress();
+
+  const quantity = useContractRead(balanceOf, {
+    contract,
+    address: address || "",
+    tokenId: cat.id,
+    queryOptions: {
+      enabled: !!address,
+    },
+  });
 
   const openModal = useCallback(() => {
     setIsOpen(true);
@@ -238,14 +247,22 @@ const Cat: React.FC<CatProps> = ({ cat }) => {
       <div className="flex flex-col items-center rounded-lg w-80 relative">
         {quantity && (
           <span className="absolute top-2 right-2 bg-black text-xs font-bold text-white px-2 py-1 rounded-md">
-            x{quantity}
+            x{quantity.data?.toString() || 0}
           </span>
         )}
         <div
           className="border rounded-t-lg w-80 h-80"
           style={{ borderColor: color }}
         >
-          <ThirdwebNftMedia width="240" height="240" metadata={cat.metadata} />
+          <ThirdwebNftMedia
+            width="240"
+            height="240"
+            metadata={{
+              ...cat.metadata,
+              id: cat.id.toString(),
+              uri: cat.tokenURI,
+            }}
+          />
         </div>
         <div className="border border-t-0 rounded-b-lg border-gray-700 w-full py-4 px-8 flex flex-col items-center text-center">
           <p className="font-bold text-xs leading-tight" style={{ color }}>

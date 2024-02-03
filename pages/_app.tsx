@@ -7,7 +7,7 @@ import {
 import type { AppProps } from "next/app";
 import { Inter } from "next/font/google";
 import "tailwindcss/tailwind.css";
-import { CHAIN, CLIENT_ID, FACTORY_ADDR } from "../utils/constants";
+import { CHAIN, CLIENT_ID, FACTORY_ADDR, client } from "../utils/constants";
 import { ThirdwebProvider } from "thirdweb/react";
 
 const inter = Inter({
@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         }),
       ]}
     >
-      <ThirdwebProvider>
+      <ThirdwebProvider client={client}>
         <div className={inter.className}>
           <Component {...pageProps} />
         </div>

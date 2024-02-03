@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { NFT } from "thirdweb/dist/types/utils/nft/parseNft";
+import type { NFT } from "thirdweb";
 
 type GameContextType = {
   targetAddress: string;
