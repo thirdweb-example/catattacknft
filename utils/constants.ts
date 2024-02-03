@@ -10,5 +10,5 @@ export const client = createClient({ clientId: CLIENT_ID });
 export const contract = getContract({
   client,
   address: CONTRACT_ADDR,
-  chainId: CHAIN.chainId,
+  chain: CHAIN.chainId,
 });

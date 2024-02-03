@@ -13,7 +13,7 @@ import { CHAIN, CONTRACT_ADDR } from "../utils/constants";
 import { isOwnEvent } from "../utils/utils";
 import { Event, EventProps } from "./events";
 import { ethers5Adapter } from "thirdweb/adapters/ethers5";
-import { prepareTransaction, sendTransaction, waitForReceipt } from "thirdweb";
+import { prepareTransaction, sendTransaction } from "thirdweb";
 import { contract } from "../utils/constants";
 import { getUserOpReceipt } from "@thirdweb-dev/wallets";
 
@@ -174,10 +174,13 @@ const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
               if (!tx) throw new Error("Invalid level");
               try {
                 // TODO types
-                const result = await sendTransaction(tx as any, w);
+                const result = await sendTransaction({
+                  transaction: tx,
+                  wallet: w,
+                });
                 console.log(result);
 
-                return getUserOpReceipt(CHAIN, result);
+                return getUserOpReceipt(CHAIN, result.transactionHash || "");
               } catch (e) {
                 console.log(e);
                 throw new Error("Transaction failed");

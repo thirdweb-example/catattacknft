@@ -19,7 +19,7 @@
     "react": "^18.2",
     "react-dom": "^18.2",
     "tailwindcss": "^3.2.7",
-    "thirdweb": "^1.0.0-alpha-39391fe9-20240130032245"
+    "thirdweb": "^1.0.0-alpha-56e42eea-20240202203805"
   },
   "devDependencies": {
     "@types/node": "^17.0.35",

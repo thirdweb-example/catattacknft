@@ -1,39 +1,39 @@
-import {
-  useAddress,
-  useConnectionStatus,
-  useContract,
-  useContractEvents,
-  useContractRead,
-  useOwnedNFTs,
-} from "@thirdweb-dev/react";
+import { useAddress, useConnectionStatus } from "@thirdweb-dev/react";
 import type { NextPage } from "next";
 import { useState } from "react";
 import Header from "../components/header";
 import Events from "../components/events";
 import Welcome from "../components/welcome";
 import ClaimKitten from "../components/claim-kitten";
-import { CONTRACT_ADDR, contract } from "../utils/constants";
+import { contract } from "../utils/constants";
 import { GameContext } from "../contexts/game-context";
 import Cats from "../components/cats";
 import Footer from "../components/footer";
 import { EventContext } from "../contexts/event-context";
 import { Spinner } from "../components/Spinner/Spinner";
-import { useRead, useWatchEvents } from "thirdweb/react";
-import { getNFTs } from "thirdweb/extensions/erc721";
-import { getEvents } from "thirdweb";
+import { useContractRead, useWatchEvents } from "thirdweb/react";
+import { getOwnedNFTs } from "thirdweb/extensions/erc1155";
 
 const Home: NextPage = () => {
   // contract data
   const address = useAddress();
   const connectionStatus = useConnectionStatus();
 
-  const contractOld = useContract(CONTRACT_ADDR);
   const {
     data: nfts,
     refetch,
     isLoading: nftsLoading,
-  } = useOwnedNFTs(contractOld.contract, address || "");
-  const { data: playerScore } = useRead({
+  } = useContractRead(getOwnedNFTs, {
+    contract,
+    wallet: {
+      address: address || "",
+    },
+    queryOptions: {
+      enabled: !!address,
+    },
+  });
+
+  const { data: playerScore } = useContractRead({
     contract,
     method: "function getScore(address) returns (uint256)",
     params: [address || ""],
