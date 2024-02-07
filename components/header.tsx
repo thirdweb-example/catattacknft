@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { Aurora } from "./Aurora";
-import { ConnectWallet, useActiveWalletAddress } from "thirdweb/react";
+import { ConnectWallet, useActiveAccount } from "thirdweb/react";
 
 const Header: React.FC = () => {
-  const address = useActiveWalletAddress();
+  const address = useActiveAccount()?.address;
   return (
     <header className="w-full p-4 mb-12">
       <Aurora

@@ -10,26 +10,25 @@ import Cats from "../components/cats";
 import Footer from "../components/footer";
 import { EventContext } from "../contexts/event-context";
 import { Spinner } from "../components/Spinner/Spinner";
-import {
-  useActiveWalletAddress,
-  useContractRead,
-  useContractEvents,
-} from "thirdweb/react";
+import { useContractEvents, useReadContract } from "thirdweb/react";
 import { getOwnedNFTs } from "thirdweb/extensions/erc1155";
-import { useActiveWalletConnectionStatus } from "thirdweb/dist/types/react/providers/wallet-provider";
+import {
+  useActiveAccount,
+  useActiveWalletConnectionStatus,
+} from "thirdweb/react";
 
 const Home: NextPage = () => {
   // contract data
-  const address = useActiveWalletAddress();
+  const address = useActiveAccount()?.address;
   const connectionStatus = useActiveWalletConnectionStatus();
 
   const {
     data: nfts,
     refetch,
     isLoading: nftsLoading,
-  } = useContractRead(getOwnedNFTs, {
+  } = useReadContract(getOwnedNFTs, {
     contract,
-    wallet: {
+    account: {
       address: address || "",
     },
     queryOptions: {
@@ -37,7 +36,7 @@ const Home: NextPage = () => {
     },
   });
 
-  const { data: playerScore } = useContractRead({
+  const { data: playerScore } = useReadContract({
     contract,
     method: "function getScore(address) returns (uint256)",
     params: [address || ""],
