@@ -7417,10 +7417,10 @@ thenify-all@^1.0.0:
   dependencies:
     any-promise "^1.0.0"
 
-thirdweb@^1.0.0-alpha-81e5e333-20240207000419:
-  version "1.0.0-alpha-81e5e333-20240207000419"
-  resolved "https://registry.yarnpkg.com/thirdweb/-/thirdweb-1.0.0-alpha-81e5e333-20240207000419.tgz#d29250fd59d4a56e6a077d6d0e2c30e0c4c43b57"
-  integrity sha512-YHYAIaMMWnhR1CL7cqytWlBUn+TNMR2KXubUpFDViGhQAGgxQ0uJeIEe2de4ozs3BGi43lvcE5N4n2GJayQGSQ==
+thirdweb@1.0.0-alpha-068351bd-20240207021529:
+  version "1.0.0-alpha-068351bd-20240207021529"
+  resolved "https://registry.yarnpkg.com/thirdweb/-/thirdweb-1.0.0-alpha-068351bd-20240207021529.tgz#735e90729cdc69e46812ee2b7aabd07b5c052796"
+  integrity sha512-mZ9IYjW/oYi6HS+V1jge8CWMQR+QaSDAZraVrGySmmwDLp32oXD+f35TuufYJk3n3hHV9TWBWw30FEzxq+EwfQ==
   dependencies:
     "@emotion/css" "^11.11.2"
     "@emotion/react" "^11.11.3"

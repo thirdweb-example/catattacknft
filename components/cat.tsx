@@ -176,7 +176,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
               try {
                 const result = await sendTransaction({
                   transaction: tx,
-                  wallet: w,
+                  account: w,
                 });
                 console.log(result);
 
