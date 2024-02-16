@@ -20,6 +20,7 @@ const ClaimKittenButton: React.FC = () => {
         })}
         variant="primary"
         onError={(error) => setError(error)}
+        onSubmit={() => setError(null)}
         onSuccess={(resut) => {
           refetch();
         }}
