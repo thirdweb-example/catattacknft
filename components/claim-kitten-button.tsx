@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { GameContext } from "../contexts/game-context";
 import { contract } from "../utils/constants";
 import { TransactionButton } from "thirdweb/react";
-import { prepareTransaction } from "thirdweb";
+import { prepareContractCall, prepareTransaction } from "thirdweb";
 
 const ClaimKittenButton: React.FC = () => {
   const { refetch } = useContext(GameContext);
@@ -13,15 +13,17 @@ const ClaimKittenButton: React.FC = () => {
   return (
     <div className="flex flex-col items-center w-full">
       <TransactionButton
-        transaction={prepareTransaction({
-          contract,
-          method: "claimKitten",
-          params: [],
-        })}
-        variant="primary"
+        transaction={() =>
+          prepareContractCall({
+            contract,
+            method: "function claimKitten()",
+            params: [],
+          })
+        }
+        waitForReceipt
         onError={(error) => setError(error)}
-        onSubmit={() => setError(null)}
-        onSuccess={(resut) => {
+        onClick={() => setError(null)}
+        onReceipt={(resut) => {
           refetch();
         }}
       >

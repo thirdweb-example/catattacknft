@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Aurora } from "./Aurora";
-import { ConnectWallet, useActiveAccount } from "thirdweb/react";
+import { ConnectButton, useActiveAccount } from "thirdweb/react";
 
 const Header: React.FC = () => {
   const address = useActiveAccount()?.address;
@@ -29,7 +29,7 @@ const Header: React.FC = () => {
           />
         </div>
 
-        <div className="max-w-xs">{address ? <ConnectWallet /> : null}</div>
+        <div className="max-w-xs">{address ? <ConnectButton /> : null}</div>
       </div>
     </header>
   );

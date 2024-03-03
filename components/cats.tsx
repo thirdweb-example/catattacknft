@@ -1,23 +1,29 @@
-import { ThirdwebNftMedia, useAddress } from "@thirdweb-dev/react";
+import {
+  MediaRenderer,
+  ThirdwebNftMedia,
+  useAddress,
+} from "@thirdweb-dev/react";
 import { useContext, useMemo } from "react";
 import { GameContext } from "../contexts/game-context";
 import Cat from "./cat";
 import ClaimKittenButton from "./claim-kitten-button";
-import { useReadContract } from "thirdweb/react";
+import { useActiveAccount, useReadContract } from "thirdweb/react";
 import { balanceOf } from "thirdweb/extensions/erc1155";
 import { contract } from "../utils/constants";
 
 const Cats: React.FC = () => {
-  const address = useAddress();
+  const address = useActiveAccount()?.address;
   const { nfts, playerScore } = useContext(GameContext);
 
   const { cats, badges } = useMemo(
     () => ({
-      cats: nfts.filter((nft) => Number(nft.id) < 3n),
-      badges: nfts.filter((nft) => Number(nft.id) > 2n),
+      cats: nfts.filter((nft) => Number(nft.id) < 3),
+      badges: nfts.filter((nft) => Number(nft.id) > 2),
     }),
     [nfts]
   );
+
+  console.log("cats", cats);
 
   const badgesQuantityQuery = useReadContract(balanceOf, {
     contract,
@@ -54,14 +60,9 @@ const Cats: React.FC = () => {
                 )
               ).keys(),
             ].map((i) => (
-              <div key={`${i}-${badges[0].metadata.id}`}>
-                <ThirdwebNftMedia
-                  metadata={{
-                    // convert to old NFT format
-                    ...badges[0].metadata,
-                    id: badges[0].id.toString(),
-                    uri: badges[0].tokenURI,
-                  }}
+              <div key={`${i}-${badges[0].id}`}>
+                <MediaRenderer
+                  src={badges[0].metadata.image}
                   style={{ width: 30, height: 30 }}
                 />
               </div>
@@ -72,7 +73,7 @@ const Cats: React.FC = () => {
       <div className="gap-2 mt-12 w-full flex flex-wrap items-center justify-center">
         {cats.length > 0 ? (
           cats?.map((cat, i) => (
-            <Cat key={`${i}-${cat.metadata.id}`} cat={cat} />
+            <Cat key={`${i}-${cat.id.toString()}`} cat={cat} />
           ))
         ) : (
           <div>

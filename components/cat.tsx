@@ -1,4 +1,5 @@
 import {
+  MediaRenderer,
   ThirdwebNftMedia,
   useAddress,
   useSigner,
@@ -13,10 +14,21 @@ import { CHAIN, CONTRACT_ADDR } from "../utils/constants";
 import { isOwnEvent } from "../utils/utils";
 import { Event, EventProps } from "./events";
 import { ethers5Adapter } from "thirdweb/adapters/ethers5";
-import { NFT, prepareTransaction, sendTransaction } from "thirdweb";
+import {
+  NFT,
+  prepareContractCall,
+  prepareTransaction,
+  sendTransaction,
+  simulateTransaction,
+  waitForReceipt,
+} from "thirdweb";
 import { contract } from "../utils/constants";
-import { getUserOpReceipt } from "@thirdweb-dev/wallets";
-import { useContractRead } from "thirdweb/react";
+import {
+  TransactionButton,
+  useActiveAccount,
+  useActiveWallet,
+  useReadContract,
+} from "thirdweb/react";
 import { balanceOf } from "thirdweb/extensions/erc1155";
 
 type ModalProps = {
@@ -54,7 +66,7 @@ const modalText = {
 };
 
 const Players: React.FC = () => {
-  const address = useAddress();
+  const address = useActiveAccount()?.address;
   const events = useContext(EventContext).events.filter(
     (e) =>
       !isOwnEvent(
@@ -86,7 +98,7 @@ const Players: React.FC = () => {
 const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
   const { refetch, targetAddress, setTargetAddress } = useContext(GameContext);
   const [error, setError] = useState<Error | null>(null);
-  const signer = useSigner();
+  const wallet = useActiveWallet();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -143,44 +155,79 @@ const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
           </>
         )}
         <div className="mt-4">
-          <Web3Button
-            className="!ml-auto !bg-white !text-black !border-0 !py-2 !h-auto !font-sans !min-w-0 !w-full"
-            contractAddress={CONTRACT_ADDR}
-            action={async () => {
-              const w = await ethers5Adapter.signer.fromEthers(signer);
-              console.log("wallet", signer);
+          <TransactionButton
+            transaction={() => {
               let tx;
               if (level === 1) {
-                tx = prepareTransaction({
+                tx = prepareContractCall({
                   contract,
                   method: "function transfer(address, uint256, uint256)",
                   params: [targetAddress, 1n, 1n],
                 });
               } else if (level === 2) {
-                tx = prepareTransaction({
+                tx = prepareContractCall({
                   contract,
                   method: "function burn(uint256, uint256)",
                   params: [1n, 1n],
                 });
               } else if (level === 3) {
-                tx = prepareTransaction({
+                tx = prepareContractCall({
+                  contract,
+                  method: "function attack(address)",
+                  params: [targetAddress],
+                });
+              } else {
+                throw new Error("Invalid level");
+              }
+              const simulation = simulateTransaction({
+                transaction: tx as any,
+                wallet,
+              });
+              return tx;
+            }}
+            waitForReceipt
+            onError={(error) => setError(error)}
+            onClick={() => setError(null)}
+          >
+            {level === 1 && "Transfer"}
+            {level === 2 && "Burn"}
+            {level === 3 && "Attack"}
+          </TransactionButton>
+          {/* <Web3Button
+            className="!ml-auto !bg-white !text-black !border-0 !py-2 !h-auto !font-sans !min-w-0 !w-full"
+            contractAddress={CONTRACT_ADDR}
+            action={async () => {
+              // const w = await ethers5Adapter.signer.fromEthers(signer);
+              // console.log("wallet", signer);
+              let tx;
+              if (level === 1) {
+                tx = prepareContractCall({
+                  contract,
+                  method: "function transfer(address, uint256, uint256)",
+                  params: [targetAddress, 1n, 1n],
+                });
+              } else if (level === 2) {
+                tx = prepareContractCall({
+                  contract,
+                  method: "function burn(uint256, uint256)",
+                  params: [1n, 1n],
+                });
+              } else if (level === 3) {
+                tx = prepareContractCall({
                   contract,
                   method: "function attack(address)",
                   params: [targetAddress],
                 });
               }
 
-              console.log(tx);
-
-              if (!tx) throw new Error("Invalid level");
+              if (!tx || !wallet) throw new Error("Invalid level");
               try {
                 const result = await sendTransaction({
                   transaction: tx,
-                  account: w,
+                  wallet: wallet,
                 });
-                console.log(result);
-
-                return getUserOpReceipt(CHAIN, result.transactionHash || "");
+                console.log("userop hash", result);
+                return waitForReceipt(result);
               } catch (e) {
                 console.log(e);
                 throw new Error("Transaction failed");
@@ -196,7 +243,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
             {level === 1 && "Transfer"}
             {level === 2 && "Burn"}
             {level === 3 && "Attack"}
-          </Web3Button>
+          </Web3Button> */}
         </div>
         {error && (
           <p className="mt-2 text-xs first-letter:capitalize text-red-400 max-w-xs text-center">
@@ -217,12 +264,12 @@ const colors = ["#B74AA4", "#4830A4", "#BFA3DA"];
 const Cat: React.FC<CatProps> = ({ cat }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const level = (Number(cat.metadata.id) + 1) as 1 | 2 | 3;
+  const level = (Number(cat.id) + 1) as 1 | 2 | 3;
   const color = colors[level - 1];
 
-  const address = useAddress();
+  const address = useActiveAccount()?.address;
 
-  const quantity = useContractRead(balanceOf, {
+  const quantity = useReadContract(balanceOf, {
     contract,
     address: address || "",
     tokenId: cat.id,
@@ -254,15 +301,7 @@ const Cat: React.FC<CatProps> = ({ cat }) => {
           className="border rounded-t-lg w-80 h-80"
           style={{ borderColor: color }}
         >
-          <ThirdwebNftMedia
-            width="240"
-            height="240"
-            metadata={{
-              ...cat.metadata,
-              id: cat.id.toString(),
-              uri: cat.tokenURI,
-            }}
-          />
+          <MediaRenderer width="240" height="240" src={cat.metadata.image} />
         </div>
         <div className="border border-t-0 rounded-b-lg border-gray-700 w-full py-4 px-8 flex flex-col items-center text-center">
           <p className="font-bold text-xs leading-tight" style={{ color }}>

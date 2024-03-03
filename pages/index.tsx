@@ -16,6 +16,7 @@ import {
   useActiveAccount,
   useActiveWalletConnectionStatus,
 } from "thirdweb/react";
+import { prepareEvent } from "thirdweb";
 
 const Home: NextPage = () => {
   // contract data
@@ -28,9 +29,7 @@ const Home: NextPage = () => {
     isLoading: nftsLoading,
   } = useReadContract(getOwnedNFTs, {
     contract,
-    account: {
-      address: address || "",
-    },
+    address: address || "",
     queryOptions: {
       enabled: !!address,
     },
@@ -42,11 +41,20 @@ const Home: NextPage = () => {
     params: [address || ""],
   });
 
-  const eventsQuery = useContractEvents({ contract });
-  const events = eventsQuery.data
-    ?.filter((e) => ["LevelUp", "Miaowed"].includes(e.eventName))
-    .slice(0, 20)
-    .reverse();
+  const eventsQuery = useContractEvents({
+    contract,
+    events: [
+      prepareEvent({
+        signature: "event LevelUp(address indexed account, uint256 level)",
+      }),
+      prepareEvent({
+        signature:
+          "event Miaowed(address indexed attacker, address indexed victim, uint256 level)",
+      }),
+    ],
+  });
+  const events = (eventsQuery.data || []).slice(0, 20).reverse();
+  console.log("events", events);
 
   // state
   const [targetAddress, setTargetAddress] = useState<string>("");

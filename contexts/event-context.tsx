@@ -1,8 +1,7 @@
 import { createContext } from "react";
-import type { EventLog } from "thirdweb";
 
 type EventContextType = {
-  events: EventLog[];
+  events: any[]; // TODO export event type
   isLoading: boolean;
 };
 
