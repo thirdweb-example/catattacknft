@@ -69,7 +69,6 @@ const EventSkeletons = [...Array(20).keys()].map((_, i) => (
 
 const Events: React.FC = () => {
   const { events, isLoading } = useContext(EventContext);
-  console.log(events);
 
   return (
     <div className="my-20 flex flex-col items-center max-w-sm w-full">

@@ -16,7 +16,7 @@ const ClaimKittenButton: React.FC = () => {
         transaction={() =>
           prepareContractCall({
             contract,
-            method: "function claimKitten()",
+            method: "claimKitten",
             params: [],
           })
         }

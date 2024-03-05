@@ -1,27 +1,11 @@
-import {
-  MediaRenderer,
-  ThirdwebNftMedia,
-  useAddress,
-  useSigner,
-  Web3Button,
-} from "@thirdweb-dev/react";
-import { TransactionError } from "@thirdweb-dev/sdk";
+import { MediaRenderer } from "@thirdweb-dev/react";
 import Image from "next/image";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { EventContext } from "../contexts/event-context";
 import { GameContext } from "../contexts/game-context";
-import { CHAIN, CONTRACT_ADDR } from "../utils/constants";
 import { isOwnEvent } from "../utils/utils";
 import { Event, EventProps } from "./events";
-import { ethers5Adapter } from "thirdweb/adapters/ethers5";
-import {
-  NFT,
-  prepareContractCall,
-  prepareTransaction,
-  sendTransaction,
-  simulateTransaction,
-  waitForReceipt,
-} from "thirdweb";
+import { NFT, prepareContractCall } from "thirdweb";
 import { contract } from "../utils/constants";
 import {
   TransactionButton,
@@ -161,81 +145,36 @@ const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
               if (level === 1) {
                 tx = prepareContractCall({
                   contract,
-                  method: "function transfer(address, uint256, uint256)",
-                  params: [targetAddress, 1n, 1n],
+                  method: "safeTransferFrom",
+                  params: [
+                    wallet?.getAccount()?.address || "",
+                    targetAddress,
+                    0n,
+                    1n,
+                    "0x",
+                  ],
                 });
               } else if (level === 2) {
                 tx = prepareContractCall({
                   contract,
-                  method: "function burn(uint256, uint256)",
-                  params: [1n, 1n],
+                  method: "burn",
+                  params: [wallet?.getAccount()?.address || "", 1n, 1n],
                 });
               } else if (level === 3) {
                 tx = prepareContractCall({
                   contract,
-                  method: "function attack(address)",
+                  method: "attack",
                   params: [targetAddress],
                 });
               } else {
                 throw new Error("Invalid level");
               }
-              const simulation = simulateTransaction({
-                transaction: tx as any,
-                wallet,
-              });
               return tx;
             }}
             waitForReceipt
             onError={(error) => setError(error)}
             onClick={() => setError(null)}
-          >
-            {level === 1 && "Transfer"}
-            {level === 2 && "Burn"}
-            {level === 3 && "Attack"}
-          </TransactionButton>
-          {/* <Web3Button
-            className="!ml-auto !bg-white !text-black !border-0 !py-2 !h-auto !font-sans !min-w-0 !w-full"
-            contractAddress={CONTRACT_ADDR}
-            action={async () => {
-              // const w = await ethers5Adapter.signer.fromEthers(signer);
-              // console.log("wallet", signer);
-              let tx;
-              if (level === 1) {
-                tx = prepareContractCall({
-                  contract,
-                  method: "function transfer(address, uint256, uint256)",
-                  params: [targetAddress, 1n, 1n],
-                });
-              } else if (level === 2) {
-                tx = prepareContractCall({
-                  contract,
-                  method: "function burn(uint256, uint256)",
-                  params: [1n, 1n],
-                });
-              } else if (level === 3) {
-                tx = prepareContractCall({
-                  contract,
-                  method: "function attack(address)",
-                  params: [targetAddress],
-                });
-              }
-
-              if (!tx || !wallet) throw new Error("Invalid level");
-              try {
-                const result = await sendTransaction({
-                  transaction: tx,
-                  wallet: wallet,
-                });
-                console.log("userop hash", result);
-                return waitForReceipt(result);
-              } catch (e) {
-                console.log(e);
-                throw new Error("Transaction failed");
-              }
-            }}
-            onError={(error) => setError(error)}
-            onSubmit={() => setError(null)}
-            onSuccess={() => {
+            onReceipt={() => {
               close();
               refetch();
             }}
@@ -243,11 +182,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
             {level === 1 && "Transfer"}
             {level === 2 && "Burn"}
             {level === 3 && "Attack"}
-          </Web3Button> */}
+          </TransactionButton>
         </div>
         {error && (
           <p className="mt-2 text-xs first-letter:capitalize text-red-400 max-w-xs text-center">
-            {(error as TransactionError).reason}
+            {error.message}
           </p>
         )}
       </div>

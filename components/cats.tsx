@@ -23,8 +23,6 @@ const Cats: React.FC = () => {
     [nfts]
   );
 
-  console.log("cats", cats);
-
   const badgesQuantityQuery = useReadContract(balanceOf, {
     contract,
     address: address || "",
