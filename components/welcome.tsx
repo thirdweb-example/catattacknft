@@ -1,4 +1,4 @@
-import { ConnectButton, ConnectEmbed } from "thirdweb/react";
+import { ConnectButton } from "thirdweb/react";
 import Image from "next/image";
 import { CHAIN } from "../utils/constants";
 
