@@ -1,4 +1,4 @@
-import { ConnectButton } from "thirdweb/react";
+import { ConnectButton, ConnectEmbed } from "thirdweb/react";
 import Image from "next/image";
 import { CHAIN } from "../utils/constants";
 
@@ -28,6 +28,9 @@ const Welcome: React.FC = () => {
       <div className="max-w-xs">
         <ConnectButton
           chain={CHAIN}
+          connectModal={{
+            size: "compact",
+          }}
           connectButton={{
             label: "Start Playing",
           }}

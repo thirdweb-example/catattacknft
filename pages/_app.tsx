@@ -5,7 +5,6 @@ import { CHAIN, FACTORY_ADDR, client } from "../utils/constants";
 import {
   ThirdwebProvider,
   embeddedWalletConfig,
-  localWalletConfig,
   smartWalletConfig,
 } from "thirdweb/react";
 
@@ -22,11 +21,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       client={client}
       wallets={[
         smartWalletConfig(embeddedWalletConfig(), {
-          chain: CHAIN,
-          factoryAddress: FACTORY_ADDR,
-          gasless: true,
-        }),
-        smartWalletConfig(localWalletConfig(), {
           chain: CHAIN,
           factoryAddress: FACTORY_ADDR,
           gasless: true,
