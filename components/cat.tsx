@@ -1,4 +1,4 @@
-import { MediaRenderer } from "@thirdweb-dev/react";
+import { MediaRenderer } from "thirdweb/react";
 import Image from "next/image";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { EventContext } from "../contexts/event-context";
@@ -210,8 +210,8 @@ const Cat: React.FC<CatProps> = ({ cat }) => {
 
   const quantity = useReadContract(balanceOf, {
     contract,
-    address: address || "",
-    tokenId: cat.id,
+    owner: address || "",
+    id: cat.id,
     queryOptions: {
       enabled: !!address,
     },

@@ -1,13 +1,12 @@
-import {
-  MediaRenderer,
-  ThirdwebNftMedia,
-  useAddress,
-} from "@thirdweb-dev/react";
 import { useContext, useMemo } from "react";
 import { GameContext } from "../contexts/game-context";
 import Cat from "./cat";
 import ClaimKittenButton from "./claim-kitten-button";
-import { useActiveAccount, useReadContract } from "thirdweb/react";
+import {
+  useActiveAccount,
+  useReadContract,
+  MediaRenderer,
+} from "thirdweb/react";
 import { balanceOf } from "thirdweb/extensions/erc1155";
 import { contract } from "../utils/constants";
 
@@ -25,8 +24,8 @@ const Cats: React.FC = () => {
 
   const badgesQuantityQuery = useReadContract(balanceOf, {
     contract,
-    address: address || "",
-    tokenId: 3n,
+    owner: address || "",
+    id: 3n,
     queryOptions: {
       enabled: !!address,
     },
