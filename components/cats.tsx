@@ -25,7 +25,7 @@ const Cats: React.FC = () => {
   const badgesQuantityQuery = useReadContract(balanceOf, {
     contract,
     owner: address || "",
-    id: 3n,
+    tokenId: 3n,
     queryOptions: {
       enabled: !!address,
     },
