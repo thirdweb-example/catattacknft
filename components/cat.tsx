@@ -1,12 +1,19 @@
-import { ThirdwebNftMedia, useAddress, Web3Button } from "@thirdweb-dev/react";
-import { NFT, TransactionError } from "@thirdweb-dev/sdk";
+import { MediaRenderer } from "thirdweb/react";
 import Image from "next/image";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { EventContext } from "../contexts/event-context";
 import { GameContext } from "../contexts/game-context";
-import { CONTRACT_ADDR } from "../utils/constants";
 import { isOwnEvent } from "../utils/utils";
 import { Event, EventProps } from "./events";
+import { NFT, prepareContractCall } from "thirdweb";
+import { contract } from "../utils/constants";
+import {
+  TransactionButton,
+  useActiveAccount,
+  useActiveWallet,
+  useReadContract,
+} from "thirdweb/react";
+import { balanceOf } from "thirdweb/extensions/erc1155";
 
 type ModalProps = {
   isOpen: boolean;
@@ -43,13 +50,13 @@ const modalText = {
 };
 
 const Players: React.FC = () => {
-  const address = useAddress();
+  const address = useActiveAccount()?.address;
   const events = useContext(EventContext).events.filter(
     (e) =>
       !isOwnEvent(
         {
           type: e.eventName as EventProps["type"],
-          data: e.data,
+          data: e.args,
         },
         address
       )
@@ -60,9 +67,9 @@ const Players: React.FC = () => {
       {events && events?.length > 0 ? (
         events?.map((e) => (
           <Event
-            key={`${e.transaction.transactionHash}_${e.transaction.logIndex}`}
+            key={`${e.transactionHash}_${e.logIndex}`}
             type={e.eventName as EventProps["type"]}
-            data={e.data}
+            data={e.args}
           />
         ))
       ) : (
@@ -75,6 +82,7 @@ const Players: React.FC = () => {
 const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
   const { refetch, targetAddress, setTargetAddress } = useContext(GameContext);
   const [error, setError] = useState<Error | null>(null);
+  const wallet = useActiveWallet();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -131,18 +139,42 @@ const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
           </>
         )}
         <div className="mt-4">
-          <Web3Button
-            className="!ml-auto !bg-white !text-black !border-0 !py-2 !h-auto !font-sans !min-w-0 !w-full"
-            contractAddress={CONTRACT_ADDR}
-            action={(contract) => {
-              if (level === 1)
-                return contract.erc1155.transfer(targetAddress, 0, 1);
-              if (level === 2) return contract.erc1155.burn(1, 1);
-              if (level === 3) return contract.call("attack", [targetAddress]);
+          <TransactionButton
+            transaction={() => {
+              let tx;
+              if (level === 1) {
+                tx = prepareContractCall({
+                  contract,
+                  method: "safeTransferFrom",
+                  params: [
+                    wallet?.getAccount()?.address || "",
+                    targetAddress,
+                    0n,
+                    1n,
+                    "0x",
+                  ],
+                });
+              } else if (level === 2) {
+                tx = prepareContractCall({
+                  contract,
+                  method: "burn",
+                  params: [wallet?.getAccount()?.address || "", 1n, 1n],
+                });
+              } else if (level === 3) {
+                tx = prepareContractCall({
+                  contract,
+                  method: "attack",
+                  params: [targetAddress],
+                });
+              } else {
+                throw new Error("Invalid level");
+              }
+              return tx;
             }}
+            waitForReceipt
             onError={(error) => setError(error)}
-            onSubmit={() => setError(null)}
-            onSuccess={() => {
+            onClick={() => setError(null)}
+            onReceipt={() => {
               close();
               refetch();
             }}
@@ -150,11 +182,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
             {level === 1 && "Transfer"}
             {level === 2 && "Burn"}
             {level === 3 && "Attack"}
-          </Web3Button>
+          </TransactionButton>
         </div>
         {error && (
           <p className="mt-2 text-xs first-letter:capitalize text-red-400 max-w-xs text-center">
-            {(error as TransactionError).reason}
+            {error.message}
           </p>
         )}
       </div>
@@ -171,10 +203,19 @@ const colors = ["#B74AA4", "#4830A4", "#BFA3DA"];
 const Cat: React.FC<CatProps> = ({ cat }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const level = (Number(cat.metadata.id) + 1) as 1 | 2 | 3;
+  const level = (Number(cat.id) + 1) as 1 | 2 | 3;
   const color = colors[level - 1];
 
-  const quantity = cat.quantityOwned;
+  const address = useActiveAccount()?.address;
+
+  const quantity = useReadContract(balanceOf, {
+    contract,
+    owner: address || "",
+    id: cat.id,
+    queryOptions: {
+      enabled: !!address,
+    },
+  });
 
   const openModal = useCallback(() => {
     setIsOpen(true);
@@ -192,14 +233,14 @@ const Cat: React.FC<CatProps> = ({ cat }) => {
       <div className="flex flex-col items-center rounded-lg w-80 relative">
         {quantity && (
           <span className="absolute top-2 right-2 bg-black text-xs font-bold text-white px-2 py-1 rounded-md">
-            x{quantity}
+            x{quantity.data?.toString() || 0}
           </span>
         )}
         <div
           className="border rounded-t-lg w-80 h-80"
           style={{ borderColor: color }}
         >
-          <ThirdwebNftMedia width="240" height="240" metadata={cat.metadata} />
+          <MediaRenderer width="240" height="240" src={cat.metadata.image} />
         </div>
         <div className="border border-t-0 rounded-b-lg border-gray-700 w-full py-4 px-8 flex flex-col items-center text-center">
           <p className="font-bold text-xs leading-tight" style={{ color }}>

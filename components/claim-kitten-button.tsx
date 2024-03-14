@@ -1,8 +1,8 @@
-import { Web3Button } from "@thirdweb-dev/react";
-import { TransactionError } from "@thirdweb-dev/sdk";
 import { useContext, useState } from "react";
 import { GameContext } from "../contexts/game-context";
-import { CONTRACT_ADDR } from "../utils/constants";
+import { contract } from "../utils/constants";
+import { TransactionButton } from "thirdweb/react";
+import { prepareContractCall, prepareTransaction } from "thirdweb";
 
 const ClaimKittenButton: React.FC = () => {
   const { refetch } = useContext(GameContext);
@@ -10,21 +10,26 @@ const ClaimKittenButton: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center w-full">
-      <Web3Button
-        className="mt-6 !bg-white !text-black !border-0 !py-2.5"
-        contractAddress={CONTRACT_ADDR}
-        action={(contract) => contract.call("claimKitten")}
+      <TransactionButton
+        transaction={() =>
+          prepareContractCall({
+            contract,
+            method: "claimKitten",
+            params: [],
+          })
+        }
+        waitForReceipt
         onError={(error) => setError(error)}
-        onSubmit={() => setError(null)}
-        onSuccess={(resut) => {
+        onClick={() => setError(null)}
+        onReceipt={(resut) => {
           refetch();
         }}
       >
         Claim Kitten
-      </Web3Button>
+      </TransactionButton>
       {error && (
         <p className="mt-2 text-xs first-letter:capitalize text-red-400 max-w-xs text-center">
-          {(error as TransactionError).reason}
+          {error.message}
         </p>
       )}
     </div>

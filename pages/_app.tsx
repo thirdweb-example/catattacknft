@@ -1,13 +1,12 @@
-import {
-  ThirdwebProvider,
-  embeddedWallet,
-  localWallet,
-  smartWallet,
-} from "@thirdweb-dev/react";
 import type { AppProps } from "next/app";
 import { Inter } from "next/font/google";
 import "tailwindcss/tailwind.css";
-import { CHAIN, CLIENT_ID, FACTORY_ADDR } from "../utils/constants";
+import { CHAIN, FACTORY_ADDR, client } from "../utils/constants";
+import {
+  ThirdwebProvider,
+  embeddedWalletConfig,
+  smartWalletConfig,
+} from "thirdweb/react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,14 +18,10 @@ const inter = Inter({
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThirdwebProvider
-      activeChain={CHAIN}
-      clientId={CLIENT_ID}
-      supportedWallets={[
-        smartWallet(embeddedWallet(), {
-          factoryAddress: FACTORY_ADDR,
-          gasless: true,
-        }),
-        smartWallet(localWallet(), {
+      client={client}
+      wallets={[
+        smartWalletConfig(embeddedWalletConfig(), {
+          chain: CHAIN,
           factoryAddress: FACTORY_ADDR,
           gasless: true,
         }),

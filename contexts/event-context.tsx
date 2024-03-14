@@ -1,9 +1,7 @@
-import { ContractEvent } from "@thirdweb-dev/sdk";
 import { createContext } from "react";
-import { UseQueryResult } from "@tanstack/react-query";
 
 type EventContextType = {
-  events: ContractEvent[];
+  events: any[]; // TODO export event type
   isLoading: boolean;
 };
 

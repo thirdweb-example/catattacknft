@@ -11,14 +11,12 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
-    "@thirdweb-dev/chains": "^0.1.72",
-    "@thirdweb-dev/react": "^4.4.8",
-    "@thirdweb-dev/sdk": "^4.0.35",
     "ethers": "^5",
     "next": "^13",
     "react": "^18.2",
     "react-dom": "^18.2",
-    "tailwindcss": "^3.2.7"
+    "tailwindcss": "^3.2.7",
+    "thirdweb": "^1.0.0-beta-f95796c9dbb94d718e98145ccbdf3b1a8ef95280-20240314003223"
   },
   "devDependencies": {
     "@types/node": "^17.0.35",
@@ -28,6 +26,6 @@
     "eslint-config-next": "^13",
     "postcss": "^8.4.21",
     "prettier": "^2.8.4",
-    "typescript": "^4.7.2"
+    "typescript": "^5.3.3"
   }
 }

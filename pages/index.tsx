@@ -1,47 +1,60 @@
-import {
-  useAddress,
-  useConnectionStatus,
-  useContract,
-  useContractEvents,
-  useContractRead,
-  useOwnedNFTs,
-} from "@thirdweb-dev/react";
 import type { NextPage } from "next";
 import { useState } from "react";
 import Header from "../components/header";
 import Events from "../components/events";
 import Welcome from "../components/welcome";
 import ClaimKitten from "../components/claim-kitten";
-import { CONTRACT_ADDR } from "../utils/constants";
+import { contract } from "../utils/constants";
 import { GameContext } from "../contexts/game-context";
 import Cats from "../components/cats";
 import Footer from "../components/footer";
 import { EventContext } from "../contexts/event-context";
 import { Spinner } from "../components/Spinner/Spinner";
+import { useContractEvents, useReadContract } from "thirdweb/react";
+import { getOwnedNFTs } from "thirdweb/extensions/erc1155";
+import {
+  useActiveAccount,
+  useActiveWalletConnectionStatus,
+} from "thirdweb/react";
+import { prepareEvent } from "thirdweb";
 
 const Home: NextPage = () => {
   // contract data
-  const address = useAddress();
-  const connectionStatus = useConnectionStatus();
+  const address = useActiveAccount()?.address;
+  const connectionStatus = useActiveWalletConnectionStatus();
 
-  const { contract } = useContract(CONTRACT_ADDR);
   const {
     data: nfts,
     refetch,
     isLoading: nftsLoading,
-  } = useOwnedNFTs(contract, address);
-  const { data: playerScore } = useContractRead(contract, "getScore", [
-    address || "",
-  ]);
-  const eventsQuery = useContractEvents(contract, undefined, {
-    queryFilter: {
-      fromBlock: -20000,
+  } = useReadContract(getOwnedNFTs, {
+    contract,
+    address: address || "",
+    queryOptions: {
+      enabled: !!address,
     },
   });
-  const events = eventsQuery.data
-    ?.filter((e) => ["LevelUp", "Miaowed"].includes(e.eventName))
-    .slice(0, 20)
-    .reverse();
+
+  const { data: playerScore } = useReadContract({
+    contract,
+    method: "getScore",
+    params: [address || ""],
+  });
+
+  const eventsQuery = useContractEvents({
+    contract,
+    events: [
+      prepareEvent({
+        signature: "event LevelUp(address indexed account, uint256 level)",
+      }),
+      prepareEvent({
+        signature:
+          "event Miaowed(address indexed attacker, address indexed victim, uint256 level)",
+      }),
+    ],
+    blockRange: 50000,
+  });
+  const events = (eventsQuery.data || []).slice(0, 20).reverse();
 
   // state
   const [targetAddress, setTargetAddress] = useState<string>("");
@@ -52,7 +65,7 @@ const Home: NextPage = () => {
     targetAddress,
     setTargetAddress,
     nfts: nfts || [],
-    playerScore: playerScore?.toNumber(),
+    playerScore: playerScore || 0n,
   };
 
   return (

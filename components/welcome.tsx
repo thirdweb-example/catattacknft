@@ -1,5 +1,6 @@
-import { ConnectWallet } from "@thirdweb-dev/react";
+import { ConnectButton } from "thirdweb/react";
 import Image from "next/image";
+import { CHAIN } from "../utils/constants";
 
 const Welcome: React.FC = () => {
   return (
@@ -25,7 +26,15 @@ const Welcome: React.FC = () => {
         />
       </div>
       <div className="max-w-xs">
-        <ConnectWallet modalSize="compact" btnTitle="Start Playing" />
+        <ConnectButton
+          chain={CHAIN}
+          connectModal={{
+            size: "compact",
+          }}
+          connectButton={{
+            label: "Start Playing",
+          }}
+        />
       </div>
       <div className="flex flex-col items-center">
         <p className="font-semibold">Share the game</p>
