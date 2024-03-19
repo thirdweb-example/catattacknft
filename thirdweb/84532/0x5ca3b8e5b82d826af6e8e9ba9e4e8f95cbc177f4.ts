@@ -2053,7 +2053,37 @@ export function safeTransferFrom(
 ) {
   return prepareContractCall({
     contract: options.contract,
-    method: _encodedSafeTransferFrom,
+    method: [
+      "0xf242432a",
+      [
+        {
+          internalType: "address",
+          name: "from",
+          type: "address",
+        },
+        {
+          internalType: "address",
+          name: "to",
+          type: "address",
+        },
+        {
+          internalType: "uint256",
+          name: "id",
+          type: "uint256",
+        },
+        {
+          internalType: "uint256",
+          name: "amount",
+          type: "uint256",
+        },
+        {
+          internalType: "bytes",
+          name: "data",
+          type: "bytes",
+        },
+      ],
+      [],
+    ],
     params: [
       options.from,
       options.to,

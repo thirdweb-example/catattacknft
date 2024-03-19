@@ -46,11 +46,10 @@ const Home: NextPage = () => {
 
   const eventsQuery = useContractEvents({
     contract,
-    // @ts-expect-error TODO fix multi even filter
     events: [levelUpEvent(), miaowedEvent()],
     blockRange: 50000,
   });
-  const events = (eventsQuery.data || []).slice(0, 20).reverse();
+  const events = (eventsQuery.data || []).reverse().slice(0, 20);
 
   // state
   const [targetAddress, setTargetAddress] = useState<string>("");
