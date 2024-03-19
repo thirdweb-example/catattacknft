@@ -5,7 +5,7 @@ import { EventContext } from "../contexts/event-context";
 import { GameContext } from "../contexts/game-context";
 import { isOwnEvent } from "../utils/utils";
 import { Event, EventProps } from "./events";
-import { NFT, prepareContractCall } from "thirdweb";
+import type { NFT } from "thirdweb";
 import { contract } from "../utils/constants";
 import {
   TransactionButton,
@@ -14,6 +14,11 @@ import {
   useReadContract,
 } from "thirdweb/react";
 import { balanceOf } from "thirdweb/extensions/erc1155";
+import {
+  attack,
+  burn,
+  safeTransferFrom,
+} from "../thirdweb/84532/0x5ca3b8e5b82d826af6e8e9ba9e4e8f95cbc177f4";
 
 type ModalProps = {
   isOpen: boolean;
@@ -143,28 +148,25 @@ const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
             transaction={() => {
               let tx;
               if (level === 1) {
-                tx = prepareContractCall({
+                tx = safeTransferFrom({
                   contract,
-                  method: "safeTransferFrom",
-                  params: [
-                    wallet?.getAccount()?.address || "",
-                    targetAddress,
-                    0n,
-                    1n,
-                    "0x",
-                  ],
+                  from: wallet?.getAccount()?.address || "",
+                  to: targetAddress,
+                  amount: 1n,
+                  id: 0n,
+                  data: "0x",
                 });
               } else if (level === 2) {
-                tx = prepareContractCall({
+                tx = burn({
                   contract,
-                  method: "burn",
-                  params: [wallet?.getAccount()?.address || "", 1n, 1n],
+                  account: wallet?.getAccount()?.address || "",
+                  amount: 1n,
+                  id: 1n,
                 });
               } else if (level === 3) {
-                tx = prepareContractCall({
+                tx = attack({
                   contract,
-                  method: "attack",
-                  params: [targetAddress],
+                  victim: targetAddress,
                 });
               } else {
                 throw new Error("Invalid level");
@@ -211,7 +213,7 @@ const Cat: React.FC<CatProps> = ({ cat }) => {
   const quantity = useReadContract(balanceOf, {
     contract,
     owner: address || "",
-    id: cat.id,
+    tokenId: cat.id,
     queryOptions: {
       enabled: !!address,
     },

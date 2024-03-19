@@ -16,7 +16,11 @@ import {
   useActiveAccount,
   useActiveWalletConnectionStatus,
 } from "thirdweb/react";
-import { prepareEvent } from "thirdweb";
+import {
+  getScore,
+  levelUpEvent,
+  miaowedEvent,
+} from "../thirdweb/84532/0x5ca3b8e5b82d826af6e8e9ba9e4e8f95cbc177f4";
 
 const Home: NextPage = () => {
   // contract data
@@ -35,26 +39,17 @@ const Home: NextPage = () => {
     },
   });
 
-  const { data: playerScore } = useReadContract({
+  const { data: playerScore } = useReadContract(getScore, {
     contract,
-    method: "getScore",
-    params: [address || ""],
+    player: address || "",
   });
 
   const eventsQuery = useContractEvents({
     contract,
-    events: [
-      prepareEvent({
-        signature: "event LevelUp(address indexed account, uint256 level)",
-      }),
-      prepareEvent({
-        signature:
-          "event Miaowed(address indexed attacker, address indexed victim, uint256 level)",
-      }),
-    ],
+    events: [levelUpEvent(), miaowedEvent()],
     blockRange: 50000,
   });
-  const events = (eventsQuery.data || []).slice(0, 20).reverse();
+  const events = (eventsQuery.data || []).reverse().slice(0, 20);
 
   // state
   const [targetAddress, setTargetAddress] = useState<string>("");
