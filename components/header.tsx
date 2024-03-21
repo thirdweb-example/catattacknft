@@ -1,18 +1,7 @@
 import Image from "next/image";
 import { Aurora } from "./Aurora";
-import {
-  ConnectButton,
-  embeddedWalletConfig,
-  smartWalletConfig,
-  useActiveAccount,
-} from "thirdweb/react";
-import {
-  CHAIN,
-  FACTORY_ADDR,
-  appMetadata,
-  client,
-  wallets,
-} from "../utils/constants";
+import { ConnectButton, useActiveAccount } from "thirdweb/react";
+import { appMetadata, client, wallets } from "../utils/constants";
 
 const Header: React.FC = () => {
   const address = useActiveAccount()?.address;

@@ -1,16 +1,6 @@
-import {
-  ConnectButton,
-  embeddedWalletConfig,
-  smartWalletConfig,
-} from "thirdweb/react";
+import { ConnectButton } from "thirdweb/react";
 import Image from "next/image";
-import {
-  CHAIN,
-  FACTORY_ADDR,
-  appMetadata,
-  client,
-  wallets,
-} from "../utils/constants";
+import { CHAIN, appMetadata, client, wallets } from "../utils/constants";
 
 const Welcome: React.FC = () => {
   return (

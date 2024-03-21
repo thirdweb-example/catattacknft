@@ -16,7 +16,7 @@
     "react": "^18.2",
     "react-dom": "^18.2",
     "tailwindcss": "^3.2.7",
-    "thirdweb": "^5.0.0-beta-c459e7bdc5ef26bdfba65fe674d84ca07bc87351-20240321022744"
+    "thirdweb": "^5.0.0-beta-9f5b0557adbeea8448acb5ca058fcb6a3edab27b-20240321054210"
   },
   "devDependencies": {
     "@types/node": "^17.0.35",

@@ -12,7 +12,6 @@ import { EventContext } from "../contexts/event-context";
 import { Spinner } from "../components/Spinner/Spinner";
 import { useContractEvents, useReadContract } from "thirdweb/react";
 import { getOwnedNFTs } from "thirdweb/extensions/erc1155";
-import { deployERC721Contract } from "thirdweb/deploys";
 import {
   useActiveAccount,
   useActiveWalletConnectionStatus,
