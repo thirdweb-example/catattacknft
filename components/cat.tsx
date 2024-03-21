@@ -6,7 +6,7 @@ import { GameContext } from "../contexts/game-context";
 import { isOwnEvent } from "../utils/utils";
 import { Event, EventProps } from "./events";
 import type { NFT } from "thirdweb";
-import { contract } from "../utils/constants";
+import { client, contract } from "../utils/constants";
 import {
   TransactionButton,
   useActiveAccount,
@@ -242,7 +242,12 @@ const Cat: React.FC<CatProps> = ({ cat }) => {
           className="border rounded-t-lg w-80 h-80"
           style={{ borderColor: color }}
         >
-          <MediaRenderer width="240" height="240" src={cat.metadata.image} />
+          <MediaRenderer
+            client={client}
+            width="240"
+            height="240"
+            src={cat.metadata.image}
+          />
         </div>
         <div className="border border-t-0 rounded-b-lg border-gray-700 w-full py-4 px-8 flex flex-col items-center text-center">
           <p className="font-bold text-xs leading-tight" style={{ color }}>
