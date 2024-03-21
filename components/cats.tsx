@@ -8,7 +8,7 @@ import {
   MediaRenderer,
 } from "thirdweb/react";
 import { balanceOf } from "thirdweb/extensions/erc1155";
-import { contract } from "../utils/constants";
+import { client, contract } from "../utils/constants";
 
 const Cats: React.FC = () => {
   const address = useActiveAccount()?.address;
@@ -59,6 +59,7 @@ const Cats: React.FC = () => {
             ].map((i) => (
               <div key={`${i}-${badges[0].id}`}>
                 <MediaRenderer
+                  client={client}
                   src={badges[0].metadata.image}
                   style={{ width: 30, height: 30 }}
                 />

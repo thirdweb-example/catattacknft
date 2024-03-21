@@ -1,12 +1,8 @@
 import type { AppProps } from "next/app";
 import { Inter } from "next/font/google";
 import "tailwindcss/tailwind.css";
-import { CHAIN, FACTORY_ADDR, client } from "../utils/constants";
-import {
-  ThirdwebProvider,
-  embeddedWalletConfig,
-  smartWalletConfig,
-} from "thirdweb/react";
+import { AutoConnect, ThirdwebProvider } from "thirdweb/react";
+import { appMetadata, client, wallets } from "../utils/constants";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,16 +13,12 @@ const inter = Inter({
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThirdwebProvider
-      client={client}
-      wallets={[
-        smartWalletConfig(embeddedWalletConfig(), {
-          chain: CHAIN,
-          factoryAddress: FACTORY_ADDR,
-          gasless: true,
-        }),
-      ]}
-    >
+    <ThirdwebProvider>
+      {/* <AutoConnect
+        wallets={wallets}
+        client={client}
+        appMetadata={appMetadata}
+      /> */}
       <div className={inter.className}>
         <Component {...pageProps} />
       </div>

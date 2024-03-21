@@ -12,6 +12,7 @@ import { EventContext } from "../contexts/event-context";
 import { Spinner } from "../components/Spinner/Spinner";
 import { useContractEvents, useReadContract } from "thirdweb/react";
 import { getOwnedNFTs } from "thirdweb/extensions/erc1155";
+import { deployERC721Contract } from "thirdweb/deploys";
 import {
   useActiveAccount,
   useActiveWalletConnectionStatus,
@@ -49,7 +50,7 @@ const Home: NextPage = () => {
     events: [levelUpEvent(), miaowedEvent()],
     blockRange: 50000,
   });
-  const events = (eventsQuery.data || []).reverse().slice(0, 20);
+  const events = (eventsQuery.data || []).slice(0, 20).reverse();
 
   // state
   const [targetAddress, setTargetAddress] = useState<string>("");
@@ -74,10 +75,7 @@ const Home: NextPage = () => {
         <Header />
         <div className="max-w-3xl flex flex-col items-center mx-auto py-8 px-4">
           {connectionStatus === "disconnected" && <Welcome />}
-
-          {(connectionStatus === "connecting" ||
-            connectionStatus === "unknown") && <Loading />}
-
+          {connectionStatus === "connecting" && <Loading />}
           {connectionStatus === "connected" && (
             <>
               {nftsLoading ? (
