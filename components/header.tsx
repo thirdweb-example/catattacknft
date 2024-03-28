@@ -1,7 +1,12 @@
 import Image from "next/image";
 import { Aurora } from "./Aurora";
 import { ConnectButton, useActiveAccount } from "thirdweb/react";
-import { appMetadata, client, wallets } from "../utils/constants";
+import {
+  accountAbstraction,
+  appMetadata,
+  client,
+  wallets,
+} from "../utils/constants";
 
 const Header: React.FC = () => {
   const address = useActiveAccount()?.address;
@@ -36,6 +41,7 @@ const Header: React.FC = () => {
               client={client}
               appMetadata={appMetadata}
               wallets={wallets}
+              accountAbstraction={accountAbstraction}
             />
           ) : null}
         </div>

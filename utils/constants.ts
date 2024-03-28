@@ -1,6 +1,6 @@
 import { createThirdwebClient, getContract } from "thirdweb";
 import { baseSepolia } from "thirdweb/chains";
-import { embeddedWalletConfig, smartWalletConfig } from "thirdweb/react";
+import { embeddedWallet } from "thirdweb/wallets";
 
 export const appMetadata = {
   name: "Cat Attack",
@@ -19,10 +19,10 @@ export const contract = getContract({
   chain: CHAIN,
 });
 
-export const wallets = [
-  smartWalletConfig(embeddedWalletConfig(), {
-    chain: CHAIN,
-    factoryAddress: FACTORY_ADDR,
-    gasless: true,
-  }),
-];
+export const accountAbstraction = {
+  chain: CHAIN,
+  factoryAddress: FACTORY_ADDR,
+  gasless: true,
+};
+
+export const wallets = [embeddedWallet()];

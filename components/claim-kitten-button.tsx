@@ -16,10 +16,9 @@ const ClaimKittenButton: React.FC = () => {
             contract,
           })
         }
-        waitForReceipt
         onError={(error) => setError(error)}
         onClick={() => setError(null)}
-        onReceipt={(resut) => {
+        onTransactionConfirmed={(resut) => {
           refetch();
         }}
       >

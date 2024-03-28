@@ -173,10 +173,9 @@ const Modal: React.FC<ModalProps> = ({ isOpen, close, level }) => {
               }
               return tx;
             }}
-            waitForReceipt
             onError={(error) => setError(error)}
             onClick={() => setError(null)}
-            onReceipt={() => {
+            onTransactionConfirmed={() => {
               close();
               refetch();
             }}
