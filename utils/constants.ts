@@ -1,6 +1,6 @@
 import { createThirdwebClient, getContract } from "thirdweb";
 import { baseSepolia } from "thirdweb/chains";
-import { embeddedWallet } from "thirdweb/wallets";
+import { createWallet, inAppWallet } from "thirdweb/wallets";
 
 export const appMetadata = {
   name: "Cat Attack",
@@ -25,4 +25,10 @@ export const accountAbstraction = {
   gasless: true,
 };
 
-export const wallets = [embeddedWallet()];
+export const wallets = [
+  inAppWallet({
+    auth: {
+      options: ["google", "discord", "apple", "farcaster", "email", "passkey"],
+    },
+  }),
+];
