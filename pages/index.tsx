@@ -49,7 +49,9 @@ const Home: NextPage = () => {
 		events: [levelUpEvent(), miaowedEvent()],
 		blockRange: 50000,
 	});
-	const events = (eventsQuery.data || []).toReversed().slice(0, 15);
+	const events = (eventsQuery.data ? eventsQuery.data : [])
+		.slice(-15)
+		.reverse();
 
 	// state
 	const [targetAddress, setTargetAddress] = useState<string>("");
